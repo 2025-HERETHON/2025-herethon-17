@@ -1,0 +1,19 @@
+{% load socialaccount %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+</head>
+<body>
+    <hr/>
+      <a href="{% provider_login_url 'kakao' %}">
+        <i>카카오 로그인</i>
+      </a>
+      <a href="{% provider_login_url 'google' %}">
+        <i>구글 로그인</i>
+      </a>
+</body>
+</html>
