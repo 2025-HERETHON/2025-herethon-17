@@ -17,12 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 #from posts import views
+from .views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path("", views.home, name='home'),
+    path("", home, name='home'), 
+    # [develop] core.urls 앱 단위로 분리 > 탐험,퀴즈,게시판 / 로그인,마이페이지 등 연결?
 
     path('users/', include('users.urls', namespace='users')),
     # 소셜 로그인
     path('authaccounts/', include('allauth.urls')),
+    path('posts/', include('posts.urls'))
 ]
