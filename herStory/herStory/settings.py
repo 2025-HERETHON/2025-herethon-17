@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # 생성한 앱 정리
     'users',
     'posts',
+    'quizzes',
+    'history',
 
     # 소셜 로그인 시 필요 설정
     'django.contrib.sites',
