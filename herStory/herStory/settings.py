@@ -76,17 +76,31 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# 기존에 회원가입한 사람이 소셜 로그인 하려고 하면 기존 계정이랑 연동해서 바로 로그인처리 되게끔 해줌
+## 즉, 원래는 로그인하려고 소셜 로그인 할 때마다 계정 생성을 했어서 기존 계정과 계속 충돌이 일어났는데 이를 해결함
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False  # username 안 쓰는 경우
+SOCIALACCOUNT_AUTO_SIGNUP = False  # 자동 회원가입 방지 (중복 충돌 방지)
+
+# 이게 있어야 로그인 시 자동 계정 생성 방지하고 기존 계정 존재하면 연동하는 작업 실행 가능
+SOCIALACCOUNT_ADAPTER = 'users.adapter.MySocialAccountAdapter'
+
+
 # 사용자 모델 설정 추가
 AUTH_USER_MODEL = 'users.User'
 
+# 로그인, 로그아웃 후 연결되는 페이지 홈으로 지정
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'herStory.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
