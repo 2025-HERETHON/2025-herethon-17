@@ -8,5 +8,10 @@
 <body>
   <!--템플릿 규칙 적용으로 templates 폴더 아래 users 폴더 생성-->
     마이페이지
+    {% if user.is_authenticated %}
+      <a href="{% url 'users:logout' %}">로그아웃</a>
+    {% else %}
+      <a href="{% url 'users:login' %}">로그인</a>
+    {% endif %}
 </body>
 </html>
