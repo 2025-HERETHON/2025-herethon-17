@@ -9,7 +9,7 @@ User = get_user_model()
 ## 기존 계정과 연동되게끔 했고, 로그인 시 자동 계정 생성 제한함
 class MySocialAccountAdapter(DefaultSocialAccountAdapter):
     def pre_social_login(self, request, sociallogin):
-        # 이미 로그인한 경우 예외 처리 안 함
+        # 이미 로그인한 경우 무시
         if request.user.is_authenticated:
             return
 
@@ -21,6 +21,5 @@ class MySocialAccountAdapter(DefaultSocialAccountAdapter):
             # 동일 이메일의 기존 사용자 찾기
             existing_user = User.objects.get(email=email)
             sociallogin.connect(request, existing_user)
-            raise ImmediateHttpResponse(redirect('/'))  # 자동 로그인 처리
         except User.DoesNotExist:
             pass  # 새 사용자면 그대로 진행
