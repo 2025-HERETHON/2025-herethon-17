@@ -83,19 +83,24 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False  # username 안 쓰는 경우
+#ACCOUNT_USERNAME_REQUIRED = False  # username 안 쓰는 경우
 SOCIALACCOUNT_AUTO_SIGNUP = False  # 자동 회원가입 방지 (중복 충돌 방지)
 
 # 이게 있어야 로그인 시 자동 계정 생성 방지하고 기존 계정 존재하면 연동하는 작업 실행 가능
 SOCIALACCOUNT_ADAPTER = 'users.adapter.MySocialAccountAdapter'
 
-
 # 사용자 모델 설정 추가
 AUTH_USER_MODEL = 'users.User'
 
-# 로그인, 로그아웃 후 연결되는 페이지 홈으로 지정
+# 커스텀한 회원가입 화면 -> 무조건 이메일과 학교, 학년을 입력하게 끔 구현.
+#ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.CustomSignupForm'
+
+# 로그인, 로그아웃 후 연결되는 페이지 지정
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# allauth의 기본 로그인 URL -> 로그인하지 않은 사람이 마이페이지 들어가려하면 로그인으로 리디렉션
+LOGIN_URL = '/authaccounts/login/'
 
 ROOT_URLCONF = 'herStory.urls'
 

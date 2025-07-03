@@ -1,0 +1,7 @@
+<h2>프로필 수정</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">저장하기</button>
+</form>
+<a href="{% url 'users:mypage' %}">취소</a>
