@@ -66,8 +66,20 @@ class Comment(models.Model):
     author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="comments")
     # auth_user_model 참조
 
+    # 대댓글 필드
+    parent_comment = models.ForeignKey(
+        to='self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='replies'
+    )
+
     def __str__(self):
-        return f'[{self.id}] {self.content}'
+        return f"[{self.id}] {self.content}"
+
+    def is_reply(self): # 이 댓글이 대댓글인가?
+        return self.parent_comment is not None
 
 class PostCategory(models.Model):
     post = models.ForeignKey(to=Post, on_delete=models.CASCADE, related_name="post_categories")
