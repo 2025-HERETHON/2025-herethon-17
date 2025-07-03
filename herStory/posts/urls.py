@@ -1,0 +1,20 @@
+from django.urls import path
+from .views import *
+
+app_name = 'posts'
+
+urlpatterns = [
+    path('', index, name='index'),
+    path('create/', create, name='create'),
+    path('detail/<int:id>/', detail, name='detail'),
+    path('update/<int:id>/', update, name='update'),
+    path('delete/<int:id>/', delete, name='delete'),
+    path('create-comment/<int:post_id>/', create_comment, name='create-comment'),
+    path('like/<int:post_id>/', like, name='like'),
+]
+
+'''
+    path('delete-comment/<int:comment_id>', delete_comment, name='delete-comment'),
+    path('category/<slug:slug>/', category, name='category'),
+    path('scrap/<int:post_id>/', scrap, name='scrap'),
+'''

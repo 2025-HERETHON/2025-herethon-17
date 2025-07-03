@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>글쓰기</p>
+    <form method="POST" action="{% url 'posts:create' %}">
+        {% csrf_token %}
+        제목=<input type="text" name="title"><br>
+        내용-<textarea name="content"></textarea><br>
+        카테고리 - 
+        <select name="category" multiple>
+            {% for category in categories %}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {% endfor %}
+        </select><br>
+        태그 (쉼표로 구분): <input type="text" name="tags" placeholder="it, 교육"><br>
+        <input type="submit" value="작성!">
+    </form>
+</body>
+</html>

@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import home
+#from posts import views
+from .views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +27,5 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
     # 소셜 로그인
     path('authaccounts/', include('allauth.urls')),
+    path('posts/', include('posts.urls'))
 ]
