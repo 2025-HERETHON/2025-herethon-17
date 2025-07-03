@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>제목 {{ post.title }}</p>
+    <p>내용 {{ post.content }}</p>
+    <p>작성일 {{ post.created_at }}</p><br>
+    <p>작성자 - {{ post.user }}</p>
+
+    <p>좋아요: {{post.like.count}} <br>
+        {% if request.user in post.like.all %}
+            <a href="{% url 'posts:like' post.id %}">좋아요 취소</a>
+        {% else %}
+            <a href="{% url 'posts:like' post.id %}">좋아요</a>
+        {% endif %}
+    </p>
+
+    <p>카테고리 - 
+        {% for category in post.category.all %}
+            [{{category.name}}]
+        {% empty %}
+            선택한 카테고리 없음
+        {% endfor %}
+    </p>
+
+    {% for tag in post.tags.all %}
+    <span>#{{ tag.name }}</span>
+    {% endfor %}
+    
+    <!--로그인한 사용자일 때만 수정/삭제-->
+    {% if request.user == post.user %}
+    <a href="{% url 'posts:update' post.id %}">수정</a><br>
+    <a href="{% url 'posts:delete' post.id %}">삭제</a><br>
+    {% endif %}
+    <hr><br>
+    <p>댓글 수: {{ post.comments.count }}</p>
+    {% for comment in post.comments.all %}
+        <p>{{ comment.author }}: {{ comment.content }}</p>
+    {%empty%}
+    댓글이 없습니다
+    {% endfor %}
+
+    <form method="POST" action="{% url 'posts:create-comment' post.id %}">
+        {% csrf_token %}
+        <textarea name="content" cols="30" rows="5"></textarea>
+        <button type="submit">댓글 작성</button><br>
+    </form>
+</body>
+</html>

@@ -1,5 +1,6 @@
 # herStory/views.py
-from django.http import HttpResponse
+from django.shortcuts import render
 
+# 외부 templates 폴더 내에 있는 home 화면으로 리다이렉트
 def home(request):
-    return HttpResponse("홈 화면입니다. 로그인 후 환영합니다!")
+    return render(request, 'home.html')

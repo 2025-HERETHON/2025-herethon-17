@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--템플릿 규칙 적용으로 templates 폴더 아래 posts 폴더 생성-->
+    <!--로그인했을 때만 로그아웃, 마이페이지 링크 띄움-->
+    {% if request.user.is_authenticated %} 
+    {{ social_name }} 환영 <br>
+    <a href="{% url 'users:logout' %}">로그아웃</a><br>
+    <a href="{% url 'users:mypage' %}">마이페이지</a><br> 
+    {% endif %}
+
+    <form method="GET" action="{% url 'posts:index' %}">
+        <select name="category">
+            <option value="">모든 카테고리</option>
+            {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="조회" />
+    </form>
+
+    <a href="{% url 'posts:create' %}">글쓰기!</a><br><br>
+    {% for post in posts %}
+        <h2><a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a></h2>
+        <p>{{ post.content }}</p>
+        <p>{{ post.created_at }}</p>
+    {% empty %}
+        아직 작성된 글이 없어요!
+    {% endfor %}
+</body>
+</html>
