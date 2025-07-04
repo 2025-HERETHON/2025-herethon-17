@@ -18,6 +18,15 @@ def logout(request):
     return redirect('home')
 
 @login_required
+def delete_account(request):
+    if request.method == 'POST':
+        request.user.delete()
+        logout(request)
+        messages.success(request, "회원 탈퇴가 완료되었습니다.")
+        return redirect('home')
+    return render(request, 'users/delete_confirm.html')
+
+@login_required
 def mypage(request):
     return render(request, 'users/mypage.html', {
         'user' : request.user
