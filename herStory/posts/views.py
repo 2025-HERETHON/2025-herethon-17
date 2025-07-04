@@ -12,17 +12,11 @@ def index(request):
         posts = Post.objects.filter(category=category).order_by('-id')
     else: 
         posts = Post.objects.all().order_by('-id')
-        
-    social_name = '로그인하지 않은 사용자'  # socialaccount 모델의 소셜 정보를 name으로
-    if request.user.is_authenticated:
-        try:
-            social_account = SocialAccount.objects.get(user=request.user)
-            social_name = social_account.extra_data.get("name")
-        except SocialAccount.DoesNotExist:
-            pass  # 로그인은 했지만 소셜 계정은 아니면 > 패스
-    context = {"posts": posts,"social_name": social_name, "categories": categories}
 
-    return render(request, 'posts/index.html', context)
+    return render(request, 'posts/index.html', {
+        "posts": posts,
+        "categories": categories,
+    })
 
 @login_required #로그인한 사용자만 글 작성 가능
 def create(request):
@@ -64,11 +58,13 @@ def detail(request, id):
         except SocialAccount.DoesNotExist:
             pass
 
-    context = {
+    comments = Comment.objects.filter(post=post).select_related('author').order_by('created_at')
+
+    return render(request, 'posts/detail.html', {
         'post': post,
-        'social_name': social_name
-    }
-    return render(request, 'posts/detail.html', context)
+        'social_name': social_name,
+        'comments': comments
+    })
 
 def update(request, id):
     post = get_object_or_404(Post, id=id)
@@ -90,11 +86,20 @@ def create_comment(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.method == 'POST':
         content = request.POST.get('content')
+        parent_id = request.POST.get('parent_comment_id')  #대댓글 부모 아이디
         
+        parent_comment = None
+        if parent_id:
+            try:
+                parent_comment = Comment.objects.get(id=parent_id)
+            except Comment.DoesNotExist:
+                parent_comment = None  # 잘못된 거거나 ID 없으면 일반 댓글로 처리
+
         Comment.objects.create(
             post = post,
             content = content,
-            author = request.user
+            author = request.user,
+            parent_comment=parent_comment
         )
         return redirect('posts:detail', post_id)
     return redirect('posts:index')
