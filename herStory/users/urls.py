@@ -8,6 +8,7 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+    path('delete/', views.delete_account, name='delete_account'),
     path('mypage/', views.mypage, name='mypage'),
     path('mypage/edit/', views.edit_profile, name='edit_profile'),
     # 추후 home에 추가
