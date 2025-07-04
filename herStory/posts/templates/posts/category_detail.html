@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ category.name }} 게시판</title>
+</head>
+<body>
+    <!--상단에 검색 폼 띄우기-->
+    <form method="GET" action="{% url 'posts:search' %}">
+        <input type="text" name="q" placeholder="검색어를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+    <!--카테고리 목록 상단 고정-->
+    {% for c in categories %}
+        {% if c.id == category.id %}
+            {{ c.name }}
+        {% else %}
+            <a href="{% url 'posts:category' c.id %}">{{ c.name }}</a>
+        {% endif %}
+    {% endfor %}
+
+    <h1>{{ category.name }} 게시판</h1>
+    <a href="{% url 'posts:index' %}">메인 게시판으로!</a><br><br>
+
+    {% for post in posts %}
+        <a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
+        <span>{{ post.views }}회 조회</span>
+        <span>{{ post.created_at }}</span><br>
+    {% empty %}
+    이 카테고리에 글이 없습니다.
+    {% endfor %}
+    <br><br>
+
+    <a href="{% url 'posts:create' %}">새 글 쓰기</a>
+</body>
+</html>
