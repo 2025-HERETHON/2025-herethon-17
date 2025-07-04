@@ -83,18 +83,18 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = True  # username 안 쓰는 경우
+ACCOUNT_USERNAME_REQUIRED = False  # username 안 쓰는 경우
 SOCIALACCOUNT_AUTO_SIGNUP = True 
 # 자동 회원가입 방지 (중복 충돌 방지)
 
 # 이게 있어야 로그인 시 자동 계정 생성 방지하고 기존 계정 존재하면 연동하는 작업 실행 가능
 SOCIALACCOUNT_ADAPTER = 'users.adapter.MySocialAccountAdapter'
 
+# 따로 allauth 로그인 화면 안뜨고 바로 구글 제공 로그인 화면으로 넘어가게끔 만드는 코드
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
 # 사용자 모델 설정 추가
 AUTH_USER_MODEL = 'users.User'
-
-# 커스텀한 회원가입 화면 -> 무조건 이메일과 학교, 학년을 입력하게 끔 구현.
-#ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.CustomSignupForm'
 
 # 로그인, 로그아웃 후 연결되는 페이지 지정
 LOGIN_REDIRECT_URL = '/users/redirect/' # 로그인 후 real_name 없으면 중간뷰로 리디렉션!

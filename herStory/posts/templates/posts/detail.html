@@ -7,9 +7,11 @@
 </head>
 <body>
     <p>제목 {{ post.title }}</p>
+    <hr>
+
     <p>내용 {{ post.content }}</p>
     <p>작성일 {{ post.created_at }}</p><br>
-    <p>작성자 - {{ post.user }}</p>
+    <p>작성자 - {{ post.user.username }}</p>
 
     <p>좋아요: {{post.like.count}} <br>
         {% if request.user in post.like.all %}
@@ -28,7 +30,7 @@
     </p>
 
     {% for tag in post.tags.all %}
-    <span>#{{ tag.name }}</span>
+    <span>#{{ tag.name }}</span><br>
     {% endfor %}
     
     <!--로그인한 사용자일 때만 수정/삭제-->
@@ -36,10 +38,29 @@
     <a href="{% url 'posts:update' post.id %}">수정</a><br>
     <a href="{% url 'posts:delete' post.id %}">삭제</a><br>
     {% endif %}
-    <hr><br>
-    <p>댓글 수: {{ post.comments.count }}</p>
-    {% for comment in post.comments.all %}
-        <p>{{ comment.author }}: {{ comment.content }}</p>
+
+    <hr><h3>댓글 ({{ post.comments.count }})</h3><br>
+    <!-- 댓글 목록 -->
+  {% for comment in comments %}
+    {% if not comment.parent_comment %}
+        <p>{{ comment.author.username }}: {{ comment.content }}</p>
+
+        <!-- 대댓글 목록 (왼쪽 마진)-->
+        {% for reply in comment.replies.all %}
+          <div style="margin-left: 30px;">
+            <p>{{ reply.author.username }}:{{ reply.content }}</p>
+          </div>
+        {% endfor %}
+
+        <!-- 대댓글 폼 (왼쪽 마진)-->
+        <form method="POST" action="{% url 'posts:create-comment' post.id %}" style="margin-left: 30px;">
+          {% csrf_token %}
+          <input type="hidden" name="parent_comment_id" value="{{ comment.id }}">
+          <textarea name="content" placeholder="답글"></textarea>
+          <br>
+          <button type="submit">답글 작성</button>
+        </form>
+        {% endif %}
     {%empty%}
     댓글이 없습니다
     {% endfor %}
