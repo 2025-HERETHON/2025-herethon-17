@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm
+from history.models import UserSavedCard
 from django.urls import reverse
 from django.contrib import messages
 
@@ -31,12 +32,6 @@ def mypage(request):
         'user' : request.user
     })
 
-# @login_required
-# def redirect_after_login(request):
-#     if not request.user.real_name:
-#         return redirect(reverse('users:edit_profile'))
-#     return redirect('/')
-
 @login_required
 def edit_profile(request):
     user = request.user
@@ -53,3 +48,8 @@ def edit_profile(request):
         form = UserUpdateForm(instance=user)
 
     return render(request, 'users/edit_profile.html', {'form': form})
+
+@login_required
+def my_saved_cards(request):
+    saved_cards = UserSavedCard.objects.filter(user=request.user).select_related('card').order_by('-saved_at')
+    return render(request, 'users/my_cards.html', {'saved_cards': saved_cards})
