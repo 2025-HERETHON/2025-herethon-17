@@ -1,45 +1,30 @@
 from django.db import models
 from users.models import User
 
-class HistoryContent(models.Model):
-    title = models.CharField(max_length=280, null=True)
-    period = models.CharField(max_length=165, null=True)
-    type = models.CharField(max_length=10,
-                            choices=[('인물', '인물'), ('퀴즈', '퀴즈')],
-                            null=True)
-    description = models.TextField(null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title
-
-
 class HistoryCard(models.Model):
-    content = models.ForeignKey(HistoryContent, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, null=True)
-    period = models.CharField(max_length=50, null=True)
-    role = models.CharField(max_length=100, null=True)
-    image_url = models.CharField(max_length=255, null=True)
-    info = models.TextField(null=True)
+    name = models.CharField(max_length=50)               # 인물 이름
+    era = models.CharField(max_length=100, default="20세기 초")               # 시대
+    region = models.CharField(max_length=100, default="아시아")            # 지역
+    image_url = models.URLField(null=True, blank=True)   # 이미지
+    description = models.TextField(null=True, blank=True)  # 설명
+    birth_date = models.DateField(null=True, blank=True)
+    death_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return self.name or f'카드 {self.card_id}'
+        return self.name
 
-
-class UserProgress(models.Model):
+    def lifespan(self):
+        if self.birth_date and self.death_date:
+            return f"({self.birth_date.strftime('%Y.%m.%d')} - {self.death_date.strftime('%Y.%m.%d')})"
+        return ""
+    
+class UserSavedCard(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.ForeignKey(HistoryContent, on_delete=models.CASCADE)
-    completion = models.BooleanField(null=True)
-    quiz_score = models.FloatField(default=0.0)
-    percentage = models.DecimalField(max_digits=5, decimal_places=1, null=True)
+    card = models.ForeignKey(HistoryCard, on_delete=models.CASCADE)
+    saved_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        unique_together = ('user', 'card')  # 중복 저장 방지
 
     def __str__(self):
-        return f'{self.user.username} - {self.content.title}'
-
-class SchoolScore(models.Model):
-    school_name = models.CharField(max_length=100)
-    total_score = models.IntegerField(default=0)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.school_name
+        return f"{self.user.username} - {self.card.name}"
