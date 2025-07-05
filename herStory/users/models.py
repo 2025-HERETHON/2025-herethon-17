@@ -32,10 +32,6 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=20, null=False)
     email = models.EmailField(max_length=70, unique=True, null=False)
-    school_name = models.CharField(max_length=100, null=True, blank=True)
-    grade_level = models.IntegerField(null=True, blank=True)
-    
-    real_name = models.CharField(max_length = 50, null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

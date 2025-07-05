@@ -5,7 +5,8 @@ from users import views
 app_name = "users"
 
 urlpatterns = [
-    path('signup/', views.signup, name='signup'),
+    # 소셜 로그인 하자마자 바로 회원가입이 되는 구조라서 이 부분은 주석처리 할게요!
+    # path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('delete/', views.delete_account, name='delete_account'),
@@ -13,6 +14,6 @@ urlpatterns = [
     path('mypage/edit/', views.edit_profile, name='edit_profile'),
     # 추후 home에 추가
 
-    path('redirect/', views.redirect_after_login, name='redirect'),
+    #path('redirect/', views.redirect_after_login, name='redirect'),
     path('edit/', views.edit_profile, name='edit_profile'),
 ]

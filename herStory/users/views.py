@@ -14,7 +14,6 @@ def login(request):
 def logout(request):
     if request.user.is_authenticated:
         auth_logout(request)
-        messages.success(request, "성공적으로 로그아웃되었습니다.")
     return redirect('home')
 
 @login_required
@@ -32,11 +31,11 @@ def mypage(request):
         'user' : request.user
     })
 
-@login_required
-def redirect_after_login(request):
-    if not request.user.real_name:
-        return redirect(reverse('users:edit_profile'))
-    return redirect('/')
+# @login_required
+# def redirect_after_login(request):
+#     if not request.user.real_name:
+#         return redirect(reverse('users:edit_profile'))
+#     return redirect('/')
 
 @login_required
 def edit_profile(request):
@@ -45,8 +44,8 @@ def edit_profile(request):
     if request.method == 'POST':
         form = UserUpdateForm(request.POST, instance=user)
         if form.is_valid():
-            if not form.cleaned_data.get('real_name'):
-                form.add_error('real_name', "이름은 필수입니다.")
+            if not form.cleaned_data.get('username'):
+                form.add_error('username', "이름은 필수입니다.")
             else:
                 form.save()
                 return redirect('users:mypage')
