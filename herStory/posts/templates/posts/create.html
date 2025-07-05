@@ -11,13 +11,21 @@
         {% csrf_token %}
         제목=<input type="text" name="title"><br>
         내용-<textarea name="content"></textarea><br>
+
         카테고리 - 
         <select name="category" multiple>
             {% for category in categories %}
             <option value="{{category.id}}">{{category.name}}</option>
             {% endfor %}
         </select><br>
-        태그 (쉼표로 구분): <input type="text" name="tags" placeholder="it, 교육"><br>
+
+        작성자 유형 - 
+        <select name="type">
+            <option value="현직자">현직자</option>
+            <option value="취준생">취준생</option>
+            <option value="기타">기타</option>
+        </select><br>
+        
         <input type="submit" value="작성!">
     </form>
 </body>
