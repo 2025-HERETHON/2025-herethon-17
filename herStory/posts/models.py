@@ -52,6 +52,9 @@ class Post(models.Model):
     # 작성 시간
     created_at = models.DateTimeField(auto_now_add=True)
 
+    # 조회수
+    views = models.PositiveIntegerField(default=0)
+
     def __str__(self):
         return self.title
 
