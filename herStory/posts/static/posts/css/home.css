@@ -1,21 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .main {
   position: relative;
   width: 100%;
   overflow-x: hidden;
-}
-
-.background-texts {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0.63rem;
-}
-
-.bg-text {
-  width: 80%;
-  height: auto;
-  max-width: 400px;
-  opacity: 0.5;
 }
 
 .header {
@@ -42,9 +33,9 @@
 }
 
 body {
-  margin: 0;
   font-family: "Pretendard", sans-serif;
   background: linear-gradient(to bottom, #d5eab3 0%, #82a150 100%);
+  height: 1772px;
 }
 
 section h2 {
@@ -65,9 +56,19 @@ section p {
   line-height: 1.375rem; /* 183.333% */
 }
 
-.footer {
+footer {
+  width: 100%;
+  height: 248px;
   background-color: #4c6d1e;
   color: white;
-  padding: 1.5rem 1rem;
+  padding-top: 40px;
   text-align: center;
+}
+
+footer p {
+  padding-bottom: 45px;
+}
+
+footer div {
+  padding-bottom: 54px;
 }
