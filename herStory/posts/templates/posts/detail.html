@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- 이 페이지 사용 안 함 -->
 </head>
 <body>
+    <a href="{% url 'posts:category' 1 %}">← 게시판으로 돌아가기</a>
     <p>제목 {{ post.title }}</p>
     <hr>
 
     <p>내용 {{ post.content }}</p>
     <p>작성일 {{ post.created_at }}</p><br>
-    <p>작성자 - {{ post.user.username }}</p>
+    <p>작성자 유형 - {{ post.type }}</p>
 
     <p>좋아요: {{post.like.count}}
         {% if request.user in post.like.all %}
@@ -22,11 +24,10 @@
     </p>
     <p>조회수 : {{ post.views }}</p>
 
-    <p>카테고리 - 
-        {% for category in post.category.all %}
-            [{{category.name}}]
+    <p>{% for category in post.category.all %}
+            #{{category.name}}
         {% empty %}
-            선택한 카테고리 없음
+            선택한 태그 없음
         {% endfor %}
     </p>
 

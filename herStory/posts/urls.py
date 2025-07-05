@@ -4,7 +4,7 @@ from .views import *
 app_name = 'posts'
 
 urlpatterns = [
-    path('', index, name='index'),
+    #인덱스 페이지 사용 안 함 path('', index, name='index'),
     path('create/', create, name='create'),
     path('detail/<int:id>/', detail, name='detail'),
     path('update/<int:id>/', update, name='update'),

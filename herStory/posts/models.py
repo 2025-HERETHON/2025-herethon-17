@@ -34,17 +34,9 @@ class Post(models.Model):
     tags = models.ManyToManyField(to=Tag, related_name="posts", blank=True)
     like = models.ManyToManyField(to=settings.AUTH_USER_MODEL, through="Like", related_name="like_posts")
 
-    # 작성자 타입 (현직자, 취준생)
-    TYPE_CHOICES = [
-        ('현직자', '현직자'),
-        ('취준생', '취준생'),
-    ]
-    type = models.CharField(
-        max_length=10,
-        choices=TYPE_CHOICES,
-        null=True,
-        blank=True
-    )
+    # 작성자 타입 (현직자, 취준생) - 선택 가능한 거 제한
+    TYPE_CHOICES = [('현직자', '현직자'), ('취준생', '취준생'),('기타', '기타')]
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES, null=True, blank=True)
 
     # 좋아요 수
     like_count = models.IntegerField(default=0)

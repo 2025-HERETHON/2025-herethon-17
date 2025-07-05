@@ -2,15 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>게시글 수정</title>
 </head>
 <body>
     <form method="POST" action="{% url 'posts:update' post.id %}">
         {% csrf_token %}
-        제목-<input type="text" value="{{ post.title }}" name="title"><br>
-        내용-<textarea name="content">{{ post.content }}</textarea><br>
-        <input type="submit" value="수정">
+        <label>제목</label><br>
+        <input type="text" name="title" value="{{ post.title }}"><br><br>
+
+        <label>내용</label><br>
+        <textarea name="content" rows="5" cols="40">{{ post.content }}</textarea><br><br>
+
+        <label>카테고리</label><br>
+        {% for category in categories %}
+            <input type="checkbox" name="category" value="{{ category.id }}"
+                {% if category in post.category.all %}checked{% endif %}>
+            {{ category.name }}<br>
+        {% endfor %}
+        <br>
+
+        <input type="submit" value="수정 완료">
     </form>
 </body>
 </html>
