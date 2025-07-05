@@ -7,7 +7,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Tag(models.Model):
+class Tag(models.Model): # 사용 안 함
     name = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
@@ -15,11 +15,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     # 작성자 (User 모델과 연결)
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, 
-        on_delete=models.CASCADE,
-        related_name='posts'
-    )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts')
 
     # 제목
     title = models.CharField(max_length=100, null=True, blank=True)
