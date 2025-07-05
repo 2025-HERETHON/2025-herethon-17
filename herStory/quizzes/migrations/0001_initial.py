@@ -88,4 +88,12 @@ class Migration(migrations.Migration):
                 'unique_together': {('user', 'quiz')},
             },
         ),
+        migrations.CreateModel(
+            name='Choice',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('text', models.CharField(max_length=255)),
+                ('quiz', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='choices', to='quizzes.quiz')),
+            ],
+        ),
     ]
