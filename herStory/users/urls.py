@@ -12,8 +12,8 @@ urlpatterns = [
     path('delete/', views.delete_account, name='delete_account'),
     path('mypage/', views.mypage, name='mypage'),
     path('mypage/edit/', views.edit_profile, name='edit_profile'),
-    # 추후 home에 추가
-
-    #path('redirect/', views.redirect_after_login, name='redirect'),
-    path('edit/', views.edit_profile, name='edit_profile'),
+    
+    path('my-cards/', views.my_saved_cards, name='my_cards'),
+    
+       #path('redirect/', views.redirect_after_login, name='redirect'),
 ]

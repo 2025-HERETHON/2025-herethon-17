@@ -6,21 +6,22 @@ from django.contrib import messages # 에러 메시지
 from django.db.models import Q # Q 객체 - 검색
 from django.utils.html import escape # escape - 하이라이터
 
-def index(request): # 하도록 수정
-    categories = Category.objects.all()
 
-    category_posts = []
-    for category in categories:
-        posts = Post.objects.filter(category=category).order_by('-id')[:5]
-        category_posts.append({
-            'category': category,
-            'posts': posts
-        })
+# def index(request):
+#     categories = Category.objects.all()
 
-    return render(request, 'posts/index.html', {
-        'categories': categories,
-        'category_posts': category_posts
-    })
+#     category_posts = []
+#     for category in categories:
+#         posts = Post.objects.filter(category=category).order_by('-id')[:5]
+#         category_posts.append({
+#             'category': category,
+#             'posts': posts
+#         })
+
+#     return render(request, 'posts/index.html', {
+#         'categories': categories,
+#         'category_posts': category_posts
+#     })
 
 @login_required #로그인한 사용자만 글 작성 가능
 def create(request):
@@ -33,23 +34,19 @@ def create(request):
         category_ids = request.POST.getlist('category')
         category_list = [get_object_or_404(Category, id=category_id) for category_id in category_ids]
 
+        type_choice = request.POST.get('type')
+
         post = Post.objects.create(
             title = title,
             content = content,
-            user = request.user,
+            user = request.user,    
+            type=type_choice
         )
 
         for category in category_list:
             post.category.add(category)
-
-        tag_string = request.POST.get('tags')  # 자유글,질문,경험 공유
-        if tag_string:
-            tag_names = [tag.strip() for tag in tag_string.split(',') if tag.strip()]
-            for tag_name in tag_names:
-                tag, created = Tag.objects.get_or_create(name=tag_name)
-                post.tags.add(tag)
         
-        return redirect('posts:index')
+        return redirect('posts:detail', post.id) # 방금 쓴 글의 detail로
     return render(request, 'posts/create.html', {'categories':categories})
 
 def detail(request, id):
@@ -82,15 +79,28 @@ def detail(request, id):
     'comments': comments,
     'update_comment_id': update_comment_id})
 
+from django.contrib.auth.decorators import login_required
+from .models import Post, Category, Tag
+
+@login_required
 def update(request, id):
     post = get_object_or_404(Post, id=id)
 
     if request.method == 'POST':
         post.title = request.POST.get('title')
         post.content = request.POST.get('content')
+
+        # 카테고리 수정
+        category_ids = request.POST.getlist('category')
+        categories = Category.objects.filter(id__in=category_ids)
+        post.category.set(categories)
         post.save()
         return redirect('posts:detail', id)
-    return render(request, 'posts/update.html', {'post':post})
+
+    categories = Category.objects.all()
+
+    return render(request, 'posts/update.html', {'post': post,
+        'categories': categories})
 
 def delete(request, id):
     post = get_object_or_404(Post, id=id)

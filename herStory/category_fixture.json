@@ -3,28 +3,70 @@
     "model": "posts.category",
     "pk": 1,
     "fields": {
-      "name": "자유글"
+      "name": "취업"
     }
   },
   {
     "model": "posts.category",
     "pk": 2,
     "fields": {
-      "name": "질문"
+      "name": "업계"
     }
   },
   {
     "model": "posts.category",
     "pk": 3,
     "fields": {
-      "name": "경험 공유"
+      "name": "멘탈관리"
     }
   },
   {
     "model": "posts.category",
     "pk": 4,
     "fields": {
-      "name": "조언 요청"
+      "name": "수다"
+    }
+  },
+  {
+    "model": "posts.category",
+    "pk": 5,
+    "fields": {
+      "name": "성공담"
+    }
+  },
+  {
+    "model": "posts.category",
+    "pk": 6,
+    "fields": {
+      "name": "실패담"
+    }
+  },
+  {
+    "model": "posts.category",
+    "pk": 7,
+    "fields": {
+      "name": "자유글"
+    }
+  },
+  {
+    "model": "posts.category",
+    "pk": 8,
+    "fields": {
+      "name": "질문"
+    }
+  },
+  {
+    "model": "posts.category",
+    "pk": 9,
+    "fields": {
+      "name": "고민글"
+    }
+  },
+  {
+    "model": "posts.category",
+    "pk": 10,
+    "fields": {
+      "name": "생활"
     }
   }
 ]

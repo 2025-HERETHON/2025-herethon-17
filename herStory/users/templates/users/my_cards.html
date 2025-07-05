@@ -1,0 +1,17 @@
+<h2>📚 내가 저장한 인물 카드</h2>
+
+{% if saved_cards %}
+  <ul style="list-style: none; padding: 0;">
+    {% for saved in saved_cards %}
+      <li style="border: 1px solid #ccc; margin-bottom: 10px; padding: 10px;">
+        <a href="{% url 'history:card_detail' saved.card.id %}">
+          <strong>{{ saved.card.name }}</strong> |
+          {{ saved.card.era }} |
+          {{ saved.card.region }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>저장한 카드가 아직 없어요 😢</p>
+{% endif %}

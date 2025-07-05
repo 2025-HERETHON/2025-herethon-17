@@ -7,26 +7,42 @@
 <body>
     <!--상단에 검색 폼 띄우기-->
     <form method="GET" action="{% url 'posts:search' %}">
-        <input type="text" name="q" placeholder="검색어를 입력하세요">
+        <input type="text" name="q">
         <button type="submit">검색</button>
     </form>
 
     <!--카테고리 목록 상단 고정-->
     {% for c in categories %}
         {% if c.id == category.id %}
-            {{ c.name }}
+            #{{ c.name }}
         {% else %}
-            <a href="{% url 'posts:category' c.id %}">{{ c.name }}</a>
+           #<a href="{% url 'posts:category' c.id %}">{{ c.name }}</a>
         {% endif %}
-    {% endfor %}
-
-    <h1>{{ category.name }} 게시판</h1>
-    <a href="{% url 'posts:index' %}">메인 게시판으로!</a><br><br>
+    {% endfor %}<br><br><br>
 
     {% for post in posts %}
         <a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
+        <!--미리보기 100글자 제한-->
+        <p>{{ post.content|truncatechars:100 }}</p>
         <span>{{ post.views }}회 조회</span>
-        <span>{{ post.created_at }}</span><br>
+        <span>{{ post.created_at }}</span>   
+        {% for category in post.category.all %}
+            #{{category.name}}
+        {% empty %}
+            선택한 태그 없음
+        {% endfor %}<br>
+        <!-- 댓글 작성 폼 -->
+      {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'posts:create-comment' post.id %}" style="margin-top: 10px;">
+          {% csrf_token %}
+          <textarea name="content" placeholder="서사를 함께 이어나가 보아요"></textarea><br>
+          <button type="submit">댓글</button>
+        </form>
+      {% else %}
+        <p><a href="{% url 'account_login' %}">로그인</a> 후 댓글을 작성할 수 있습니다.</p>
+      {% endif %}
+    </div>
+    <hr>
     {% empty %}
     이 카테고리에 글이 없습니다.
     {% endfor %}

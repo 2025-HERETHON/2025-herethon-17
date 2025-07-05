@@ -27,5 +27,6 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
     # 소셜 로그인
     path('authaccounts/', include('allauth.urls')),
-    path('posts/', include('posts.urls'))
+    path('posts/', include('posts.urls')),
+    path('history/', include('history.urls')),
 ]

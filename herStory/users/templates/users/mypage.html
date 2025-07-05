@@ -19,16 +19,12 @@
       {% empty %}
         <li>아직 퀴즈 기록이 없습니다.</li>
       {% endfor %}
-    </ul>
+    </ul>-->
 
     <h3>🌏 탐험한 여성사 인물 카드</h3>
     <ul>
-      {% for history in exploration_history %}
-        <li>{{ history.figure.name }} ({{ history.figure.era }} / {{ history.figure.region }})</li>
-      {% empty %}
-        <li>아직 탐험한 카드가 없습니다.</li>
-      {% endfor %}
-    </ul>-->
+      <a href="{% url 'users:my_cards' %}">📚 내가 저장한 인물 카드 보기</a>
+    </ul>
 
     <a href="{% url 'users:delete_account' %}" class="btn btn-danger">회원 탈퇴</a>
 

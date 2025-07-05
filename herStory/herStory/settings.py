@@ -93,6 +93,19 @@ SOCIALACCOUNT_ADAPTER = 'users.adapter.MySocialAccountAdapter'
 # 따로 allauth 로그인 화면 안뜨고 바로 구글 제공 로그인 화면으로 넘어가게끔 만드는 코드
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
+# 구글 로그인 시 이름과 이메일을 가져오게 하는 스코프 지정
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+    }
+}
+
 # 사용자 모델 설정 추가
 AUTH_USER_MODEL = 'users.User'
 

@@ -1,0 +1,10 @@
+<h2>{{ card.name }}</h2>
+<p>{{ card.lifespan }}</p>
+<p>{{ card.era }} / {{ card.region }}</p>
+<img src="{{ card.image_url }}" alt="{{ card.name }}" width="200">
+<p>{{ card.description }}</p>
+
+<form method="post" action="{% url 'history:save_card' card.id %}">
+  {% csrf_token %}
+  <button type="submit">이 카드 저장하기</button>
+</form>
