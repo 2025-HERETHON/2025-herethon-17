@@ -2,20 +2,24 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Comment, Category, Tag
 from allauth.socialaccount.models import SocialAccount #Django Allauth가 socialaccount 모델에 저장한 정보
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages # 에러 메시지
+from django.db.models import Q # Q 객체 - 검색
+from django.utils.html import escape # escape - 하이라이터
 
-def index(request):
+def index(request): # 하도록 수정
     categories = Category.objects.all()
-    category_id = request.GET.get('category')
 
-    if category_id:
-        category = get_object_or_404(Category, id=category_id)
-        posts = Post.objects.filter(category=category).order_by('-id')
-    else: 
-        posts = Post.objects.all().order_by('-id')
+    category_posts = []
+    for category in categories:
+        posts = Post.objects.filter(category=category).order_by('-id')[:5]
+        category_posts.append({
+            'category': category,
+            'posts': posts
+        })
 
     return render(request, 'posts/index.html', {
-        "posts": posts,
-        "categories": categories,
+        'categories': categories,
+        'category_posts': category_posts
     })
 
 @login_required #로그인한 사용자만 글 작성 가능
@@ -60,11 +64,23 @@ def detail(request, id):
 
     comments = Comment.objects.filter(post=post).select_related('author').order_by('created_at')
 
-    return render(request, 'posts/detail.html', {
-        'post': post,
-        'social_name': social_name,
-        'comments': comments
-    })
+    # 수정 대상 댓글id
+    update_comment_id = request.GET.get('update')
+    
+    # 지금 수정 중인 댓글이 있으면 정수 처리해서 넘김
+    if update_comment_id:
+        update_comment_id = int(update_comment_id)
+    else:
+        update_comment_id = None
+
+    # 조회수
+    post.views += 1
+    post.save()
+        
+    return render(request, 'posts/detail.html', {'post': post,
+    'social_name': social_name,
+    'comments': comments,
+    'update_comment_id': update_comment_id})
 
 def update(request, id):
     post = get_object_or_404(Post, id=id)
@@ -99,7 +115,7 @@ def create_comment(request, post_id):
             post = post,
             content = content,
             author = request.user,
-            parent_comment=parent_comment
+            parent_comment=parent_comment,
         )
         return redirect('posts:detail', post_id)
     return redirect('posts:index')
@@ -114,3 +130,101 @@ def like(request, post_id):
     else:
         post.like.add(user)
     return redirect('posts:detail', post_id)
+
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    # 다른 사용자가 삭제하려고 하면 거부
+    if comment.author != request.user:
+        messages.error(request, "본인의 댓글만 삭제할 수 있어요!")
+        return redirect('posts:detail', comment.post.id)
+
+    post_id = comment.post.id
+    comment.delete()
+    return redirect('posts:detail', post_id)
+
+@login_required
+def update_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if comment.author != request.user:
+        return redirect('posts:detail', comment.post.id)
+
+    if request.method == 'POST':
+        new_content = request.POST.get('content')
+        if new_content:
+            comment.content = new_content
+            comment.save()
+
+    return redirect('posts:detail', comment.post.id)
+
+
+
+# 카테고리별 게시파ㄴ
+def category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    posts = Post.objects.filter(category=category).order_by('-id')
+    categories = Category.objects.all()  # 카테고리 목록 상단 고정용-카테고리 셋 넘기기
+
+    return render(request, 'posts/category_detail.html', {
+        'category': category,
+        'posts': posts,
+        'categories': categories
+    })
+
+def board(request):
+    categories = Category.objects.all()
+
+    category_posts = []
+    for category in categories:
+        posts = Post.objects.filter(category=category).order_by('-id')[:5]
+        category_posts.append({
+            'category': category,
+            'posts': posts
+        })
+
+    return render(request, 'posts/board.html', {
+        'category_posts': category_posts
+    })
+
+# 검색
+
+def search(request):
+    query = request.GET.get('q', '')
+    # q 객체로 중첩 - 제목, 내용 포함 검색
+    posts = Post.objects.filter(Q(title__icontains=query) | Q(content__icontains=query)).order_by('-id') if query else []
+    categories = Category.objects.all()
+
+    # 하이라이트 처리?
+    if query:
+        posts = Post.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        ).order_by('-id')
+
+        highlighted_posts = []
+        for post in posts: 
+            # 검색어가 들어있으면 mark태그로 감싸기 - 템플릿에서 변수|safe < 식으로
+            highlighted_title = escape(post.title).replace(
+                query, f"<mark>{escape(query)}</mark>"
+            )
+            highlighted_content = escape(post.content).replace(
+                query, f"<mark>{escape(query)}</mark>"
+            )
+
+            highlighted_posts.append({
+                'id': post.id,
+                'title': highlighted_title,
+                'content': highlighted_content,
+                'created_at': post.created_at
+            })
+    else:
+        highlighted_posts = []
+
+
+    return render(request, 'posts/search_result.html', {
+        'query': query,
+        'posts': highlighted_posts,
+        'categories': categories})

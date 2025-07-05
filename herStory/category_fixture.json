@@ -1,27 +1,27 @@
 [
   {
-    "model": "yourapp.category",
+    "model": "posts.category",
     "pk": 1,
     "fields": {
       "name": "자유글"
     }
   },
   {
-    "model": "yourapp.category",
+    "model": "posts.category",
     "pk": 2,
     "fields": {
       "name": "질문"
     }
   },
   {
-    "model": "yourapp.category",
+    "model": "posts.category",
     "pk": 3,
     "fields": {
       "name": "경험 공유"
     }
   },
   {
-    "model": "yourapp.category",
+    "model": "posts.category",
     "pk": 4,
     "fields": {
       "name": "조언 요청"

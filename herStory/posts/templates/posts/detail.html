@@ -13,13 +13,14 @@
     <p>작성일 {{ post.created_at }}</p><br>
     <p>작성자 - {{ post.user.username }}</p>
 
-    <p>좋아요: {{post.like.count}} <br>
+    <p>좋아요: {{post.like.count}}
         {% if request.user in post.like.all %}
             <a href="{% url 'posts:like' post.id %}">좋아요 취소</a>
         {% else %}
             <a href="{% url 'posts:like' post.id %}">좋아요</a>
         {% endif %}
     </p>
+    <p>조회수 : {{ post.views }}</p>
 
     <p>카테고리 - 
         {% for category in post.category.all %}
@@ -33,38 +34,72 @@
     <span>#{{ tag.name }}</span><br>
     {% endfor %}
     
-    <!--로그인한 사용자일 때만 수정/삭제-->
+    <!-- 로그인한 사용자일 때만 수정/삭제 -->
     {% if request.user == post.user %}
     <a href="{% url 'posts:update' post.id %}">수정</a><br>
     <a href="{% url 'posts:delete' post.id %}">삭제</a><br>
     {% endif %}
 
     <hr><h3>댓글 ({{ post.comments.count }})</h3><br>
-    <!-- 댓글 목록 -->
-  {% for comment in comments %}
-    {% if not comment.parent_comment %}
-        <p>{{ comment.author.username }}: {{ comment.content }}</p>
 
-        <!-- 대댓글 목록 (왼쪽 마진)-->
-        {% for reply in comment.replies.all %}
-          <div style="margin-left: 30px;">
-            <p>{{ reply.author.username }}:{{ reply.content }}</p>
-          </div>
-        {% endfor %}
+{% for comment in comments %}
+  {% if not comment.parent_comment %}
+    <div>
+      <strong>{{ comment.author.username }}</strong>:
 
-        <!-- 대댓글 폼 (왼쪽 마진)-->
-        <form method="POST" action="{% url 'posts:create-comment' post.id %}" style="margin-left: 30px;">
+      {% if update_comment_id == comment.id %}
+        <!-- 댓글 수정 폼 -->
+        <form method="POST" action="{% url 'posts:update-comment' comment.id %}">
           {% csrf_token %}
-          <input type="hidden" name="parent_comment_id" value="{{ comment.id }}">
-          <textarea name="content" placeholder="답글"></textarea>
-          <br>
-          <button type="submit">답글 작성</button>
+          <textarea name="content" rows="3">{{ comment.content }}</textarea><br>
+          <button type="submit">저장</button>
+          <a href="{% url 'posts:detail' post.id %}">취소</a>
         </form>
+      {% else %}
+        {{ comment.content }}
+
+        {% if request.user == comment.author %}
+          <a href="{% url 'posts:detail' post.id %}?update={{ comment.id }}">수정</a>
         {% endif %}
-    {%empty%}
-    댓글이 없습니다
+      {% endif %}
+    </div>
+
+    <!-- 대댓글 -->
+    {% for reply in comment.replies.all %}
+      <div style="margin-left: 30px;">
+        <strong>{{ reply.author.username }}</strong>:
+
+        {% if update_comment_id == reply.id %}
+          <form method="POST" action="{% url 'posts:update-comment' reply.id %}">
+            {% csrf_token %}
+            <textarea name="content" rows="2">{{ reply.content }}</textarea><br>
+            <button type="submit">저장</button>
+            <a href="{% url 'posts:detail' post.id %}">취소</a>
+          </form>
+        {% else %}
+          {{ reply.content }}
+          {% if request.user == reply.author %}
+            <a href="{% url 'posts:detail' post.id %}?update={{ reply.id }}">수정</a>
+          {% endif %}
+        {% endif %}
+      </div>
     {% endfor %}
 
+    <!-- 대댓글 작성 폼 -->
+    <form method="POST" action="{% url 'posts:create-comment' post.id %}" style="margin-left: 30px;">
+      {% csrf_token %}
+      <input type="hidden" name="parent_comment_id" value="{{ comment.id }}">
+      <textarea name="content" placeholder="답글"></textarea><br>
+      <button type="submit">답글 작성</button>
+    </form>
+
+  {% endif %}
+{% empty %}
+  <p>댓글이 없습니다</p>
+{% endfor %}
+
+
+    <!-- 댓글 작성 폼 -->
     <form method="POST" action="{% url 'posts:create-comment' post.id %}">
         {% csrf_token %}
         <textarea name="content" cols="30" rows="5"></textarea>

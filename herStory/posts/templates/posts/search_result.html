@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>"{{ query }}" 검색 결과</title>
+</head>
+<body>
+  <!-- 카테고리 탭 -->
+  <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+    {% for c in categories %}
+      <a href="{% url 'posts:category' c.id %}">{{ c.name }}</a>
+    {% endfor %}
+  </div>
+
+  <!-- 검색 폼 -->
+  <form method="GET" action="{% url 'posts:search' %}">
+    <input type="text" name="q" value="{{ query }}" placeholder="검색어를 입력하세요">
+    <button type="submit">검색</button>
+  </form>
+
+  <h2>"{{ query }}" 검색 결과</h2>
+
+  {% for post in posts %}
+    <a href="{% url 'posts:detail' post.id %}">{{ post.title|safe }}</a>
+    {{ post.content|safe }}
+    {{ post.created_at }}<br>
+  {% empty %}
+    검색 결과가 없습니다.
+  {% endfor %}
+
+  <a href="{% url 'posts:index' %}">메인으로</a>
+</body>
+</html>
