@@ -6,13 +6,9 @@
   <title>마이페이지</title>
 </head>
 <body>
-  <h2>{{ user.real_name }}님의 마이페이지</h2>
+  <h2>{{ user.username }}님의 마이페이지</h2>
 
   {% if user.is_authenticated %}
-    <!--<p><strong>닉네임:</strong> {{ user.username }}</p>
-    <p><strong>학교 이름:</strong> {{ user.school_name }}</p>
-    <p><strong>학년:</strong> {{ user.grade_level }}</p>-->
-    
     <a href="{% url 'users:edit_profile' %}">프로필 수정</a> |
     <a href="{% url 'users:logout' %}">로그아웃</a>
 
@@ -23,21 +19,14 @@
       {% empty %}
         <li>아직 퀴즈 기록이 없습니다.</li>
       {% endfor %}
-    </ul>
+    </ul>-->
 
     <h3>🌏 탐험한 여성사 인물 카드</h3>
     <ul>
-      {% for history in exploration_history %}
-        <li>{{ history.figure.name }} ({{ history.figure.era }} / {{ history.figure.region }})</li>
-      {% empty %}
-        <li>아직 탐험한 카드가 없습니다.</li>
-      {% endfor %}
-    </ul>-->
+      <a href="{% url 'users:my_cards' %}">📚 내가 저장한 인물 카드 보기</a>
+    </ul>
 
-    <form method="post" action="{% url 'users:delete_account' %}">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-danger">회원 탈퇴</button>
-    </form>
+    <a href="{% url 'users:delete_account' %}" class="btn btn-danger">회원 탈퇴</a>
 
   {% else %}
     <p>로그인이 필요합니다.</p>

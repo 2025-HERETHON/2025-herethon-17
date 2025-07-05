@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm
+from history.models import UserSavedCard
 from django.urls import reverse
 from django.contrib import messages
 
@@ -14,7 +15,6 @@ def login(request):
 def logout(request):
     if request.user.is_authenticated:
         auth_logout(request)
-        messages.success(request, "성공적으로 로그아웃되었습니다.")
     return redirect('home')
 
 @login_required
@@ -33,20 +33,14 @@ def mypage(request):
     })
 
 @login_required
-def redirect_after_login(request):
-    if not request.user.real_name:
-        return redirect(reverse('users:edit_profile'))
-    return redirect('/')
-
-@login_required
 def edit_profile(request):
     user = request.user
 
     if request.method == 'POST':
         form = UserUpdateForm(request.POST, instance=user)
         if form.is_valid():
-            if not form.cleaned_data.get('real_name'):
-                form.add_error('real_name', "이름은 필수입니다.")
+            if not form.cleaned_data.get('username'):
+                form.add_error('username', "이름은 필수입니다.")
             else:
                 form.save()
                 return redirect('users:mypage')
@@ -54,3 +48,8 @@ def edit_profile(request):
         form = UserUpdateForm(instance=user)
 
     return render(request, 'users/edit_profile.html', {'form': form})
+
+@login_required
+def my_saved_cards(request):
+    saved_cards = UserSavedCard.objects.filter(user=request.user).select_related('card').order_by('-saved_at')
+    return render(request, 'users/my_cards.html', {'saved_cards': saved_cards})

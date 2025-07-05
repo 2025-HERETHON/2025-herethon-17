@@ -27,5 +27,7 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
     # 소셜 로그인
     path('authaccounts/', include('allauth.urls')),
-    path('posts/', include('posts.urls'))
+    path('posts/', include('posts.urls')),
+    path('quizzes/', include('quizzes.urls')), # 퀴즈 추가해서 충돌 > 병합하면 ok
+    path('history/', include('history.urls')),
 ]
