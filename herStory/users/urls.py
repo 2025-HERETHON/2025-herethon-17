@@ -14,6 +14,7 @@ urlpatterns = [
     path('mypage/edit/', views.edit_profile, name='edit_profile'),
     
     path('my-cards/', views.my_saved_cards, name='my_cards'),
+    path('my-cards/<int:card_id>/', views.saved_card_detail, name='my_cards_detail'),
     
        #path('redirect/', views.redirect_after_login, name='redirect'),
 ]
