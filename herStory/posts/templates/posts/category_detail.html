@@ -49,5 +49,9 @@
     <br><br>
 
     <a href="{% url 'posts:create' %}">새 글 쓰기</a>
+
+    <form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    <button type="submit">홈 돌아가기</button>
 </body>
 </html>
