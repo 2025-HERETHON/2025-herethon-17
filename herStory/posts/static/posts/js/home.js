@@ -1,3 +1,4 @@
+// header
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
@@ -27,4 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
+});
+
+// past 버튼 터치
+const btn = document.querySelector(".card-btn");
+const img = document.querySelector(".card-union");
+
+// 터치 시작하면 스타일 변경
+btn.addEventListener("touchstart", () => {
+  btn.classList.add("hovered");
+  img.src = "../../static/posts/image/card_union_hover.png";
+});
+
+// 터치 끝나면 원래대로
+btn.addEventListener("touchend", () => {
+  btn.classList.remove("hovered");
+  img.src = "../../static/posts/image/card_union.png";
 });

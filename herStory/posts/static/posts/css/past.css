@@ -73,65 +73,54 @@
 
 body {
   font-family: "Pretendard", sans-serif;
-  background: linear-gradient(to bottom, #d5eab3 0%, #82a150 100%);
-}
-
-.background-wrapper {
-  display: flex;
-  flex-direction: column;
+  background: linear-gradient(#d5eab3);
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  gap: 150px;
-  padding: 120px 25px;
+  align-items: center;
 }
 
-section h2 {
-  font-family: Pretendard;
-  color: #4c6d1e;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.625rem;
-  padding-bottom: 20px;
-}
-
-section p {
-  color: #000;
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.375rem;
-}
-
-footer {
-  font-family: Pretendard;
-  width: 100%;
-  height: 248px;
-  margin-top: 80px;
-  text-align: center;
+.main .divider {
+  height: 2px;
   background-color: #4c6d1e;
-  color: white;
+  width: 60px;
+  margin-bottom: 20px;
 }
 
-.sns {
-  display: flex;
-  justify-content: center; /* 가로 가운데 정렬 */
-  gap: 1rem;
-  padding-bottom: 50px;
+.main p {
+  color: #4c6d1e;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 78px;
 }
 
-footer p:first-of-type {
+.main img {
+  margin-bottom: 87px;
+}
+
+.card-btn {
+  position: relative;
+  width: 320px;
+  height: 50px;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #f6ffef;
   font-size: 14px;
   font-weight: 600;
-  padding-top: 40px;
-  padding-bottom: 45px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-footer p:last-of-type {
-  font-size: 10px;
-  font-weight: 500;
+.card-btn.hovered {
+  background-color: #91c84f;
+}
+
+.card-union {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
 }
