@@ -100,7 +100,8 @@ body {
   margin-bottom: 87px;
 }
 
-.card-btn {
+.random-card-btn,
+.card-save-btn {
   position: relative;
   width: 320px;
   height: 50px;
@@ -113,14 +114,42 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.card-btn.hovered {
+.random-card-btn.hovered {
   background-color: #91c84f;
 }
 
-.card-union {
+.peopleCard {
+  width: 20rem;
+  height: 26.25rem;
+  border-radius: 0.5rem;
+  background-color: #4c6d1e;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.people-img {
+  margin-top: 10px;
+}
+
+.card-union,
+.card-save {
   position: absolute;
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
   transition: opacity 0.2s ease;
+}
+
+.label {
+  display: inline-block;
+  background-color: #a2c946;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  padding: 2px 10px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  font-size: 14px;
 }

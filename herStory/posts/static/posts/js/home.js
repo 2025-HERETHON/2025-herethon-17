@@ -1,4 +1,3 @@
-// header
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // past 버튼 터치
-const btn = document.querySelector(".card-btn");
+const btn = document.querySelector(".random-card-btn");
 const img = document.querySelector(".card-union");
 
 // 터치 시작하면 스타일 변경
