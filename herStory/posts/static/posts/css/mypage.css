@@ -46,7 +46,7 @@ body {
 
 .label {
   position: absolute;
-  left: 1rem;
+  left: 0.5rem;
   background-color: #a2c946;
   color: #ffffff;
   font-weight: 600;
