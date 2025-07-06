@@ -75,11 +75,18 @@ body {
   background: linear-gradient(to bottom, #d5eab3 0%, #82a150 100%);
 }
 
+.background-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
 .main {
   display: flex;
   flex-direction: column;
-  gap: 150px; /* 섹션 사이의 간격 */
-  padding: 120px 25px; /* 좌우 패딩 */
+  gap: 150px;
+  padding: 120px 25px;
 }
 
 section h2 {
