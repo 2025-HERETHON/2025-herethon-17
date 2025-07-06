@@ -22,12 +22,12 @@ body {
   margin-bottom: 78px;
 }
 
-.past-img {
-  margin-bottom: 84px;
+.mypage-info {
+  display: flex;
+  flex-direction: column;
 }
 
-.random-card-btn,
-.card-save-btn {
+.info-row {
   position: relative;
   width: 320px;
   height: 50px;
@@ -36,11 +36,28 @@ body {
   background-color: #f6ffef;
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
+  cursor: default;
   transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.random-card-btn.hovered,
-.card-save-btn.hovered {
-  background-color: #91c84f;
+.label {
+  position: absolute;
+  left: 1rem;
+  background-color: #a2c946;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  padding: 4px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.value {
+  color: #1c1c1c;
+  font-size: 14px;
+  text-align: center;
 }
