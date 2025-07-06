@@ -3,3 +3,7 @@
 <form action="{% url 'history:random_card' %}">
   <button type="submit">랜덤 인물 카드 뽑기 →</button>
 </form>
+
+<form method="post" action="{% url 'home' %}">
+  {% csrf_token %}
+  <button type="submit">홈 돌아가기</button>

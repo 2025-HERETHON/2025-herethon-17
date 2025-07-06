@@ -1,0 +1,10 @@
+<h2>{{ card.name }}</h2>
+<p>{{ card.lifespan }}</p>
+<p>{{ card.era }} / {{ card.region }}</p>
+<img src="{{ card.image_url }}" alt="{{ card.name }}" width="200">
+<p>{{ card.description }}</p>
+
+<form method="post" action="{% url 'users:my_cards' %}">
+  {% csrf_token %}
+  <button type="submit">저장한 카드 목록으로 돌아가기</button>
+</form>

@@ -8,5 +8,9 @@
 <body>
     <h2>현재를 묻다</h2>
     <a href="{% url 'quizzes:school_selection' %}">퀴즈 풀기</a>
+
+    <form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    <button type="submit">홈 돌아가기</button>
 </body>
 </html>
