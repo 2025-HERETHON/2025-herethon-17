@@ -11,7 +11,7 @@ def quiz_index(request):
 
 @login_required
 def school_selection(request):
-    # 선택지 픽스x 임시 데이타
+    # 선택지 픽스x 임시 데이터
     school_names = ['덕성여자대학교', '동덕여자대학교', '서울여자대학교', '성신여자대학교', '숙명여자대학교', '이화여자대학교', '기타']
     for name in school_names: # 있으면 가져오고 없으면 생성 - fixture로 저장하면 삭제
         School.objects.get_or_create(name=name)
@@ -106,24 +106,25 @@ def submit_answer(request):
 def quiz_result(request): 
     # 마지막 제출만 반영 - 주의
     session = QuizSession.objects.filter(user=request.user).last()
-    if session:
-        session.update_school_score() # 학교 총점 업데이트용
 
     # 전체 응답 중에서 각 quiz.id 기준으로 중복 제거 (마지막 기록만)
-    all_results = UserQuizResult.objects.filter(user=request.user).order_by('-id') # 모든 퀴즈풀이 최신순으로
-    latest_results = OrderedDict() # 최신순으로 - 서비스 확대 시 ORM 쿼리로
+    all_results = UserQuizResult.objects.filter(user=request.user).order_by('-id') # 모든 퀴즈응답 최신순으로
+    latest_results = OrderedDict() # quiz_id 기준 최신순으로 - 서비스 확대 시 ORM 쿼리로
     for result in all_results:
         if result.quiz_id not in latest_results: # 처음이면 (result.quiz_id가 딕셔너리에 아직 없다면)
             latest_results[result.quiz_id] = result
 
     # 전체 응답 중에서 각 quiz.id 기준으로 중복 제거 (마지막 기록만)
-    session.total_answers = len(latest_results)
     correct_count = sum(1 for result in latest_results.values() if result.is_correct)
-    session.correct_answers = correct_count
-    session.save()
-
     total_score = sum(result.quiz.points for result in latest_results.values() if result.is_correct)
 
+    # 세션 값 갱신
+    if session:
+        session.total_answers = len(latest_results)
+        session.correct_answers = correct_count
+        session.total_score = total_score
+        session.save()
+        
     return render(request, 'quizzes/quiz_result.html', {
         'session': session,
         'user_results': latest_results.values(),
@@ -135,7 +136,7 @@ def explanation(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
     choices = list(quiz.choices.all())
     try:
-        correct_choice = choices[quiz.answer_index]
+        correct_choice = choices[quiz.answer_index] # 정답
     except IndexError:
         correct_choice = None
 
@@ -146,4 +147,7 @@ def explanation(request, quiz_id):
     })
 
 def ranking(request):
-    return render(request, 'quizzes/ranking.html')
+    schools = list(School.objects.all())
+    # total_score 기준으로 정렬
+    schools.sort(key=lambda s: s.total_score, reverse=True)
+    return render(request, 'quizzes/ranking.html', {'schools': schools})

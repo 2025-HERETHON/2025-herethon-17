@@ -5,24 +5,31 @@ from django.conf import settings
 class School(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
-    total_score = models.IntegerField(default=0)
-    participant_count = models.IntegerField(default=0)
+    # total_score = models.IntegerField(default=0) # 세션 기준
+    # participant_count = models.IntegerField(default=0) # 스코어, 유저 수 동적 계산으로 변경
 
     updated_at = models.DateTimeField(auto_now=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
-    class Meta: # views에서 로직으로 처리하는 대신 모델에 직접 정의
-        ordering = ['-total_score', '-updated_at'] # 높은 점수 > 최근 참여 순 정렬
-
     def __str__(self):
         return self.name
 
+    @property
+    def total_score(self):
+        return QuizSession.objects.filter(school=self).aggregate(total=models.Sum('total_score'))['total'] or 0
+    
+    @property
+    def participant_count(self):
+        return QuizSession.objects.filter(school=self).values('user').distinct().count() # Session 기준으로 중복 제거
+
     @property # 읽기 전용으로 함수를 변수처럼 호출
     def average_score(self):
+        participant_count = self.participant_count  # 유저 수 동적 계산
         if self.participant_count > 0:
-            return round(self.total_score / self.participant_count, 2) # 누적점수 ÷ 참여자 수로 평균
+            return round(self.total_score / self.participant_count, 1) # 누적점수 ÷ 참여자 수로 평균
         return 0
 
+    
 
 class Quiz(models.Model):
     question = models.TextField()
@@ -91,11 +98,14 @@ class QuizSession(models.Model):
     #     return 0
 
     def update_school_score(self): # 사용자 학교의 점수와 참가자 수 업뎃
-        if self.school:
-            self.school.total_score += self.total_score
-            self.school.participant_count += 1
-            self.school.save()
+        pass
+        # if self.school:
+        #     self.school.total_score += self.total_score
+        #     # self.school.participant_count += 1 # 유저 수 동적 계산
+        #     self.school.save()
 
+    def __str__(self):
+        return f"{self.user.username} - {self.school.name} - {self.total_score}점"
 
 class Ranking(models.Model):
     school = models.OneToOneField(School, on_delete=models.CASCADE) # 일대일
