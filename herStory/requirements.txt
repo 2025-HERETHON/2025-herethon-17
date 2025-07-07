@@ -8,6 +8,7 @@ Django==4.2.23
 django-allauth==0.61.0
 idna==3.10
 oauthlib==3.3.1
+pillow==11.3.0
 pycparser==2.22
 PyJWT==2.10.1
 python3-openid==3.2.0

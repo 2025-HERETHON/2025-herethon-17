@@ -16,7 +16,7 @@
         <nav class="menu" id="menu">
           <ul>
             {% if user.is_authenticated %}
-              <li>{{ user.email }}님 환영합니다!</li>
+              <li>{{ user.username }}님 환영합니다!</li>
               <li><a href="{% url 'users:logout' %}">로그아웃</a></li>
             {% else %}
               <li><a href="{% url 'users:login' %}">로그인</a></li>
