@@ -3,6 +3,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm
 from history.models import UserSavedCard, HistoryCard
+from posts.models import Post, Comment
 from django.urls import reverse
 from django.contrib import messages
 
@@ -58,3 +59,12 @@ def my_saved_cards(request):
 def saved_card_detail(request, card_id):
     card = get_object_or_404(HistoryCard, id=card_id)
     return render(request, 'users/my_cards_detail.html', {'card': card})
+
+@login_required
+def my_archives(request):
+    my_posts = Post.objects.filter(user=request.user).order_by('-created_at')
+    my_comments = Comment.objects.filter(author=request.user).order_by('-created_at')
+    return render(request, 'users/my_archives.html', {
+        'my_posts': my_posts,
+        'my_comments': my_comments,
+    })
