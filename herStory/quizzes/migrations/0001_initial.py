@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
             name='QuizSession',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('total_questions', models.IntegerField(default=0)),
+                ('total_answers', models.IntegerField(default=0)),
                 ('correct_answers', models.IntegerField(default=0)),
                 ('total_score', models.IntegerField(default=0)),
             ],
