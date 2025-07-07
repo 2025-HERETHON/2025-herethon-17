@@ -103,6 +103,11 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {
             'access_type': 'online',
         },
+    },
+
+    'kakao': {
+        'SCOPE': ['profile_nickname', 'account_email'],
+        'AUTH_PARAMS': {'prompt': 'login'},
     }
 }
 
@@ -110,7 +115,7 @@ SOCIALACCOUNT_PROVIDERS = {
 AUTH_USER_MODEL = 'users.User'
 
 # 로그인, 로그아웃 후 연결되는 페이지 지정
-LOGIN_REDIRECT_URL = 'home' # 로그인 후 real_name 없으면 중간뷰로 리디렉션!
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # allauth의 기본 로그인 URL -> 로그인하지 않은 사람이 마이페이지 들어가려하면 로그인으로 리디렉션
