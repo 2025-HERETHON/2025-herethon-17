@@ -15,8 +15,7 @@ urlpatterns = [
     path('like/<int:post_id>/', like, name='like'),
     path('board/',board, name='board'),
     path('category/<int:category_id>/', category, name='category'),
-    path('search/', search, name='search'),
-
+    path('search/', search, name='search')
 ]
 
 '''

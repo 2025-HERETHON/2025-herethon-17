@@ -6,22 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>퀴즈 결과</h2>
-<p>총 {{ session.correct_answers }}/{{ session.total_questions }}문제를 맞혔습니다!</p>
+    퀴즈 <a href="{% url 'quizzes:ranking' %}">학교별 랭킹</a><br>
+    <p>결과 : 총 {{ session.correct_answers }}/{{ session.total_answers }}문제를 맞혔습니다!</p>
 
   {% for result in user_results %}
       {{ result.quiz.question }}
-      <!-- 정답 : {{ result.selected_choice.text }}
-      고른 답 : {{ result.quiz.correct_answer.text }} -->
         {% if result.is_correct %}
-            O
+             O 
         {% else %}
-            X
+            <a href="{% url 'quizzes:explanation' result.quiz.id %}"> X </a>
         {% endif %}
       <br>
   {% endfor %}
       <br>
-      총점 : {{ total_score }}점
-
+      총점 : {{ total_score }}점<br>
+      <a href="{% url 'quizzes:ranking' %}">랭킹 보기</a>
 </body>
 </html>
