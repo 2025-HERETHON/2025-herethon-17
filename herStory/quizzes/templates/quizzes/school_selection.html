@@ -6,9 +6,9 @@
     <title>학교 선택</title>
 </head>
 <body>
-    <h1>학교 선택</h1>
+    퀴즈 <a href="{% url 'quizzes:ranking' %}">학교별 랭킹</a><br>
     
-    <p>{{ user.username }}님, 학교를 선택해주세요.</p>
+    <p>{{ user.username }}님의 소속 학교는?</p>
 
     <form method="POST">
   {% csrf_token %}
@@ -18,7 +18,7 @@
       <option value="{{ school.id }}">{{ school.name }}</option>
     {% endfor %}
   </select>
-  <button type="submit">시작하기</button>
+  <button type="submit">다음으로</button>
 </form>
 
     {% if messages %}

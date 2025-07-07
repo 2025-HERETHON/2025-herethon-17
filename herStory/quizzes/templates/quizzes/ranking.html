@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>학교별 랭킹</h2>
+<table>
+    <tr>
+        <th>순위</th>
+        <th>학교명</th>
+        <th>총점</th>
+        <th>참여자 수</th>
+        <th>평균 점수</th>
+    </tr>
+    {% for school in schools %}
+    <tr>
+        <td>{{ forloop.counter }}</td>  <!-- 순위 -->
+        <td>{{ school.name }}</td>
+        <td>{{ school.total_score }}</td>
+        <td>{{ school.participant_count }}</td>
+        <td>{{ school.average_score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>문제</h2>
+    <p>{{ quiz.question }}</p>
+
+    <h3>정답</h3>
+    {% if correct_choice %}
+        <p>{{ quiz.answer_index }}. {{ correct_choice.text }}</p>
+    {% else %}
+        <p>정답 정보를 찾을 수 없습니다.</p>
+    {% endif %}
+
+    <h3>해설</h3>
+    <p>{{ quiz.explanation }}</p>
+
+    <a href="{% url 'quizzes:quiz_result' %}">뒤로 가기</a>
+</body>
+</html>
