@@ -36,11 +36,11 @@ class Quiz(models.Model):
 
     @property
     def correct_answer(self):
-        choices = list(self.choices.all())
-        # 선택 오류 방지
-        if 0 <= self.answer_index < len(choices): # 선택지-1까지의 숫자를 받으면
-            return choices[self.answer_index] # 선택지 객체 반환
+        choices = list(self.choices.order_by('order'))  # ← 추가!
+        if 0 <= self.answer_index < len(choices):
+            return choices[self.answer_index]
         return None
+
 
 # 퀴즈의 선택지들
 class Choice(models.Model):
@@ -69,8 +69,8 @@ class UserQuizResult(models.Model):
     is_correct = models.BooleanField(default=False)
     points_earned = models.IntegerField(default=0)
 
-    class Meta:
-        unique_together = ['user', 'quiz'] # 같은 퀴즈를 두 번 풀지 못하도록 제한
+    # class Meta:
+    #    unique_together = ['user', 'quiz'] # 같은 퀴즈를 두 번 풀지 못하도록 제한
 
     def __str__(self): # 사용자가 맞췄는지 표시
         return f"{self.user.username}: {'정답' if self.is_correct else '오답'}"

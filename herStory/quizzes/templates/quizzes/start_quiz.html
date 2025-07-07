@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    {% for quiz in quizzes %}
+    {{ quiz.question }}
+    {% empty %}
+    현재 이용 가능한 퀴즈가 없습니다.
+    {% endfor %}
 </body>
 </html>

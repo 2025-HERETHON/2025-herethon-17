@@ -1,0 +1,144 @@
+[
+  {
+    "model": "quizzes.quiz",
+    "pk": 1,
+    "fields": {
+      "question": "대한민국 여성 참정권(선거권)이 처음으로 인정된 시기는 언제인가요?",
+      "explanation": "",
+      "answer_index": 1,
+      "points": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "quizzes.quiz",
+    "pk": 2,
+    "fields": {
+      "question": "다음 중 노벨상을 최초로 받은 여성 과학자는 누구인가요?",
+      "explanation": "",
+      "answer_index": 2,
+      "points": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "quizzes.quiz",
+    "pk": 3,
+    "fields": {
+      "question": "처음으로 컴파일러를 만든 사람은?",
+      "explanation": "",
+      "answer_index": 3,
+      "points": 10,
+      "is_active": true
+    }
+  },
+
+  {
+    "model": "quizzes.choice",
+    "pk": 1,
+    "fields": {
+      "quiz": 1,
+      "text": "1945년 광복 직후",
+      "order": 0
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 2,
+    "fields": {
+      "quiz": 1,
+      "text": "1948년 제헌 헌법 제정 시",
+      "order": 1
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 3,
+    "fields": {
+      "quiz": 1,
+      "text": "1960년 4·19 혁명 직후",
+      "order": 2
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 4,
+    "fields": {
+      "quiz": 1,
+      "text": "1919년 3·1운동 직후",
+      "order": 3
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 5,
+    "fields": {
+      "quiz": 2,
+      "text": "밥 딜런",
+      "order": 0
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 6,
+    "fields": {
+      "quiz": 2,
+      "text": "에이다 러브레이스",
+      "order": 1
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 7,
+    "fields": {
+      "quiz": 2,
+      "text": "마리 퀴리",
+      "order": 2
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 8,
+    "fields": {
+      "quiz": 2,
+      "text": "그레이스 호퍼",
+      "order": 3
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 9,
+    "fields": {
+      "quiz": 3,
+      "text": "리제 마이트너",
+      "order": 0
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 10,
+    "fields": {
+      "quiz": 3,
+      "text": "로잘린드 프랭클린",
+      "order": 1
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 11,
+    "fields": {
+      "quiz": 3,
+      "text": "마리 퀴리",
+      "order": 2
+    }
+  },
+  {
+    "model": "quizzes.choice",
+    "pk": 12,
+    "fields": {
+      "quiz": 3,
+      "text": "그레이스 호퍼",
+      "order": 3
+    }
+  }
+]

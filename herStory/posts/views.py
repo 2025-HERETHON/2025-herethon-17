@@ -79,9 +79,6 @@ def detail(request, id):
     'comments': comments,
     'update_comment_id': update_comment_id})
 
-from django.contrib.auth.decorators import login_required
-from .models import Post, Category, Tag
-
 @login_required
 def update(request, id):
     post = get_object_or_404(Post, id=id)
@@ -94,13 +91,19 @@ def update(request, id):
         category_ids = request.POST.getlist('category')
         categories = Category.objects.filter(id__in=category_ids)
         post.category.set(categories)
+
+        # 타입 수정
+        post.type = request.POST.get('type')
+        if post.type not in ['현직자', '취준생', '기타']:
+            post.type = '기타'
         post.save()
         return redirect('posts:detail', id)
 
     categories = Category.objects.all()
 
     return render(request, 'posts/update.html', {'post': post,
-        'categories': categories})
+        'categories': categories,
+        'type': post.type})
 
 def delete(request, id):
     post = get_object_or_404(Post, id=id)
