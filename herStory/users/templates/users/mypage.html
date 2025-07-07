@@ -28,6 +28,9 @@
 
     <a href="{% url 'users:delete_account' %}" class="btn btn-danger">회원 탈퇴</a>
 
+    <h3>📂 아카이빙</h3>
+      <a href="{% url 'users:my_archives' %}">📝 내가 쓴 글과 댓글 보기</a>
+
   {% else %}
     <p>로그인이 필요합니다.</p>
     <a href="{% url 'users:login' %}">로그인</a>
