@@ -129,3 +129,21 @@ def quiz_result(request):
         'user_results': latest_results.values(),
         'total_score': total_score
     })
+
+@login_required
+def explanation(request, quiz_id):
+    quiz = get_object_or_404(Quiz, id=quiz_id)
+    choices = list(quiz.choices.all())
+    try:
+        correct_choice = choices[quiz.answer_index]
+    except IndexError:
+        correct_choice = None
+
+    return render(request, 'quizzes/explanation.html', {
+        'quiz': quiz,
+        'choices': choices,
+        'correct_choice': correct_choice,
+    })
+
+def ranking(request):
+    return render(request, 'quizzes/ranking.html')
