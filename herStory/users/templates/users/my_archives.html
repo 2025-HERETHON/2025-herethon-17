@@ -1,0 +1,26 @@
+<h2>내가 쓴 글</h2>
+<ul>
+  {% for post in my_posts %}
+    <li>
+      <a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
+      <small>({{ post.created_at|date:"Y-m-d H:i" }})</small>
+    </li>
+  {% empty %}
+    <li>작성한 게시글이 없습니다.</li>
+  {% endfor %}
+</ul>
+
+<h2>내가 쓴 댓글</h2>
+<ul>
+  {% for comment in my_comments %}
+    <li>
+      "{{ comment.content }}" -
+      <a href="{% url 'posts:detail' comment.post.id %}">관련 게시글</a>
+      <small>({{ comment.created_at|date:"Y-m-d H:i" }})</small>
+    </li>
+  {% empty %}
+    <li>작성한 댓글이 없습니다.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'users:mypage' %}">← 마이페이지로 돌아가기</a>
