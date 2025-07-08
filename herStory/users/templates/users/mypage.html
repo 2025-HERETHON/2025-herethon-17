@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -11,15 +11,6 @@
   {% if user.is_authenticated %}
     <a href="{% url 'users:edit_profile' %}">프로필 수정</a> |
     <a href="{% url 'users:logout' %}">로그아웃</a>
-
-    <!--<h3>🧠 퀴즈 수행 기록</h3>
-    <ul>
-      {% for result in quiz_results %}
-        <li>{{ result.created_at|date:"Y-m-d H:i" }} - 점수: {{ result.score }}</li>
-      {% empty %}
-        <li>아직 퀴즈 기록이 없습니다.</li>
-      {% endfor %}
-    </ul>-->
 
     <h3>🌏 탐험한 여성사 인물 카드</h3>
     <ul>
@@ -41,4 +32,101 @@
   <button type="submit">홈 돌아가기</button>
 </form>
 </body>
+</html> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Era Echo - mypage</title>
+    <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/mypage.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/button.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+      </a>
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <nav class="menu" id="menu">
+        <ul>
+          {% if user.is_authenticated %}
+            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+          {% else %}
+            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+          {% endif %}
+          <div class="divider"></div>
+          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+            <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+            <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+        </ul>
+      </nav>
+    </header>
+    <script src="{% static 'home/js/home.js' %}"></script>
+
+    <main class="main">
+      <div class="divider"></div>
+      <p>마이페이지</p>
+      {% if user.is_authenticated %}
+        <div class="mypage-info">
+          <div class="info-row">
+            <span class="label">이름</span>
+            <span class="value" id="user-name">{{ user.username }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">계정</span>
+            <span class="value" id="user-email">{{ user.email }}</span>
+          </div>
+        </div>
+        <form method="post" action="{% url 'users:my_cards' %}">
+        {% csrf_token %}
+        <button class="mypage-btn" id="peoplecard">
+          <img
+            src="{% static 'home/image/card_bookmark.png' %}"
+            alt="cardBookmark"
+            class="card-icon"
+          />
+          <img
+            src="{% static 'home/image/card_union.png' %}"
+            alt="cardUnion"
+            class="card-union"
+          />
+          인물 카드 조회
+        </button>
+        </form>
+        <button class="mypage-btn" id="withdrawBtn">
+          <img
+            src="{% static 'home/image/Xnix/Line/card_member.png' %}"
+            alt="cardBookmark"
+            class="card-icon"
+          />
+          <img
+            src="{% static 'home/image/card_union.png' %}"
+            alt="cardUnion"
+            class="card-union"
+          />
+          회원 탈퇴
+        </button>
+      {% else %}
+        <p>로그인이 필요합니다.</p>
+      {% endif %}
+      <!-- 탈퇴 확인 모달 -->
+      <div id="modalOverlay" class="modal-overlay hidden">
+        <div class="modal-box">
+          <h3>회원 탈퇴를 하시겠습니까?</h3>
+          <div class="modal-buttons">
+            <button id="cancelBtn" class="modal-btn cancel">취소</button>
+            <form method="post" action="{% url 'users:delete_account' %}">
+            {% csrf_token %}
+            <button id="confirmBtn" class="modal-btn confirm">확인</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="{% static 'home/js/withdraw.js' %}"></script>
+  </body>
 </html>
