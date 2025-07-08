@@ -10,7 +10,6 @@
     <p>결과 : 총 {{ session.correct_answers }}/{{ session.total_answers }}문제를 맞혔습니다!</p>
 
   {% for result in user_results %}
-      {{ result.quiz.question }}
         {% if result.is_correct %}
              O 
         {% else %}
