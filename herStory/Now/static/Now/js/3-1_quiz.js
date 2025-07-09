@@ -1,31 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const schoolButtons = document.querySelectorAll('.school-selction button');
+    const selctionbutton = document.querySelectorAll('.selction button');
     const nextButton = document.querySelector('.next');
     const unionImage = document.querySelector('.union');
     let selectedButton = null;
     
-    schoolButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedButton) { 
-                selectedButton.style.backgroundColor = '#f5ffef';
-            }   // 이전에 선택된 버튼 있을 수도 있으니가.. 원래 색상으로 되돌리기
-
-            this.style.backgroundColor = '#91C84F'; // 확인후 현재 버튼 상태변경
-            selectedButton = this;
-        });
-    });
-    
-    nextButton.addEventListener('click', function() {
-        nextButton.style.backgroundColor = '#91C84F'; 
-        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
-            setTimeout(function() {
-            window.location.href = '3_quiz.html';
-        }, 200);
-    });
-
-});
-
-
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -58,3 +36,34 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.remove("active");
   });
 });
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    selctionbutton.forEach(button => {
+        button.addEventListener('click', function() {
+            if (selectedButton) { 
+                selectedButton.style.backgroundColor = '#f5ffef';
+            }   
+            this.style.backgroundColor = '#91C84F'; 
+            selectedButton = this;
+        });
+    });
+    
+    nextButton.addEventListener('click', function() {
+        if (!selectedButton) {
+            return; 
+        } 
+        
+        nextButton.style.backgroundColor = '#91C84F'; 
+        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
+            setTimeout(function() {
+            window.location.href = '3-2_quiz.html';
+        }, 200);
+    });
+      function saveAnswerAndNext(quizNum, selectedAnswer) {
+          userAnswers[quizNum] = selectedAnswer;
+          // 다음 페이지로 이동 또는 결과 계산
+      }
+
+});
+

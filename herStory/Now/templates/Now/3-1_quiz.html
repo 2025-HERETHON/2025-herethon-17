@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Era Echo - Quiz</title>
-    <link rel="stylesheet" href="../../static/Now/css/4_score.css">
-    <script src="../../static/Now/js/4_score.js"></script>
+    <link rel="stylesheet" href="../../static/Now/css/3-1_quiz.css">
+    <script src="../../static/Now/js/3-1_quiz.js"></script>
 </head>
 <body>
+    <div class="app-container">
 
-<div class="app-container">
-    
-    <header class="header">
-      <img src="../../static/Now/image/mainLogo.svg" class="main-logo" />
+      <header class="header">
+        <img src="../../static/Now/image/mainLogo.svg" class="main-logo" />
         <button class="menu-toggle" id="menuToggle">
           <img src="../../static/Now/image/Menu.svg">
         </button>
@@ -27,38 +26,39 @@
         </nav>
       </header>
 
- <div class="for-zindex">
-<!--━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-->
-
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    
         <div class="tab-group">
           <div class="text-wrapper-1">퀴즈</div>
           <div class="text-wrapper-2">학교별 랭킹</div>
           <img class="line-2" src="../../static/Now/image/Line 90.svg" />
         </div>
   
+ <div class="for-zindex">
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
     <div class="now">
-
       <div class="question">
-        <span id="Results">결과 : </span>
-        <span id="score-text"> 총 
-          <span id="correct-count"> 0</span>/3문제를 맞췄습니다!</span>
+     <!-- <div class="question"> 여기 영역 최대높이 고정--> 
+        <span id="question-Q">Q.</span>
+        <span id="question-text">다음 중 노벨상을 최초로 받은 여성 과학자는 누구인가요?</span>
       </div>
-         <div class="container">
-            <div id="prob1">?</div>
-            <div id="prob2">?</div>
-            <div id="prob3">?</div>
-
-            <div class="total-score" id="tot_score">
-              <h3>총점: 20점</h3>
-            </div>
+        <div class="container">
+          <form class="selction" id="quiz-form">
+            <button type="button">로잘린드 프랭클린</button>
+            <button type="button">리제 마이트너</button>
+            <button type="button">마리 퀴리</button>
+            <button type="button">제인 구달</button>
+          </form>
+          <img class="order" src="../../static/Now/image/order_1.svg">
           <button type="submit" class="next">
-            <span class="next-text">랭킹 보기</span>
+            <span class="next-text">다음으로</span>
               <img class="union" src="../../static/Now/image/Union.svg" />
           </button>
-     </div>
-
+        </div>
+  </div>
+  
+</div>
     
 </body>
 </html>

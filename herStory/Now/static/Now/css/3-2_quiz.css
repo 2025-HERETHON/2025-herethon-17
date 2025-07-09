@@ -155,46 +155,72 @@ body {
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-
-h3 {
-  margin-top: 3.5rem;
-  margin-bottom: 2rem;
-  margin-left: 0.5rem;
-  color: #4c6d1e;
-}
-
-
-.quiz-section{
+.now{
   padding-top: 2.5rem;
   margin-bottom: 2rem;
   position: relative;
 }
 
-.school-selction {
+.container {
+  position: relative;
+}
+
+.container .order {
+  /* position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.question {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  margin-left: 0.5rem;
+  margin-right: 2rem;
+  color: #4c6d1e;
+}
+
+#question-Q {
+  font-size: large;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+#question-text {
+  font-size: large;
+  font-weight: 700;
+
+}
+
+.selction {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 2.5rem;
 }
 
-.school-selction button {
+.selction button {
   background-color: #ffffff;
   border: none;
   border-radius: 15px;
-  padding: 1rem;
+  padding: 1.2rem;
   font-size: 14px;
   font-weight: 600;
   color: #1a1a1a;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0px 0px 3px #00000026;
+  box-shadow: 1px 1px 1px 1px #b8b6b626;
   width: 90%;      
   margin-left: 1rem;       
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .next {
-  background: #fff;
+  background: #fff;           
   border: none;
   border-radius: 15px;
   padding: 1.2rem;
@@ -203,10 +229,11 @@ h3 {
   text-align: center; 
   cursor: pointer;
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 90%;
+  width: 90%;      
   margin-left: 1rem;
-  margin-top: 3.1rem;  
   position: relative; 
+  display: block;    
+  margin-top: 2.5rem;  
 }
 
 .next-text {
@@ -214,11 +241,10 @@ h3 {
   font-weight: 600;
 }
 
-.union {
+.next .union {
   position: absolute;
   right: 1.5rem;              
   top: 50%;
   transform: translateY(-50%);
   height: auto; 
 }
-

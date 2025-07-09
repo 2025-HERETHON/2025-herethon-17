@@ -1,7 +1,81 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Pretendard", sans-serif;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 162px;
+  background-color: transparent;
+  position: relative;
+}
+
+.logo {
+  font-size: 0.9375rem;
+  font-weight: bold;
+  color: #4c6d1e;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    position: fixed; /* absolute에서 fixed로 변경 */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 23.4375rem; /* 앱 컨테이너와 동일한 너비 */
+    padding: 1rem 0;
+    border-radius: 0 0 1.5rem 1.5rem;
+    z-index: 1000; /* 메뉴가 맨 위에 나타나도록 */
+}
+
+.menu ul {
+    list-style: none;
+    padding-top: 100px;
+}
+
+.menu li {
+    color: white;
+    padding: 0.75rem 3rem;
+    margin: 0.25rem 0;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.menu li.active {
+    background-color: #d5eab3;
+    color: #1c1c1c;
+}
+
+.menu.active {
+    display: flex;
+    background-color: rgba(64, 72, 52, 0.9);
+    width: 100%;
+}
+
+.menu .divider {
+    height: 1px;
+    background-color: #f2f2f2;
+    margin: 30px 3rem;
+}
+
+.menu-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #4c6d1e;
+    z-index: 900;
+    
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 @media (max-width: 375px) {
   .app-container {
@@ -10,6 +84,10 @@
     border-radius: 0;
     box-shadow: none;
   }
+}
+
+.for-zindex{
+    z-index: 10;
 }
 
 body {
@@ -32,48 +110,6 @@ body {
   overflow: hidden;
   position: relative;
 }
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 55px 1.5rem;
-  height: 3.5rem;
-  background-color: transparent;
-  position: relative;
-}
-
-.menu {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem 0;
-  border-radius: 0 0 1.5rem 1.5rem;
-}
-
-.menu ul {
-  list-style: none;
-  padding-top: 100px;
-}
-
-.menu li {
-  color: white;
-  padding: 0.75rem 3rem;
-  margin: 0.25rem 0;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-align: left;
-}
-
-.menu-toggle {
-  background-color: transparent;
-  border: transparent;
-}
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .tab-group {
@@ -98,7 +134,7 @@ body {
 .tab-group .text-wrapper-2 {
   position: relative;
   left: 86px;
-  bottom: 17.5px;
+  bottom: 18px;
   font-family: "Pretendard", sans-serif;
   font-size: 15px;
   font-weight: 700;
@@ -138,13 +174,27 @@ body {
   margin-right: auto;
 }
 
-h3 {
+.question {
+  display: flex;
+  flex-direction: row;
   margin-top: 1rem;
   margin-bottom: 3rem;
   margin-left: 0.5rem;
+  margin-right: 2rem;
   color: #4c6d1e;
 }
 
+#question-Q {
+  font-size: large;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+#question-text {
+  font-size: large;
+  font-weight: 700;
+
+}
 
 .selction {
   display: flex;
@@ -154,7 +204,7 @@ h3 {
 }
 
 .selction button {
-  background-color: #f5ffef;
+  background-color: #ffffff;
   border: none;
   border-radius: 15px;
   padding: 1.2rem;
@@ -163,14 +213,12 @@ h3 {
   color: #1a1a1a;
   text-align: center;
   cursor: pointer;
-  box-shadow: 1px 1px 1px 1px #b8b6b626;
   width: 90%;      
   margin-left: 1rem;       
 }
 
-
 .next {
-  background: #fff;           
+  background: #fff;   
   border: none;
   border-radius: 15px;
   padding: 1.2rem;
@@ -193,7 +241,7 @@ h3 {
 
 .next .union {
   position: absolute;
-  right: 1.5rem;              
+  right: 1.5rem;      
   top: 50%;
   transform: translateY(-50%);
   height: auto; 
