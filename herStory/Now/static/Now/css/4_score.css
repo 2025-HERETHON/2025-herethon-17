@@ -130,6 +130,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .text-wrapper-2 {
@@ -143,6 +144,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .line-2 {
@@ -162,17 +164,18 @@ body {
   position: relative;
 }
 
-.question {
+.Results {
   display: flex;
   flex-direction: row;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  margin-left: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+  margin-left: 1rem;
   margin-right: 2rem;
   color: #4c6d1e;
 }
 
-#Results {
+
+#Results-text {
   font-size: large;
   font-weight: 700;
   margin-right: 10px;
@@ -182,6 +185,8 @@ body {
   font-size: large;
   font-weight: 700;
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .next {
   background: #fff;           
@@ -197,7 +202,7 @@ body {
   margin-left: 1rem;
   position: relative; 
   display: block;    
-  margin-top: 2.5rem;  
+  margin-top: 3rem;  
 }
 
 .next-text {
@@ -230,25 +235,59 @@ body {
   margin-top: 1rem;
 }
 
+#prob1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem; 
+  box-shadow: 3px 3px 3px 3px #b8b6b626;   
+}
+
+#prob2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem; 
+  box-shadow: 3px 3px 3px 3px #b8b6b626;   
+}
+
+#prob3 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem; 
+  box-shadow: 3px 3px 3px 3px #b8b6b626;   
+}
+
 #prob1 .union {
   position: absolute;
-  right: 1.5rem;              
+  right: 1.5rem;
+  top: 50%; 
   transform: translateY(-50%);
-  height: auto; 
+  height: auto;
 }
 
 #prob2 .union {
   position: absolute;
-  right: 1.5rem;              
+  right: 1.5rem;
+  top: 50%;
   transform: translateY(-50%);
-  height: auto; 
+  height: auto;
 }
 
 #prob3 .union {
   position: absolute;
-  right: 1.5rem;              
+  right: 1.5rem;
+  top: 50%;
   transform: translateY(-50%);
-  height: auto; 
+  height: auto;
+}
+
+.prob3-text {
+  margin-right: 1.5rem;
 }
 
 .total-score {
@@ -259,12 +298,11 @@ body {
   font-size: 14px;
   font-weight: 600;       
   text-align: center; 
-  cursor: pointer;
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
   width: 20%;         
   position: relative; 
   display: block;
-  margin-top: 2.5rem;
+  margin-top: 2.7rem;
   margin-bottom: 4rem;
   margin-left: 35%;
 }

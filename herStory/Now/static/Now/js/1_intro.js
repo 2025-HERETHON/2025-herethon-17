@@ -1,21 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const nextButton = document.querySelector('.next');
-    const unionImage = document.querySelector('.union');
-    
-    nextButton.addEventListener('click', function() {
-        nextButton.style.backgroundColor = '#91C84F'; //배경색 변경!
-        unionImage.src = '../../static/Now/image/Union_active_.svg'; //이미지색 변경!
-        
-        // 약간.. 지연 후에 이동
-        setTimeout(function() {
-            window.location.href = '2_school.html';
-        }, 200);
-    });
-});
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
   const menuItems = menu.querySelectorAll("li");
@@ -44,4 +27,38 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
+
+
+// 요기까지 내비바 기능
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const Quiztab = document.querySelector('.text-wrapper-1');
+const Ranktab = document.querySelector('.text-wrapper-2');
+
+    Quiztab.addEventListener('click', function() {
+            setTimeout(function() {
+            window.location.href = '1_intro.html';
+        }, 200);
+    });
+
+
+    Ranktab.addEventListener('click', function() {
+            setTimeout(function() {
+            window.location.href = '6_ranking.html';
+        }, 200);
+    });
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const nextButton = document.querySelector('.next');
+    const unionImage = document.querySelector('.union');
+    
+    nextButton.addEventListener('click', function() {
+        nextButton.style.backgroundColor = '#91C84F'; //배경색 변경!
+        unionImage.src = '../../static/Now/image/Union_active_.svg'; //이미지색 변경!
+        
+        // 약간.. 지연 후에 이동
+        setTimeout(function() {
+            window.location.href = '2_school.html';
+        }, 200);
+    });
 });

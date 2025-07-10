@@ -1,40 +1,5 @@
+
 document.addEventListener('DOMContentLoaded', function() {
-    const selctionbutton = document.querySelectorAll('.selction button');
-    const nextButton = document.querySelector('.next');
-    const unionImage = document.querySelector('.union');
-    let selectedButton = null;
-    
-    selctionbutton.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedButton) { 
-                selectedButton.style.backgroundColor = '#f5ffef';
-            }   
-            this.style.backgroundColor = '#91C84F'; 
-            selectedButton = this;
-        });
-    });
-    
-    nextButton.addEventListener('click', function() {
-        if (!selectedButton) {
-            return; 
-        } 
-        
-        nextButton.style.backgroundColor = '#91C84F'; 
-        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
-            setTimeout(function() {
-            window.location.href = '4_score.html';
-        }, 200);
-    });
-      function saveAnswerAndNext(quizNum, selectedAnswer) {
-          userAnswers[quizNum] = selectedAnswer;
-          // 다음 페이지로 이동 또는 결과 계산
-      }
-
-});
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
   const menuItems = menu.querySelectorAll("li");
@@ -63,4 +28,62 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
+
+
+// 요기까지 내비바 기능
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const Quiztab = document.querySelector('.text-wrapper-1');
+const Ranktab = document.querySelector('.text-wrapper-2');
+
+    Quiztab.addEventListener('click', function() {
+            setTimeout(function() {
+            window.location.href = '1_intro.html';
+        }, 200);
+    });
+
+
+    Ranktab.addEventListener('click', function() {
+            setTimeout(function() {
+            window.location.href = '6_ranking.html';
+        }, 200);
+    });
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    const selctionbutton = document.querySelectorAll('.selction button');
+    const nextButton = document.querySelector('.next');
+    const unionImage = document.querySelector('.union');
+    let selectedButton = null;
+    let selectedAnswer = null; 
+    
+    selctionbutton.forEach((button, index) => {
+        button.setAttribute('data-choice', index + 1);
+        
+        button.addEventListener('click', function() {
+            if (selectedButton) { 
+                selectedButton.style.backgroundColor = '#f5ffef';
+            }   
+            this.style.backgroundColor = '#91C84F'; 
+            selectedButton = this;
+            selectedAnswer = parseInt(this.getAttribute('data-choice')); 
+        });
+    });
+    
+    nextButton.addEventListener('click', function() {
+        if (!selectedButton) {
+            return; 
+        } 
+        
+        if (selectedAnswer) {
+            localStorage.setItem('quiz_3_answer', selectedAnswer);
+        }
+        
+        nextButton.style.backgroundColor = '#91C84F'; 
+        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
+            setTimeout(function() {
+            window.location.href = '4_score .html';
+        }, 200);
+    });
+
 });
