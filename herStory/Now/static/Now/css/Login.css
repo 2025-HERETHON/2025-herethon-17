@@ -138,7 +138,7 @@ body {
 .now .text-wrapper {
   text-shadow: 0px 0px 4px #ffffff80;
   font-family: "Pretendard-Bold", Helvetica;
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 700;
   color: #4c6d1e;
   text-align: center;
@@ -152,7 +152,7 @@ body {
   width: 228px;
   height: 221px;
   object-fit: cover;
-  margin-bottom: 3rem;
+  margin-bottom: 3.7rem;
 }
 
 .Google {
@@ -162,18 +162,30 @@ body {
   position: relative;
   border: none;
   background: #fff;   
-  border: none;
   border-radius: 15px;
-  padding: 0.9rem;
-  font-size: 14px;
-  font-weight: 600;       
-  text-align: center; 
+  padding: 1rem;
+  font-size: 16px;
+  font-weight: 600;  
   cursor: pointer;
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 20rem;      
   margin-left: 1rem;
-  position: relative; 
   margin-top: 3.5rem;
+  line-height: 150%; 
+  width: 22rem;    
+}
+
+.Google-text {
+  text-align: center;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.Google .G_logo {
+  position: absolute;
+  left: 1.5rem;              
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto; 
 }
 
 .Kakao {
@@ -183,30 +195,28 @@ body {
   position: relative;
   border: none;
   background: #FBE200;   
-  border: none;
   border-radius: 15px;
-  padding: 0.9rem;
-  font-size: 14px;
-  font-weight: 600;       
-  text-align: center; 
+  padding: 1rem;
+  font-size: 16px;
+  font-weight: 600;  
   cursor: pointer;
-  box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 20rem;      
+  box-shadow: 3px 3px 3px 3px #b8b6b626;  
   margin-left: 1rem;
-  position: relative; 
-  margin-top: 0.8rem;
+  margin-top: 1rem;
+  line-height: 150%;  
+  width: 22rem;       
 }
 
-.next-text {
+.Kakao-text {
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
+  margin-left: 1rem;
 }
 
-.loginOption .union {
+.Kakao .K_logo{
   position: absolute;
-  right: 1.5rem;      
+  left: 1.5rem;              
   top: 50%;
   transform: translateY(-50%);
   height: auto; 
 }
-
