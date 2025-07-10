@@ -21,6 +21,8 @@
 
 .people-img {
   width: 268px;
+  height: 200px;
+  border-radius: 10%;
   margin-top: 30px;
   margin-bottom: 10px;
 }
