@@ -110,6 +110,7 @@ body {
   overflow: hidden;
   position: relative;
 }
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .tab-group {
@@ -182,6 +183,74 @@ body {
   font-weight: 700;
 }
 
+.next {
+  background: #fff;           
+  border: none;
+  border-radius: 15px;
+  padding: 1.2rem;
+  font-size: 14px;
+  font-weight: 700;       
+  text-align: center; 
+  cursor: pointer;
+  box-shadow: 3px 3px 3px 3px #b8b6b626;   
+  width: 20rem;      
+  margin-left: 1rem;
+  position: relative; 
+  display: block;    
+  margin-top: 2.5rem;  
+}
+
+.next-text {
+  text-align: center;
+  font-weight: 700;
+}
+
+.next .union {
+  position: absolute;
+  right: 1.5rem;              
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto; 
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.container button {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  padding: 1.2rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+  cursor: pointer;
+  width: 20rem;      
+  margin-left: 1rem;      
+  margin-top: 1rem;
+}
+
+#prob1 .union {
+  position: absolute;
+  right: 1.5rem;              
+  transform: translateY(-50%);
+  height: auto; 
+}
+
+#prob2 .union {
+  position: absolute;
+  right: 1.5rem;              
+  transform: translateY(-50%);
+  height: auto; 
+}
+
+#prob3 .union {
+  position: absolute;
+  right: 1.5rem;              
+  transform: translateY(-50%);
+  height: auto; 
+}
+
 .total-score {
   background: #91C84F;           
   border: none;
@@ -194,36 +263,8 @@ body {
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
   width: 20%;         
   position: relative; 
-  display: block;    
-  margin-top: 2.5rem;  
-}
-
-.next {
-  background: #fff;           
-  border: none;
-  border-radius: 15px;
-  padding: 1.2rem;
-  font-size: 14px;
-  font-weight: 600;       
-  text-align: center; 
-  cursor: pointer;
-  box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 90%;      
-  margin-left: 1rem;
-  position: relative; 
-  display: block;    
-  margin-top: 2.5rem;  
-}
-
-.next-text {
-  text-align: center;
-  font-weight: 600;
-}
-
-.next .union {
-  position: absolute;
-  right: 1.5rem;              
-  top: 50%;
-  transform: translateY(-50%);
-  height: auto; 
+  display: block;
+  margin-top: 2.5rem;
+  margin-bottom: 4rem;
+  margin-left: 35%;
 }

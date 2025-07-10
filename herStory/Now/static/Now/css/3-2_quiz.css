@@ -214,7 +214,7 @@ body {
   text-align: center;
   cursor: pointer;
   box-shadow: 1px 1px 1px 1px #b8b6b626;
-  width: 90%;      
+  width: 20rem;      
   margin-left: 1rem;       
 }
 
@@ -229,7 +229,7 @@ body {
   text-align: center; 
   cursor: pointer;
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 90%;      
+  width: 20rem;      
   margin-left: 1rem;
   position: relative; 
   display: block;    

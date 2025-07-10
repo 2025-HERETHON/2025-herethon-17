@@ -1,29 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const selctionbutton = document.querySelectorAll('.selction button');
-    const nextButton = document.querySelector('.next');
-    const unionImage = document.querySelector('.union');
-    let selectedButton = null;
-
-    nextButton.addEventListener('click', function() {
-        nextButton.style.backgroundColor = '#91C84F'; 
-        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
-            setTimeout(function() {
-            window.location.href = '6_ranking.html';
-        }, 200);
-    });
-
-
-    const quizData = {
-    1: { correct: 1 }, // 첫 번째 문제의 정답은 1번
-    2: { correct: 4 }, // 두 번째 문제의 정답은 4번
-    3: { correct: 1 }  // 세 번째 문제의 정답은 1번
-};
-let userAnswers = {};
-let currentQuiz = 1;
-});
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
   const menuItems = menu.querySelectorAll("li");
@@ -52,10 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
-});
 
+// 요기까지 내비바 기능
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+const nextButton = document.querySelector('.next');
+const unionImage = document.querySelector('.union');
+
+    nextButton.addEventListener('click', function() {
+        nextButton.style.backgroundColor = '#91C84F'; 
+        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
+            setTimeout(function() {
+            window.location.href = '6_ranking.html';
+        }, 200);
+    });
+
+    // 페이지 이동기능
+
+    const quizData = {
+    1: { correct: 1 }, // 1번 문제 정답 → 1번
+    2: { correct: 4 }, // 2번 문제 정답 → 4번
+    3: { correct: 1 }  // 3번 문제 정답 → 1번
+};
+    let userAnswers = {};
+    let currentQuiz = 1;
+});
+
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 function calculateAndShowScore() {
     let correctCount = 0;
@@ -86,8 +85,3 @@ function calculateAndShowScore() {
     // 결과 화면 표시
     document.getElementById('score-screen').classList.remove('hidden');
 }
-
-function showSolution() {
-    alert('해설 페이지는 아직 구현되지 않았습니다.');
-}
-
