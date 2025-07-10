@@ -196,18 +196,17 @@ body {
     font-weight: 400;
     font-size: 1rem;
     margin-right: 0.3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     display: inline-block; 
     white-space: nowrap; 
     flex-shrink: 0; 
     box-shadow: 0px 0px 3px #00000026;
 }
 
-#tag1 {
+  .tag.active {
     background-color: #91C84F;
-    color: #4C6D1E;
-}
-
+    color: #4C6D1E; 
+  }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
