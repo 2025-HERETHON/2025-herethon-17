@@ -1,0 +1,120 @@
+body {
+  background: linear-gradient(#d5eab3);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main .divider {
+  height: 2px;
+  background-color: #4c6d1e;
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.main p {
+  color: #4c6d1e;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 78px;
+}
+
+.mypage-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-row {
+  position: relative;
+  width: 320px;
+  height: 50px;
+  border: none;
+  border-radius: 1rem;
+  background-color: #f6ffef;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: default;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  position: absolute;
+  left: 0.5rem;
+  background-color: #a2c946;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  padding: 4px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.value {
+  color: #1c1c1c;
+  font-size: 14px;
+  text-align: center;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.7); /* 어두운 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background-color: #000;
+  color: rgb(255, 255, 255);
+  padding: 30px;
+  border-radius: 1rem;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #d5eab3;
+}
+
+.modal-box h3 {
+  margin: 40px 0;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-btn {
+  flex: 1;
+  margin: 0 0.25rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modal-btn.cancel {
+  background-color: #d5d5d5;
+  color: #000;
+}
+
+.modal-btn.confirm {
+  background-color: white;
+  color: #000;
+}
+
+.hidden {
+  display: none;
+}
