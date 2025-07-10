@@ -1,20 +1,72 @@
 {% load socialaccount %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 페이지</title>
-</head>
+    <title>Era Echo - Quiz</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'login/css/Login.css' %}">
+    <script src="{% static 'login/js/Login.js' %}"></script>
+  </head>
 <body>
-  <!--템플릿 규칙 적용으로 templates 폴더 아래 users 폴더 생성-->
-    <hr/>
-      <a href="{% provider_login_url 'kakao' %}">
-        <i>카카오 로그인</i>
-      </a>
+
+<div class="app-container">
+    
+    <header class="header">
+      <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+        <button class="menu-toggle" id="menuToggle">
+          <img src="{% static 'quizzes/image/Menu.svg' %}">
+        </button>
+        <nav class="menu" id="menu">
+          <ul>
+          {% if user.is_authenticated %}
+            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+          {% else %}
+            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+          {% endif %}
+          <div class="divider"></div>
+          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+          <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+          <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+          {% if user.is_authenticated %}
+            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+            {% endif %}
+        </ul>
+        </nav>
+      </header>
+
+<div class="for-zindex">
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+   <div class="now">
+        <div class="main-ment">
+          <img class="line-1" src="{% static 'login/image/Line.svg' %}" />
+          <div class="text-wrapper">
+            간편 로그인
+          </div>
+        </div>
+        <img class="image-removebg" src="{% static 'login/image/Loginbackground.png' %}" />
+    </div>
+
+    <div class="loginOption">
       <a href="{% provider_login_url 'google' %}">
-        <i>구글 로그인</i>
+        <button type="submit" class="Google">
+            <img class="G_logo" src="{% static 'login/image/googleLogo.svg' %}" />
+            <span class="Google-text">구글 계정으로 시작</span>
+        </button>
       </a>
+      <a href="{% provider_login_url 'kakao' %}">
+        <button type="submit" class="Kakao">
+            <img class="K_logo" src="{% static 'login/image/KakaoLogo.svg' %}" />
+            <span class="Kakao-text">카카오 계정으로 시작</span>
+        </button>
+      </a>
+    </div>
+  
+</div>
 </body>
 </html>
