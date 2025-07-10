@@ -31,14 +31,36 @@ document.addEventListener('DOMContentLoaded', function() {
 // 요기까지 내비바 기능
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+// ↓ 태그 선택할 때 색상 바뀌는 거
 const tags = document.querySelectorAll('.tag');
-
     tags.forEach(tag => {
         tag.addEventListener('click', function () {
         tag.classList.toggle('active');
     });
    });
-    
+
+// ↓ 제목 눌렀을 때, 해당 글 페이지로 이동하는 것
+const titles = document.querySelectorAll('.Title');
+    titles.forEach(title => {
+      title.addEventListener('click', function() {
+        setTimeout(function() {
+        window.location.href = 'Future_Article.html';
+      }, 200);
+    });
+  });
+
+
+// ↓ 새글 작성버튼
+const New = document.querySelector('.new');
+      New.addEventListener('click', function() {
+        setTimeout(function() {
+        window.location.href = 'Future_write.html';
+    }, 200);
+  });
+
 });
+
+
+
 
     

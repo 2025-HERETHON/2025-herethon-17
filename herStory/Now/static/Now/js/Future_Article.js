@@ -27,7 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
-});
 
 // 요기까지 내비바 기능
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// ↓ 새글 작성버튼
+const New = document.querySelector('.new');
+      New.addEventListener('click', function() {
+        setTimeout(function() {
+        window.location.href = 'Future_write.html';
+    }, 200);
+  });
+
+});
