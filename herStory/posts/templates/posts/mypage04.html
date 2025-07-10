@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Era Echo - mypage</title>
+    <link rel="stylesheet" href="../../static/posts/css/header.css" />
+    <link rel="stylesheet" href="../../static/posts/css/mypage.css" />
+    <link rel="stylesheet" href="../../static/posts/css/button.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="../../static/posts/image/mainLogo.svg" class="main-logo" />
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>로그인</li>
+          <div class="divider"></div>
+          <li>과거를 알다</li>
+          <li>지금을 묻다</li>
+          <li>미래를 잇다</li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <div class="post-list" id="postList">
+        <!-- 게시글이 JavaScript로 렌더링될 영역 -->
+      </div>
+    </main>
+    <!-- 게시글 템플릿 구조 (JS로 여러 개 반복) -->
+    <template id="postTemplate">
+      <div class="post-card">
+        <div class="post-header">
+          <h3 class="post-title">
+            <span class="post-category">#개발자 취업</span>
+            <span class="post-writer">・취준생</span>
+          </h3>
+        </div>
+
+        <div class="post-content">
+          프론트엔드 개발자로 취업하고 싶은데 방법을 모르겠네요..
+        </div>
+
+        <div class="post-tags">
+          <span class="tag">#취업</span>
+          <span class="tag">#멘탈관리</span>
+          <span class="tag">#질문글</span>
+        </div>
+
+        <div class="post-divider"></div>
+
+        <div class="post-reply">
+          <input
+            type="text"
+            class="reply-input"
+            placeholder="서사를 함께 이어나가 보아요!"
+            data-post-id=""
+          />
+          <button class="reply-btn">
+            <img src="../../static/posts/image/send-icon.svg" alt="send" />
+          </button>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>
