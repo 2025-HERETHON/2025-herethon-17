@@ -49,6 +49,16 @@ const Ranktab = document.querySelector('.text-wrapper-2');
     });
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 
 
+const nextButton = document.querySelector('.back');
+const unionImage = document.querySelector('.union');
+
+    nextButton.addEventListener('click', function() {
+        nextButton.style.backgroundColor = '#91C84F'; 
+        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
+            setTimeout(function() {
+            window.location.href = '4_score .html';
+        }, 200);
+    });
 });
+    // 페이지 이동기능
