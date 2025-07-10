@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/posts/css/header.css" />
+    <link rel="stylesheet" href="../../static/posts/css/mypage.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="../../static/posts/image/mainLogo.svg" class="main-logo" />
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>로그인</li>
+          <div class="divider"></div>
+          <li>과거를 알다</li>
+          <li>지금을 묻다</li>
+          <li>미래를 잇다</li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <div class="divider"></div>
+      <p>인물 카드 조회</p>
+      <div class="person-list" id="personList"></div>
+      <div class="pagination" id="pagination"></div>
+    </main>
+    <script src="../../static/posts/js/home.js"></script>
+    <script src="../../static/posts/js/person.js"></script>
+  </body>
+</html>
+
+<!-- <h2>📚 내가 저장한 인물 카드</h2>
+
+{% if saved_cards %}
+  <ul style="list-style: none; padding: 0;">
+    {% for saved in saved_cards %}
+      <li>
+        <a href="{% url 'users:my_cards_detail' saved.card.id %}">
+          {{ saved.card.name }} | {{ saved.card.era }} | {{ saved.card.region }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>저장한 카드가 아직 없어요 😢</p>
+{% endif %}
+
+<form method="post" action="{% url 'users:mypage' %}">
+  {% csrf_token %}
+  <button type="submit">마이페이지로 돌아가기</button>
+</form> -->

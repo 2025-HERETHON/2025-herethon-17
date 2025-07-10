@@ -17,6 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // 확인 버튼 → 실제 탈퇴 요청 로직 추가 예정
   confirmBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
-    alert("탈퇴 처리가 진행됩니다."); // 실제로는 fetch 또는 form 전송 등으로 처리
+    alert("탈퇴가 완료되었습니다."); // 실제로는 fetch 또는 form 전송 등으로 처리
   });
 });
