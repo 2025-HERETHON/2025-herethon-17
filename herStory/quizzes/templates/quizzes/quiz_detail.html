@@ -1,12 +1,72 @@
-<h2>{{ quiz.question }}</h2>
-<form method="POST" action="{% url 'quizzes:submit_answer' %}">
-  {% csrf_token %}
-  <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
-  {% for choice in quiz.choices.all %}
-    <label>
-      <input type="radio" name="choice_id" value="{{ choice.id }}">
-      {{ choice.text }}
-    </label><br>
-  {% endfor %}
-  <button type="submit">다음으로</button>
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Era Echo - Quiz</title>
+  <link rel="stylesheet" href="{% static 'quizzes/css/3-1_quiz.css' %}">
+  <script src="{% static 'quizzes/js/3-1_quiz.js' %}" defer></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+      </a>
+      <button class="menu-toggle" id="menuToggle">
+        <img src="{% static 'quizzes/image/Menu.svg' %}">
+      </button>
+      <nav class="menu" id="menu">
+        <ul>
+          {% if user.is_authenticated %}
+            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+          {% else %}
+            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+          {% endif %}
+          <div class="divider"></div>
+          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+          <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+          <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+          <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+    <div class="tab-group">
+      <div class="text-wrapper-1">퀴즈</div>
+      <div class="text-wrapper-2">학교별 랭킹</div>
+      <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" />
+    </div>
+
+    <div class="for-zindex">
+      <div class="now">
+        <div class="question">
+          <span id="question-Q">Q.</span>
+          <span id="question-text">{{ quiz.question }}</span>
+        </div>
+
+        <div class="container">
+          <form class="selction" id="quiz-form" method="POST" action="{% url 'quizzes:submit_answer' %}">
+            {% csrf_token %}
+            <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
+            {% for choice in quiz.choices.all %}
+              <button type="button" class="choice-btn" data-choice-id="{{ choice.id }}">{{ choice.text }}</button>
+            {% endfor %}
+            <input type="hidden" name="choice_id" id="selected-choice-id">
+          </form>
+
+          <img class="order" src="{% static 'quizzes/image/order_1.svg' %}">
+          
+          <button type="submit" class="next" form="quiz-form">
+            <span class="next-text">다음으로</span>
+            <img class="union" src="{% static 'quizzes/image/Union.svg' %}" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

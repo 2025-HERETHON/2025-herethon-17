@@ -1,25 +1,77 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Era Echo - Quiz</title>
+  <link rel="stylesheet" href="{% static 'quizzes/css/4_score.css' %}">
+  <script src="{% static 'quizzes/js/4_score.js' %}" defer></script>
 </head>
 <body>
-    퀴즈 <a href="{% url 'quizzes:ranking' %}">학교별 랭킹</a><br>
-    <p>결과 : 총 {{ session.correct_answers }}/{{ session.total_answers }}문제를 맞혔습니다!</p>
+  <div class="app-container">
+    <header class="header">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+      </a>
+      <button class="menu-toggle" id="menuToggle">
+        <img src="{% static 'quizzes/image/Menu.svg' %}">
+      </button>
+      <nav class="menu" id="menu">
+        <ul>
+          {% if user.is_authenticated %}
+            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+          {% else %}
+            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+          {% endif %}
+          <div class="divider"></div>
+          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+          <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+          <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+          <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+        </ul>
+      </nav>
+    </header>
 
-  {% for result in user_results %}
-      {{ result.quiz.question }}
-        {% if result.is_correct %}
-             O 
-        {% else %}
-            <a href="{% url 'quizzes:explanation' result.quiz.id %}"> X </a>
-        {% endif %}
-      <br>
-  {% endfor %}
-      <br>
-      총점 : {{ total_score }}점<br>
-      <a href="{% url 'quizzes:ranking' %}">랭킹 보기</a>
+    <div class="for-zindex">
+      <div class="tab-group">
+        <div class="text-wrapper-1">퀴즈</div>
+        <div class="text-wrapper-2">학교별 랭킹</div>
+        <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" />
+      </div>
+
+      <div class="now">
+        <div class="question">
+          <span id="Results">결과 :</span>
+          <span id="score-text"> 총 
+            <span id="correct-count">{{ session.correct_answers }}</span> / {{ session.total_answers }}문제를 맞췄습니다!
+          </span>
+        </div>
+
+        <div class="container">
+          {% for result in user_results %}
+            <div class="result-item" id="prob{{ forloop.counter }}">
+              {% if result.is_correct %}
+                <span class="correct">O</span>
+              {% else %}
+                <a class="wrong" href="{% url 'quizzes:explanation' result.quiz.id %}">X</a>
+              {% endif %}
+            </div>
+          {% endfor %}
+
+          <div class="total-score" id="tot_score">
+            <h3>총점: {{ total_score }}점</h3>
+          </div>
+
+          <form action="{% url 'quizzes:ranking' %}">
+            <button type="submit" class="next">
+              <span class="next-text">랭킹 보기</span>
+              <img class="union" src="{% static 'quizzes/image/Union.svg' %}" />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

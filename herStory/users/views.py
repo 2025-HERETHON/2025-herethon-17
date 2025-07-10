@@ -6,6 +6,7 @@ from history.models import UserSavedCard, HistoryCard
 from posts.models import Post, Comment
 from django.urls import reverse
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 def signup(request):
     return render(request, 'users/signup.html')
@@ -52,7 +53,10 @@ def edit_profile(request):
 
 @login_required
 def my_saved_cards(request):
-    saved_cards = UserSavedCard.objects.filter(user=request.user).select_related('card').order_by('-saved_at')
+    card_list = UserSavedCard.objects.filter(user=request.user).select_related('card').order_by('-saved_at')
+    paginator = Paginator(card_list, 7)  # 한 페이지에 7개씩
+    page_number = request.GET.get('page')
+    saved_cards = paginator.get_page(page_number)
     return render(request, 'users/my_cards.html', {'saved_cards': saved_cards})
 
 @login_required
