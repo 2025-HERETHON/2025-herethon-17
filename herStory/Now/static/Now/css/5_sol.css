@@ -129,6 +129,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .text-wrapper-2 {
@@ -142,6 +143,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .line-2 {
@@ -161,16 +163,16 @@ body {
   border-radius: 15px;
   padding: 1.2rem;  
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 20rem;
+  width: 73%;
   height: 10rem;
-  margin-left: 0.5rem;
+  margin-right: 1.2rem;
+  margin-left: 1.2rem;
   margin-right: 1rem;
   position: relative; 
   display: block;
-  margin-bottom: 30%;
-  margin-top: 30%;
+  margin-bottom: 43%;
+  margin-top: 43%;
 }
-
 
 .back {
   background: #fff;           
@@ -186,7 +188,7 @@ body {
   margin-left: 1rem;
   position: relative; 
   display: block;    
-  margin-top: 2.5rem;  
+  margin-top: 4rem;  
 }
 
 .back-text {
@@ -200,4 +202,58 @@ body {
   top: 50%;
   transform: translateY(-50%);
   height: auto; 
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.solution-box{
+  height: fit-content;
+}
+
+.answer {
+  display: flex;
+}
+
+#answer {
+  border-radius: 7px;
+  padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+  background-color: #91C84F;
+  color: #ffffff;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+  width: 1.56rem;
+}
+
+#answer_detail {  
+  margin-top: 0.45rem;
+  margin-left: 0.3rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.exp {
+  display: flex;
+}
+
+#exp {
+  border-radius: 7px;
+  padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+  background-color: #91C84F;
+  color: #ffffff;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+  width: 1.56rem;
+  height: fit-content;
+}
+
+#exp_detail {
+  flex: 1;
+  color: #ffffff;
+  margin-top: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 200;
+  margin-left: 0.3rem;
+  line-height: 130%;
 }

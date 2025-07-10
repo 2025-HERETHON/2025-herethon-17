@@ -1,36 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const schoolButtons = document.querySelectorAll('.school-selction button');
-    const nextButton = document.querySelector('.next');
-    const unionImage = document.querySelector('.union');
-    let selectedButton = null;
-    
-    schoolButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedButton) { 
-                selectedButton.style.backgroundColor = '#f5ffef';
-            }   // 이전에 선택된 버튼 있을 수도 있으니가.. 원래 색상으로 되돌리기
-            this.style.backgroundColor = '#91C84F'; // 확인후 현재 버튼 상태변경
-            selectedButton = this;
-        });
-    });
-    
-    nextButton.addEventListener('click', function() {
-        if (!selectedButton) {
-            return; // 다음 페이지로 이동 X
-        } // 경고 메시지 표시? 할 필요까진 없겠죠..? 디자인이 없길래 안했습니다
-        
-        nextButton.style.backgroundColor = '#91C84F'; 
-        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
-            setTimeout(function() {
-            window.location.href = '3-1_quiz.html';
-        }, 200);
-    });
-
-});
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
   const menuItems = menu.querySelectorAll("li");
@@ -59,4 +27,59 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
+
+
+// 요기까지 내비바 기능
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const Quiztab = document.querySelector('.text-wrapper-1');
+const Ranktab = document.querySelector('.text-wrapper-2');
+
+    Quiztab.addEventListener('click', function() {
+            setTimeout(function() {
+            window.location.href = '1_intro.html';
+        }, 200);
+    });
+
+
+    Ranktab.addEventListener('click', function() {
+            setTimeout(function() {
+            window.location.href = '6_ranking.html';
+        }, 200);
+    });
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const schoolButtons = document.querySelectorAll('.school-selction button');
+const nextButton = document.querySelector('.next');
+const unionImage = document.querySelector('.union');
+let selectedButton = null;
+    
+    schoolButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (selectedButton) { 
+                selectedButton.style.backgroundColor = '#f5ffef';
+            }   // 이전에 선택된 버튼 있을 수도 있으니가.. 원래 색상으로 되돌리기
+            this.style.backgroundColor = '#91C84F'; // 확인후 현재 버튼 상태변경
+            selectedButton = this;
+        });
+    });
+    
+    nextButton.addEventListener('click', function() {
+        if (!selectedButton) {
+            return; // 다음 페이지로 이동 X
+        } // 경고 메시지 표시? 할 필요까진 없겠죠..? 디자인이 없길래 안했습니다
+        
+        nextButton.style.backgroundColor = '#91C84F'; 
+        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
+            setTimeout(function() {
+            window.location.href = '3-1_quiz.html';
+        }, 200);
+    });
+
 });
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+

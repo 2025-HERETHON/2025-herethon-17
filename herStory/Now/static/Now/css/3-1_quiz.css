@@ -129,6 +129,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .text-wrapper-2 {
@@ -142,6 +143,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .line-2 {
@@ -165,22 +167,15 @@ body {
   position: relative;
 }
 
-.container .order {
-  /* position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .question {
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.43rem;
   margin-left: 0.5rem;
   margin-right: 2rem;
+  height: 5rem;
   color: #4c6d1e;
 }
 
@@ -217,6 +212,15 @@ body {
   margin-left: 1rem;       
 }
 
+.container .order {
+  position: relative;
+  /* left: 50%;
+  transform: translate(-50%, -50%); */
+  display: block;
+  margin-left: 38%;
+  margin-bottom: 2.4rem;
+}
+
 .next {
   background: #fff;   
   border: none;
@@ -231,7 +235,7 @@ body {
   margin-left: 1rem;
   position: relative; 
   display: block;    
-  margin-top: 2.5rem;  
+  margin-top: 1.5rem;  
 }
 
 .next-text {

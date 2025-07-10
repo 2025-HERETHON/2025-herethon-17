@@ -28,60 +28,99 @@ document.addEventListener('DOMContentLoaded', function() {
     menu.classList.remove("active");
   });
 
+
 // 요기까지 내비바 기능
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-const nextButton = document.querySelector('.next');
-const unionImage = document.querySelector('.union');
+const Quiztab = document.querySelector('.text-wrapper-1');
+const Ranktab = document.querySelector('.text-wrapper-2');
 
-    nextButton.addEventListener('click', function() {
-        nextButton.style.backgroundColor = '#91C84F'; 
-        unionImage.src = '../../static/Now/image/Union_active_.svg'; 
+    Quiztab.addEventListener('click', function() {
+            setTimeout(function() {
+            window.location.href = '1_intro.html';
+        }, 200);
+    });
+
+
+    Ranktab.addEventListener('click', function() {
             setTimeout(function() {
             window.location.href = '6_ranking.html';
         }, 200);
     });
 
-    // 페이지 이동기능
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//↓요건 다음 페이지로 가는 이벤트용
 
-    const quizData = {
-    1: { correct: 1 }, // 1번 문제 정답 → 1번
-    2: { correct: 4 }, // 2번 문제 정답 → 4번
-    3: { correct: 1 }  // 3번 문제 정답 → 1번
-};
-    let userAnswers = {};
-    let currentQuiz = 1;
+const nextButton = document.querySelector('.next');
+const unionImage = document.querySelector('.union');
+
+nextButton.addEventListener('click', function() {
+    nextButton.style.backgroundColor = '#91C84F'; 
+    unionImage.src = '../../static/Now/image/Union_active_.svg'; 
+        setTimeout(function() {
+        window.location.href = '6_ranking.html';
+    }, 200);
 });
 
-
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+// 백엔드에서 전달받은 결과 데이터 처리..?
 
-function calculateAndShowScore() {
+function displayQuizResults() {
     let correctCount = 0;
-    
-    // 각 문제별 정답 확인
-    for (let i = 1; i <= 3; i++) {
-        const isCorrect = userAnswers[i] === quizData[i].correct;
-        const resultElement = document.getElementById(`prob${i}`);
 
-        if (isCorrect) {
+    for (let i = 1; i <= 3; i++) {
+        const probButton = document.getElementById(`prob${i}`);
+        const probText = document.querySelector(`.prob${i}-text`);
+
+        const userAnswer = localStorage.getItem(`quiz_${i}_answer`);
+        // ↑ 요 userAnswer은 임시로 localStorage에서 가져온 답안 사용할게요! 
+        // 백엔드에서 수정해주시면 됩니다
+
+        // 백엔드에서 is_correct 값이 전달되면 아래 주석 해제하고 사용
+        /*
+        if (quiz_results[i-1].is_correct) {
+            probText.textContent = 'O';
+            probButton.classList.add('correct');
             correctCount++;
-            resultElement.textContent = 'O';
-            resultElement.classList.add('correct');
-        } 
-        else {
-            resultElement.textContent = 'X';
-            resultElement.classList.add('incorrect');
+        } else {
+            probText.textContent = 'X';
+            probButton.classList.add('incorrect');
+            
+            // X인 경우 해당 문제의 해설 페이지로 이동!
+            probButton.addEventListener('click', function() {
+                window.location.href = `5_sol.html?problem=${i}`;
+            });
+        }
+        */
+       
+        if (quiz_results[i-1].is_correct) {
+            probText.textContent = 'O';
+            probButton.classList.add('correct');
+            correctCount++;
+        } else {
+            probText.textContent = 'X';
+            probButton.classList.add('incorrect');
+            
+            // X인 경우 해당 문제의 해설 페이지로 이동 가능하도록 설정
+            probButton.addEventListener('click', function() {
+                window.location.href = `5_sol.html?problem=${i}`;
+            });
         }
     }
 
-    // 점수 계산 (문제당 10점)
-    const totalScore = correctCount * 10;
-
-    // 결과 표시
+    // 총 맞힌 문제 수 업데이트
     document.getElementById('correct-count').textContent = correctCount;
-    document.getElementById('tot_score').textContent = `총점: ${totalScore}점`;
-
-    // 결과 화면 표시
-    document.getElementById('score-screen').classList.remove('hidden');
+    
+    // 총점 계산 (문제당 10점)
+    const totalScore = correctCount * 10;
+    document.getElementById('tot_score').innerHTML = `<h3>총점: ${totalScore}점</h3>`;
 }
+
+// 페이지 로드 시 결과 표시
+displayQuizResults();
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+});
