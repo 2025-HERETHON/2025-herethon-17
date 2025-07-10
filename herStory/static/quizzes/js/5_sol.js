@@ -1,35 +1,57 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const selctionbutton = document.querySelectorAll('.selction button');
-    const nextButton = document.querySelector('.next');
-    const unionImage = document.querySelector('.union');
-    let selectedButton = null;
-    
-    selctionbutton.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedButton) { 
-                selectedButton.style.backgroundColor = '#f5ffef';
-            }   
-            this.style.backgroundColor = '#91C84F'; 
-            selectedButton = this;
-        });
-    });
-    
-    nextButton.addEventListener('click', function() {
-        if (!selectedButton) {
-            return; 
-        } 
-        
-        nextButton.style.backgroundColor = '#91C84F'; 
-        const unionImage = document.querySelector('.union'); // mj - 이미지 바꾸기 data-속성
-    
-            setTimeout(function() {
-            window.location.href = '4_score.html';
-        }, 200);
-    });
-      function saveAnswerAndNext(quizNum, selectedAnswer) {
-          userAnswers[quizNum] = selectedAnswer;
-          // 다음 페이지로 이동 또는 결과 계산
-      }
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("menu");
+  const menuItems = menu.querySelectorAll("li");
 
+  // 햄버거 메뉴 toggle
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("active");
+  });
+
+  menuItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menuItems.forEach((el) => el.classList.remove("active"));
+      item.classList.add("active");
+    });
+  });
+
+  menu.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", () => {
+    menu.classList.remove("active");
+  });
+
+  // 탭 클릭 시 이동
+  document.querySelector('.text-wrapper-1')?.addEventListener('click', () => {
+    setTimeout(() => {
+      window.location.href = "{% url 'quizzes:quiz_intro' %}";
+    }, 200);
+  });
+
+  document.querySelector('.text-wrapper-2')?.addEventListener('click', () => {
+    setTimeout(() => {
+      window.location.href = "{% url 'quizzes:ranking' %}";
+    }, 200);
+  });
+
+  // 뒤로 가기 버튼 기능
+const backButton = document.querySelector('.back');
+const unionImage = document.querySelector('.union');
+
+backButton?.addEventListener('click', () => {
+  backButton.style.backgroundColor = '#91C84F';
+  if (unionImage) {
+    unionImage.src = "/static/Now/image/Union_active_.svg";
+  }
+
+  setTimeout(() => {
+    const targetUrl = backButton.getAttribute('data-url');
+    window.location.href = targetUrl;
+  }, 200);
+});
 
 });

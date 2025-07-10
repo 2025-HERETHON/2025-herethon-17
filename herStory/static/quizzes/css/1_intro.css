@@ -129,6 +129,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .text-wrapper-2 {
@@ -142,12 +143,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
-}
-
-/* mj - a 태그 밑줄 제거 */
-.tab-group .text-wrapper-2 a {
-  text-decoration: none; 
-  color: #919191;
+  cursor: pointer;
 }
 
 .tab-group .line-2 {
@@ -213,10 +209,10 @@ body {
   text-align: center; 
   cursor: pointer;
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 90%;      
+  width: 20rem;      
   margin-left: 1rem;
   position: relative; 
-  margin-top: 2.9rem;
+  margin-top: 2.7rem;
 }
 
 .next-text {
@@ -231,3 +227,4 @@ body {
   transform: translateY(-50%);
   height: auto; 
 }
+

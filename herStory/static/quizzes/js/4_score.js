@@ -1,94 +1,94 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const selctionbutton = document.querySelectorAll('.selction button');
-    const nextButton = document.querySelector('.next');
-    const unionImage = document.querySelector('.union');
-    let selectedButton = null;
+  // 메뉴 토글 관련
+  const menuToggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('menu');
+  const menuItems = menu.querySelectorAll('li');
 
-    nextButton.addEventListener('click', function() {
-        nextButton.style.backgroundColor = '#91C84F'; 
-        const unionImage = document.querySelector('.union'); // mj - 이미지 바꾸기 data-속성
-    
-            setTimeout(function() {
-            window.location.href = '6_ranking.html';
-        }, 200);
-    });
-
-
-    const quizData = {
-    1: { correct: 1 }, // 첫 번째 문제의 정답은 1번
-    2: { correct: 4 }, // 두 번째 문제의 정답은 4번
-    3: { correct: 1 }  // 세 번째 문제의 정답은 1번
-};
-let userAnswers = {};
-let currentQuiz = 1;
-});
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menuToggle");
-  const menu = document.getElementById("menu");
-  const menuItems = menu.querySelectorAll("li");
-
-  // 햄버거 버튼 클릭 시 메뉴 토글
-  menuToggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // 상위로 이벤트 전파 방지
-    menu.classList.toggle("active");
-  });
-
-  // li 클릭 시 해당 li에 active 클래스 적용
-  menuItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.stopPropagation(); // 클릭해도 메뉴가 바로 닫히지 않도록
-      menuItems.forEach((el) => el.classList.remove("active"));
-      item.classList.add("active");
-    });
-  });
-
-  // 메뉴 영역 클릭 시 이벤트 전파 방지
-  menu.addEventListener("click", (e) => {
+  menuToggle.addEventListener('click', function(e) {
     e.stopPropagation();
+    menu.classList.toggle('active');
   });
 
-  // 메뉴 외부 클릭 시 메뉴 닫기
-  document.addEventListener("click", () => {
-    menu.classList.remove("active");
+  menuItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.stopPropagation();
+      menuItems.forEach(el => el.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  menu.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', () => menu.classList.remove('active'));
+
+  // 퀴즈 결과 버튼 클릭 시 (예: 해설 페이지로 이동 등 필요하면 추가 가능)
+  const resultButtons = document.querySelectorAll('.result-button');
+  resultButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // 필요시 클릭 이벤트 처리
+      // 현재는 클릭 시 아무 동작 없음
+    });
+  });
+
+  // 랭킹 보기 버튼 클릭 효과
+  const nextButton = document.querySelector('.next');
+  nextButton.addEventListener('click', () => {
+    nextButton.style.backgroundColor = '#91C84F';
+
+    setTimeout(() => {
+      // 실제 랭킹 페이지 URL은 form action 속성에서 처리됨
+      // 여기서는 딜레이 후 form 제출이 기본 동작으로 이루어짐
+    }, 200);
   });
 });
 
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 해설 링크(X) 클릭 시 효과
+const wrongButtons = document.querySelectorAll('.wrong-button');
+wrongButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    // 클릭 효과
+    button.style.backgroundColor = '#91C84F';
+
+    setTimeout(() => {
+      // 폼 제출은 기본 submit 동작으로 진행 (form action에 의해 이동)
+    }, 200);
+  });
+});
 
 
-function calculateAndShowScore() {
-    let correctCount = 0;
-    
-    // 각 문제별 정답 확인
-    for (let i = 1; i <= 3; i++) {
-        const isCorrect = userAnswers[i] === quizData[i].correct;
-        const resultElement = document.getElementById(`prob${i}`);
 
-        if (isCorrect) {
-            correctCount++;
-            resultElement.textContent = 'O';
-            resultElement.classList.add('correct');
-        } 
-        else {
-            resultElement.textContent = 'X';
-            resultElement.classList.add('incorrect');
-        }
-    }
+// // 아래 함수는 필요하면 호출해서 동적으로 점수와 결과를 재표시할 수 있음
+// function calculateAndShowScore(userAnswers, quizData) {
+//   let correctCount = 0;
 
-    // 점수 계산 (문제당 10점)
-    const totalScore = correctCount * 10;
+//   for (let i = 1; i <= Object.keys(quizData).length; i++) {
+//     const isCorrect = userAnswers[i] === quizData[i].correct;
+//     const button = document.getElementById(`prob${i}`);
+//     if (!button) continue;
 
-    // 결과 표시
-    document.getElementById('correct-count').textContent = correctCount;
-    document.getElementById('tot_score').textContent = `총점: ${totalScore}점`;
+//     const span = button.querySelector('.result-text');
+//     if (!span) continue;
 
-    // 결과 화면 표시
-    document.getElementById('score-screen').classList.remove('hidden');
-}
+//     if (isCorrect) {
+//       correctCount++;
+//       span.textContent = 'O';
+//       button.classList.add('correct');
+//       button.classList.remove('incorrect');
+//     } else {
+//       span.textContent = 'X';
+//       button.classList.add('incorrect');
+//       button.classList.remove('correct');
+//     }
+//   }
 
-function showSolution() {
-    alert('해설 페이지는 아직 구현되지 않았습니다.');
-}
+//   const totalScore = correctCount * 10;
+//   const correctCountElem = document.getElementById('correct-count');
+//   const totalScoreElem = document.querySelector('#tot_score h3');
 
+//   if (correctCountElem) correctCountElem.textContent = correctCount;
+//   if (totalScoreElem) totalScoreElem.textContent = `총점: ${totalScore}점`;
+
+//   // score-screen이라는 영역이 있다면 보이게 하기
+//   const scoreScreen = document.getElementById('score-screen');
+//   if (scoreScreen) scoreScreen.classList.remove('hidden');
+// }

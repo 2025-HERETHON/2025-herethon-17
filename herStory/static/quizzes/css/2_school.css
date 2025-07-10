@@ -129,6 +129,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .text-wrapper-2 {
@@ -142,6 +143,7 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .tab-group .line-2 {
@@ -187,7 +189,7 @@ h3 {
   text-align: center;
   cursor: pointer;
   box-shadow: 0px 0px 3px #00000026;
-  width: 90%;      
+  width: 20rem;      
   margin-left: 1rem;       
 }
 
@@ -203,7 +205,7 @@ h3 {
   text-align: center; 
   cursor: pointer;
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 90%;
+  width: 20rem;
   margin-left: 1rem;
   margin-top: 3.1rem;  
   position: relative; 
