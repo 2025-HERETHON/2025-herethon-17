@@ -21,6 +21,7 @@ def school_selection(request):
         if school_id:
             # 학교 - 퀴즈 시작 시 입력한 학교 정보로 처리
             request.session['selected_school_id'] = school_id  # 해당 사용자의 세션에 저장
+            print(f"[DEBUG] 선택된 school_id: {school_id}") # mj - 디버깅
             return redirect('quizzes:quiz_detail')  # 퀴즈 시작 뷰로 이동
 
         messages.error(request, '학교를 선택해주세요.')

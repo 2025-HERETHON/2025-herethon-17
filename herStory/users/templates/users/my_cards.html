@@ -1,4 +1,98 @@
-<h2>📚 내가 저장한 인물 카드</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/mypage.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+      </a>
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <nav class="menu" id="menu">
+        <ul>
+          {% if user.is_authenticated %}
+            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+          {% else %}
+            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+          {% endif %}
+          <div class="divider"></div>
+          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+          <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+          <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+          <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <div class="divider"></div>
+      <p>인물 카드 조회</p>
+      <div class="card-container">
+  {% for saved in saved_cards %}
+  <a href="{% url 'users:my_cards_detail' saved.card.id %}">
+    <div class="card-row">
+      <div class="card-scroll">
+        <span class="tag">이름</span>
+        <span class="value">{{ saved.card.name }}</span>
+        <span class="tag">시대</span>
+        <span class="value">{{ saved.card.era }}</span>
+        <span class="tag">지역</span>
+        <span class="value">{{ saved.card.region }}</span>
+      </div>
+    </div>
+  </a>
+  {% empty %}
+    <p>저장한 카드가 아직 없어요 😢</p>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if saved_cards.has_previous %}
+    <a href="?page={{ saved_cards.previous_page_number }}">«</a>
+  {% endif %}
+
+  {% for num in saved_cards.paginator.page_range %}
+    {% if saved_cards.number == num %}
+      <span class="page-btn active">{{ num }}</span>
+    {% else %}
+      <a href="?page={{ num }}" class="page-btn">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if saved_cards.has_next %}
+    <a href="?page={{ saved_cards.next_page_number }}">»</a>
+  {% endif %}
+</div>
+      <!-- <div class="person-list" id="personList"></div>
+      <div class="pagination" id="pagination">
+        {% if saved_cards.has_previous %}
+          <a href="?page={{ saved_cards.previous_page_number }}">«</a>
+        {% endif %}
+
+        {% for num in saved_cards.paginator.page_range %}
+          {% if saved_cards.number == num %}
+            <strong>{{ num }}</strong>
+          {% else %}
+            <a href="?page={{ num }}">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if saved_cards.has_next %}
+          <a href="?page={{ saved_cards.next_page_number }}">»</a>
+        {% endif %}
+      </div> -->
+      
+    </main>
+    <script src="{% static 'home/js/home.js' %}"></script>
+    <!-- <script src="{% static 'home/js/person.js' %}"></script> -->
+  </body>
+</html>
+<!-- <h2>📚 내가 저장한 인물 카드</h2>
 
 {% if saved_cards %}
   <ul style="list-style: none; padding: 0;">
@@ -17,4 +111,4 @@
 <form method="post" action="{% url 'users:mypage' %}">
   {% csrf_token %}
   <button type="submit">마이페이지로 돌아가기</button>
-</form>
+</form> -->

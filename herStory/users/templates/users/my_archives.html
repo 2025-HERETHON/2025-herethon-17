@@ -1,4 +1,67 @@
-<h2>내가 쓴 글</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Era Echo - mypage</title>
+    <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/mypage.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/button.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <nav class="menu" id="menu">
+        <ul>
+          {% if user.is_authenticated %}
+            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+          {% else %}
+            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+          {% endif %}
+          <div class="divider"></div>
+          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+          <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+          <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+          <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <div class="divider"></div>
+      <p>미래를 잇다 아카이빙</p>
+      <button class="mypage-btn" id="postListBtn">
+        <img
+          src="{% static 'home/image/Xnix/Line/card_message.png' %}"
+          alt="cardMessage1"
+          class="card-icon"
+        />
+        <img
+          src="{% static 'home/image/card_union.png' %}"
+          alt="cardUnion"
+          class="card-union"
+        />
+        글 목록 조회
+      </button>
+      <button class="mypage-btn" id="commentListBtn ">
+        <img
+          src="{% static 'home/image/Xnix/Line/card_message.png' %}"
+          alt="cardMessage2"
+          class="card-icon"
+        />
+        <img
+          src="{% static 'home/image/card_union.png' %}"
+          alt="cardUnion"
+          class="card-union"
+        />
+        댓글 목록 조회
+      </button>
+    </main>
+  </body>
+</html>
+
+<!-- <h2>내가 쓴 글</h2>
 <ul>
   {% for post in my_posts %}
     <li>
@@ -23,4 +86,4 @@
   {% endfor %}
 </ul>
 
-<a href="{% url 'users:mypage' %}">← 마이페이지로 돌아가기</a>
+<a href="{% url 'users:mypage' %}">← 마이페이지로 돌아가기</a> -->
