@@ -199,9 +199,9 @@ body {
 }
 
 .selction button {
-  text-align: center;
-  width: 20rem;      
-  margin-left: 1rem;       
+  text-align: center; 
+  width: 90%;
+  margin-left: 0.7rem;
 }
 
 .select-box {
@@ -254,9 +254,9 @@ body {
   font-weight: 600;       
   text-align: center; 
   cursor: pointer;
-  box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 20rem;      
-  margin-left: 1rem;
+  box-shadow: 3px 3px 3px 3px #b8b6b626;    
+  width: 90%;
+  margin-left: 0.7rem;
   position: relative; 
   display: block;    
 }

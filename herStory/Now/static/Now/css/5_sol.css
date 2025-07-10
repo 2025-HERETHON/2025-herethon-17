@@ -163,11 +163,10 @@ body {
   border-radius: 15px;
   padding: 1.2rem;  
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 73%;
+  width: 80%;
   height: 10rem;
-  margin-right: 1.2rem;
-  margin-left: 1.2rem;
-  margin-right: 1rem;
+  margin-right: 0.7rem;
+  margin-left: 0.7rem;
   position: relative; 
   display: block;
   margin-bottom: 43%;
@@ -184,8 +183,8 @@ body {
   text-align: center; 
   cursor: pointer;
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 20rem;      
-  margin-left: 1rem;
+  width: 90%;
+  margin-left: 0.7rem;
   position: relative; 
   display: block;    
   margin-top: 4rem;  
