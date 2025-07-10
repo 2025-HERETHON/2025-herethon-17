@@ -57,18 +57,30 @@ let selectedButton = null;
 let selectedAnswer = null; // 선택된 답안 번호 저장 → 프론트인지 백인지 몰라서 일단..
     
     selctionbutton.forEach((button, index) => {
-        button.setAttribute('data-choice', index + 1); // 선택지 번호부여 (1~)
-        
-        button.addEventListener('click', function() {
-            if (selectedButton) { 
-                selectedButton.style.backgroundColor = '#f5ffef';
-            }   
-            this.style.backgroundColor = '#91C84F'; 
-            selectedButton = this;
-            selectedAnswer = parseInt(this.getAttribute('data-choice')); // 선택지 번호저장
+      button.setAttribute('data-choice', index + 1);
+
+      button.addEventListener('click', function () {
+        // 모든 버튼 초기화: 배경색 & 이미지 되돌리기
+        selctionbutton.forEach((btn, i) => {
+          btn.style.backgroundColor = '#ffffff';
+
+          const img = btn.querySelector('img');
+          img.src = `../../static/Now/image/_Num_${i + 1}.png`;
         });
+
+        // 현재 선택된 버튼 스타일 적용
+        this.style.backgroundColor = '#91C84F';
+        const selectedImg = this.querySelector('img');
+        selectedImg.src = `../../static/Now/image/_Num_${index + 1}_active.png`;
+
+        selectedButton = this;
+        selectedAnswer = parseInt(this.getAttribute('data-choice'));
+      });
     });
+
     
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
     nextButton.addEventListener('click', function() {
         if (!selectedButton) {
             return; 
