@@ -22,6 +22,10 @@ body {
   margin-bottom: 78px;
 }
 
+#postListBtn {
+  margin-top: 100px;
+}
+
 .mypage-info {
   display: flex;
   flex-direction: column;
