@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../../static/posts/css/header.css" />
-    <link rel="stylesheet" href="../../static/posts/css/mypage.css" />
+    <link rel="stylesheet" href="../../static/posts/css/peopleView.css" />
   </head>
   <body>
     <header class="header">
@@ -24,31 +24,89 @@
     <main class="main">
       <div class="divider"></div>
       <p>인물 카드 조회</p>
-      <div class="person-list" id="personList"></div>
-      <div class="pagination" id="pagination"></div>
+      <div class="person-list-wrapper">
+        <div class="person-list-box">
+          <!-- 인물 카드 1 -->
+          <div class="person-row">
+            <span class="tag" id="label">이름</span>
+            <span class="value">{{ saved.card.name }}</span>
+            <span class="tag" id="label">시대</span>
+            <span class="value">{{ saved.card.era }}</span>
+            <span class="tag" id="label">지역</span>
+            <span class="value">{{ saved.card.region }}</span>
+            <div class="cardDivider"></div>
+          </div>
+
+          <div class="person-row">
+            <span class="tag" id="label">이름</span>
+            <span class="value">{{ saved.card.name }}</span>
+            <span class="tag" id="label">시대</span>
+            <span class="value">{{ saved.card.era }}</span>
+            <span class="tag" id="label">지역</span>
+            <span class="value">{{ saved.card.region }}</span>
+            <div class="cardDivider"></div>
+          </div>
+
+          <div class="person-row">
+            <span class="tag" id="label">이름</span>
+            <span class="value">{{ saved.card.name }}</span>
+            <span class="tag" id="label">시대</span>
+            <span class="value">{{ saved.card.era }}</span>
+            <span class="tag" id="label">지역</span>
+            <span class="value">{{ saved.card.region }}</span>
+            <div class="cardDivider"></div>
+          </div>
+
+          <div class="person-row">
+            <span class="tag" id="label">이름</span>
+            <span class="value">{{ saved.card.name }}</span>
+            <span class="tag" id="label">시대</span>
+            <span class="value">{{ saved.card.era }}</span>
+            <span class="tag" id="label">지역</span>
+            <span class="value">{{ saved.card.region }}</span>
+            <div class="cardDivider"></div>
+          </div>
+          <div class="person-row">
+            <span class="tag" id="label">이름</span>
+            <span class="value">{{ saved.card.name }}</span>
+            <span class="tag" id="label">시대</span>
+            <span class="value">{{ saved.card.era }}</span>
+            <span class="tag" id="label">지역</span>
+            <span class="value">{{ saved.card.region }}</span>
+            <div class="cardDivider"></div>
+          </div>
+          <div class="person-row">
+            <span class="tag" id="label">이름</span>
+            <span class="value">{{ saved.card.name }}</span>
+            <span class="tag" id="label">시대</span>
+            <span class="value">{{ saved.card.era }}</span>
+            <span class="tag" id="label">지역</span>
+            <span class="value">{{ saved.card.region }}</span>
+            <div class="cardDivider"></div>
+          </div>
+          <div class="person-row">
+            <span class="tag" id="label">이름</span>
+            <span class="value">{{ saved.card.name }}</span>
+            <span class="tag" id="label">시대</span>
+            <span class="value">{{ saved.card.era }}</span>
+            <span class="tag" id="label">지역</span>
+            <span class="value">{{ saved.card.region }}</span>
+            <div class="cardDivider"></div>
+          </div>
+        </div>
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+          <button class="page-btn-back">&lt;</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">4</button>
+          <button class="page-btn">5</button>
+          <button class="page-btn-next">&gt;</button>
+        </div>
+      </div>
     </main>
     <script src="../../static/posts/js/home.js"></script>
     <script src="../../static/posts/js/person.js"></script>
   </body>
 </html>
-
-<!-- <h2>📚 내가 저장한 인물 카드</h2>
-
-{% if saved_cards %}
-  <ul style="list-style: none; padding: 0;">
-    {% for saved in saved_cards %}
-      <li>
-        <a href="{% url 'users:my_cards_detail' saved.card.id %}">
-          {{ saved.card.name }} | {{ saved.card.era }} | {{ saved.card.region }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>저장한 카드가 아직 없어요 😢</p>
-{% endif %}
-
-<form method="post" action="{% url 'users:mypage' %}">
-  {% csrf_token %}
-  <button type="submit">마이페이지로 돌아가기</button>
-</form> -->
