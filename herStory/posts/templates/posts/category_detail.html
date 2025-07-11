@@ -68,12 +68,20 @@
         </div>
         <img class="articleline" src="{% static 'posts/image/Future_Line .png' %}">
         {% if user.is_authenticated %}
-        <div class="Comment">
+        <!-- <div class="Comment">
           <form method="POST" action="{% url 'posts:create-comment' post.id %}">
             {% csrf_token %}
             <input type="text" name="content" placeholder="서사를 함께 이어나가 보아요!">
-            <button type="submit"><img src="{% static 'posts/image/Future_Send.svg' %}"></button>
+            <button type="submit">qjxm</button>
           </form>
+          <img src="{% static 'posts/image/Future_Send.svg' %}">
+        </div> -->
+        <div class="Comment">
+        <form method="POST" action="{% url 'posts:create-comment' post.id %}" id="comment-form">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="서사를 함께 이어나가 보아요!">
+        </form>
+        <img src="{% static 'posts/image/Future_Send.svg' %}" id="comment-submit" style="cursor: pointer;">
         </div>
         {% endif %}
       </div>
