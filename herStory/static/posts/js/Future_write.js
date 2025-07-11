@@ -1,36 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById("menuToggle");
-  const menu = document.getElementById("menu");
-  const menuItems = menu.querySelectorAll("li");
-
-  // 햄버거 버튼 클릭 시 메뉴 토글
-  menuToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    menu.classList.toggle("active");
-  });
-
-  // 메뉴 항목 클릭 시 active 적용
-  menuItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.stopPropagation();
-      menuItems.forEach(el => el.classList.remove("active"));
-      item.classList.add("active");
-    });
-  });
-
-  // 메뉴 외부 클릭 시 닫기
-  document.addEventListener("click", () => {
-    menu.classList.remove("active");
-  });
-
-  // 메뉴 안쪽 클릭 시 이벤트 전파 방지
-  menu.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
-
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  // 태그 선택할 때 색상 바꾸고 체크박스 값 토글
+ // 태그 선택할 때 색상 바꾸고 체크박스 값 토글
   const tags = document.querySelectorAll('.tag');
   tags.forEach(tag => {
     tag.addEventListener('click', function (e) {
@@ -64,5 +32,3 @@ document.addEventListener('DOMContentLoaded', function() {
       button.querySelector('input').checked = true;
     });
   });
-
-});
