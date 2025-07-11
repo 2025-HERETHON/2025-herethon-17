@@ -1,29 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Era Echo - 학교별 랭킹</title>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="{% static 'quizzes/css/6_ranking.css' %}" />
+    
+    <script src="{% static 'quizzes/js/6_ranking.js' %}" defer></script>
 </head>
 <body>
-    <h2>학교별 랭킹</h2>
-<table>
-    <tr>
-        <th>순위</th>
-        <th>학교명</th>
-        <th>총점</th>
-        <th>참여자 수</th>
-        <th>평균 점수</th>
-    </tr>
-    {% for school in schools %}
-    <tr>
-        <td>{{ forloop.counter }}</td>  <!-- 순위 -->
-        <td>{{ school.name }}</td>
-        <td>{{ school.total_score }}</td>
-        <td>{{ school.participant_count }}</td>
-        <td>{{ school.average_score }}</td>
-    </tr>
-    {% endfor %}
-</table>
+  <div class="app-container">
+
+    <header class="header">
+      <img src="{% static 'quizzes/image/mainLogo.svg' %}" alt="메인로고" class="main-logo" />
+      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기/닫기">
+        <img src="{% static 'quizzes/image/Menu.svg' %}" alt="메뉴 아이콘" />
+      </button>
+      <nav class="menu" id="menu" aria-label="주 메뉴">
+        <ul>
+          {% if user.is_authenticated %}
+            <li class="menu-link" data-url="{% url 'users:logout' %}">로그아웃</li>
+          {% else %}
+            <li class="menu-link" data-url="{% url 'users:login' %}">로그인</li>
+          {% endif %}
+          <div class="divider"></div>
+          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다</li>
+          <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다</li>
+          <li class="menu-link" data-url="/posts/category/1/">미래를 잇다</li>
+          {% if user.is_authenticated %}
+            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <div class="for-zindex">
+      <!-- 탭 영역 -->
+      <div class="tab-group">
+        <div class="text-wrapper-1">퀴즈</div>
+        <div class="text-wrapper-2 active">학교별 랭킹</div>
+        <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" alt="선" />
+      </div>
+
+      <div class="container">
+        <!-- 랭킹 리스트 -->
+        {% for school in schools %}
+  {% with rank_num=forloop.counter|stringformat:"d" %}
+    <div class="rank-box" id="rank{{ rank_num }}">
+      {% if forloop.counter <= 3 %}
+        {% with img_path="quizzes/image/rank_"|add:rank_num|add:"_new.png" %}
+          <img src="{% static img_path %}" alt="{{ rank_num }}등 이미지">
+        {% endwith %}
+      {% else %}
+        <img src="{% static 'quizzes/image/rank_4_new.png' %}" alt="4등 이후 이미지">
+      {% endif %}
+
+      <span class="rank-text">{{ school.name }}</span>
+      <span class="rank-score">{{ school.total_score }}점</span>
+    </div>
+  {% endwith %}
+{% endfor %}
+
+
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>

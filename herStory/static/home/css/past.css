@@ -1,0 +1,46 @@
+body {
+  background: linear-gradient(#d5eab3);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main .divider {
+  height: 2px;
+  background-color: #4c6d1e;
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.main p {
+  color: #4c6d1e;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 78px;
+}
+
+.past-img {
+  margin-bottom: 84px;
+}
+
+.random-card-btn,
+.card-save-btn {
+  position: relative;
+  width: 320px;
+  height: 50px;
+  border: none;
+  border-radius: 1rem;
+  background-color: #f6ffef;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.random-card-btn.hovered,
+.card-save-btn.hovered {
+  background-color: #91c84f;
+}

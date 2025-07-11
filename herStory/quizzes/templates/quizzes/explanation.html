@@ -1,24 +1,93 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Era Echo - Quiz</title>
+  <link rel="stylesheet" href="{% static 'quizzes/css/5_sol.css' %}" />
+  <script defer src="{% static 'quizzes/js/5_sol_merged.js' %}"></script>
 </head>
 <body>
-    <h2>문제</h2>
-    <p>{{ quiz.question }}</p>
+  <div class="app-container">
+    <header class="header">
+      <img src="{% static 'quizzes/image/mainLogo.svg' %}" class="main-logo" />
+      <button class="menu-toggle" id="menuToggle">
+        <img src="{% static 'quizzes/image/Menu.svg' %}" />
+      </button>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>로그인</li>
+          <div class="divider"></div>
+          <li>과거를 알다</li>
+          <li>지금을 묻다</li>
+          <li>미래를 잇다</li>
+        </ul>
+      </nav>
+    </header>
 
-    <h3>정답</h3>
-    {% if correct_choice %}
-        <p>{{ quiz.answer_index }}. {{ correct_choice.text }}</p>
-    {% else %}
-        <p>정답 정보를 찾을 수 없습니다.</p>
-    {% endif %}
+    <!-- 탭 메뉴 -->
+    <div class="tab-group">
+      <div class="text-wrapper-1">퀴즈</div>
+      <div class="text-wrapper-2" data-url="{% url 'quizzes:ranking' %}">학교별 랭킹</div>
+      <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" />
+    </div>
 
-    <h3>해설</h3>
-    <p>{{ quiz.explanation }}</p>
+    <!-- 퀴즈 결과 박스 -->
+    <div class="solution-box">
+      <div class="answer">
+        <span id="answer">정답</span>
+        {% if correct_choice %}
+          <span id="answer_detail">{{ quiz.answer_index }}. {{ correct_choice.text }}</span>
+        {% else %}
+          <span id="answer_detail">정답 정보를 찾을 수 없습니다.</span>
+        {% endif %}
+      </div>
 
-    <a href="{% url 'quizzes:quiz_result' %}">뒤로 가기</a>
+      <div class="exp">
+        <span id="exp">해설</span>
+        <span id="exp_detail">{{ quiz.explanation }}</span>
+      </div>
+    </div>
+
+    <!-- 뒤로가기 버튼 -->
+    <button type="button" class="back" data-url="{% url 'quizzes:quiz_result' %}">
+      <span class="back-text">뒤로 가기</span>
+      <img class="union" src="{% static 'quizzes/image/Union_back.svg' %}" />
+    </button>
+
+  </div>
+
+  <!-- 뒤로가기 + 탭 이동 스크립트 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 뒤로가기 버튼
+      const backButton = document.querySelector('.back');
+      const unionImage = document.querySelector('.union');
+
+      backButton?.addEventListener('click', () => {
+        backButton.style.backgroundColor = '#91C84F';
+        if (unionImage) {
+          unionImage.src = "{% static 'Now/image/Union_active_.svg' %}";
+        }
+
+        setTimeout(() => {
+          const url = backButton.getAttribute('data-url');
+          window.location.href = url;
+        }, 200);
+      });
+
+      // 탭 이동
+      document.querySelectorAll('.text-wrapper-1, .text-wrapper-2').forEach(item => {
+        item.addEventListener('click', () => {
+          const url = item.getAttribute('data-url');
+          setTimeout(() => {
+            window.location.href = url;
+          }, 200);
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>

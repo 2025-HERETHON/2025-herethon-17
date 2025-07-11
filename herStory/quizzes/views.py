@@ -48,7 +48,11 @@ def quiz_detail(request):
 
     return render(request, 'quizzes/quiz_detail.html', {'quiz': quiz}) # 문제들 남았으면 다시 랜덤 돌림
 
-# 풀고 제출
+# 중간 페이지
+@login_required
+def quiz_result_redirect_view(request):
+    return redirect('quizzes:quiz_result')
+
 @login_required
 def submit_answer(request):
     if request.method == 'POST':
@@ -56,52 +60,50 @@ def submit_answer(request):
         quiz = get_object_or_404(Quiz, id=quiz_id)
         choice_id = request.POST.get('choice_id')
         choice = get_object_or_404(Choice, id=choice_id)
-        # 정오답 처리
-        # 전체 선택지
+
         choices = list(quiz.choices.all())
         try:
-            selected_index = choices.index(choice) # 객체들 중 선택한 choice_id
+            selected_index = choices.index(choice)
             is_correct = (selected_index == quiz.answer_index)
         except ValueError:
             is_correct = False
 
+        points = quiz.points if is_correct else 0
 
-        points = quiz.points if is_correct else 0 #틀리면 0점
-
-        school_id = request.session.get('selected_school_id') # 학교 - 세션에 저장된 학교 정보로 처리
+        school_id = request.session.get('selected_school_id')
         school = get_object_or_404(School, id=school_id)
 
         UserQuizResult.objects.create(
             user=request.user,
-            school = school,
+            school=school,
             quiz=quiz,
             selected_choice=choice,
             is_correct=is_correct,
             points_earned=points
         )
 
-        # 퀴즈 끝날 때마ㄷ 세션 상황 업데이트
-        # 원래 있던 세션
         session = QuizSession.objects.filter(user=request.user).last()
-        if session is None: # 처음 푸는 거면 세션 생성
-            school_id = request.session.get('selected_school_id')
-            school = get_object_or_404(School, id=school_id)
-            # session = QuizSession.objects.get_or_create( # 여러 번 접근불가능
-            #     user=request.user,
-            #     school=school
-            # )
+        if session is None:
             session = QuizSession.objects.create(
                 user=request.user,
                 school=school,
             )
 
         session.total_answers += 1
-        if is_correct: # 정답이면
+        if is_correct:
             session.correct_answers += 1
             session.total_score += points
         session.save()
 
-        return redirect('quizzes:quiz_detail')  # 다음 문제로
+        # ✅ 여기서 문제 다 풀었는지 확인
+        total_quiz_count = Quiz.objects.filter(is_active=True).count()
+        user_answered_count = UserQuizResult.objects.filter(user=request.user).values('quiz_id').distinct().count()
+
+        if user_answered_count >= total_quiz_count:
+            return redirect('quizzes:quiz_result_redirect')  # 중간 페이지로
+
+        return redirect('quizzes:quiz_detail')
+
 
 @login_required
 def quiz_result(request): 
