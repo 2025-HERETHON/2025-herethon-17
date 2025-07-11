@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Era Echo - 글쓰기</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'posts/css/Future_write.css' %}">
+  <script src="{% static 'posts/js/Future_write.js' %}" defer></script>
+</head>
+
+<body>
+<div class="app-container">
+      <header class="header">
+        <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+        </a>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <nav class="menu" id="menu">
+          <ul>
+            {% if user.is_authenticated %}
+              <li>{{ user.username }}님 환영합니다!</li>
+              <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+            {% else %}
+              <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <div class="divider"></div>
+            <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+            <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+            <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+
+  <div class="for-zindex">
+    <form method="POST" action="{% url 'posts:create' %}">
+      {% csrf_token %}
+
+      <div class="Article-write">
+        <div class="Main">
+          <input class="Title" type="text" name="title">
+        </div>
+
+        <div class="checkbox">
+          <div class="Hashtag">
+            <input type="radio" id="type-student" name="type" value="취준생" hidden>
+            <img class="checkimg" src="{% static 'posts/image/Future__Check_.svg' %}">
+            <span class="Hashtag-student">취준생</span>
+          </div>
+          <div class="Hashtag">
+            <input type="radio" id="type-worker" name="type" value="현직자" hidden>
+            <img class="checkimg" src="{% static 'posts/image/Future__Check_.svg' %}">
+            <span class="Hashtag-worker">현직자</span>
+          </div>
+          <div class="Hashtag">
+            <input type="radio" id="type-etc" name="type" value="기타" hidden>
+            <img class="checkimg" src="{% static 'posts/image/Future__Check_.svg' %}">
+            <span class="Hashtag-etc">기타</span>
+          </div>
+        </div>
+
+        <div class="Article-content">
+          <textarea class="write" name="content" spellcheck="false"></textarea>
+        </div>
+
+        <div class="category">
+          {% for category in categories %}
+            <label class="tag">
+            <input type="checkbox" name="category[]" value="{{ category.id }}" hidden>
+            #{{ category.name }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <button type="submit" class="upload">
+        <span class="upload-text">등록하기</span>
+        <img class="upload-plus" src="{% static 'posts/image/Future__Upload.svg' %}">
+      </button>
+
+    </form>
+  </div>
+</div>
+    <script src="{% static 'home/js/home.js' %}"></script>
+</body>
+</html>

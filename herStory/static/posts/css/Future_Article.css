@@ -1,0 +1,182 @@
+@media (max-width: 375px) {
+  .app-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    background-color: #D5EAB3;
+}
+
+.for-zindex{
+    z-index: 100;
+}
+
+body {
+  display: flex;
+  justify-content: center;  
+  background-color: #D5EAB3;
+  font-family: "Pretendard", sans-serif;
+}
+
+.app-container {
+  width: 23.4375rem;
+  height: 50.75rem;
+  aspect-ratio: 23.4375 / 50.75; 
+  background: #D5EAB3;
+  border-radius: 1.5rem;
+  display: flex; 
+  flex-direction: column; 
+  position: relative;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.Article {
+  background: #4C6D1E;      
+  border: none;
+  border-radius: 15px;
+  padding: 1.2rem;  
+  box-shadow: 3px 3px 3px 3px #b8b6b626;   
+  width: 80%;
+  height: fit-content;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+  display: block;
+}
+
+
+.Title {
+    cursor: pointer;
+    color: #91C84F;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.Job {
+    color: white;
+    margin: 0.5rem;
+    font-weight: 90;
+    font-size: 0.65rem;
+}
+
+.Contents {
+    color: white;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    font-weight: 200;
+    font-size: 0.9rem;
+    line-height: 150%;
+    max-height: 30%;
+}
+
+.Hashtag {
+    cursor: pointer;
+    position: relative;
+    background-color: #91C84F;
+    padding: 0.4rem 0.25rem 0.4rem 0.25rem ;
+    border-radius: 0.375rem;
+    font-weight: 200;
+    font-size: 0.75rem;
+    line-height: 150%;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.Chat-box {
+    margin: 1rem auto 0.5rem auto;
+    border-top-style: solid;
+    border-top-width : 0.7px;
+    border-bottom-style: solid;
+    border-bottom-width: 0.7px;
+    border-color: white;
+    background-color: transparent;
+    overflow-x : hidden; 
+    overflow-y : auto;  
+    scrollbar-width: thin;
+    scrollbar-color: #D5EAB3;
+}
+
+/* 다른 사용자 댓글 */
+.chat { 
+    width: 12rem;
+    font-size: 0.8rem;
+    color: #9F9F9F;
+    background-color: #F3FFE0;
+    margin-top: 0.8rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+    line-height: 150%;
+}
+
+/* 내 댓글 */
+.chat-writer {
+    width: 12rem;
+    margin-left: 5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: #9F9F9F;
+    background-color: #F3FFE0;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    line-height: 150%;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+.Comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; 
+  margin-bottom: auto;
+}
+
+.Comment img {
+  cursor: pointer;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.7rem;
+}
+
+.Comment input {
+    background-color: transparent;
+    border: transparent;
+    padding: 0.7rem;  
+    background-color: #F3FFE0;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-top: 0.7rem;
+    width: 90%;
+    color: #9F9F9F;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.new img {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 70%;
+    width: 5.5rem;
+    height: 5.5rem;
+    z-index: 110;
+}
+
+#comment-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

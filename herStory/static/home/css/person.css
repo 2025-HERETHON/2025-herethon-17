@@ -1,0 +1,99 @@
+body {
+  background: linear-gradient(#d5eab3);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.main p {
+  color: #4c6d1e;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 1.5rem;
+}
+
+.person-list {
+  background-color: #40551e;
+  padding: 1.5rem 1rem;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.card-row {
+  position: relative;
+  background-color: #5e8322;
+  border-radius: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.card-scroll::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+  display: none;
+}
+
+.card-scroll {
+  overflow-x: auto;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  scrollbar-width: none;
+}
+
+.label {
+  background-color: #a2c946;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 0.3rem;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.value {
+  color: #ffffff;
+  font-size: 14px;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.page-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: white;
+  font-weight: bold;
+  color: #40551e;
+  cursor: pointer;
+}
+
+.page-btn.active {
+  background-color: #a2c946;
+  color: white;
+}
+
+.page-btn:hover {
+  background-color: #7fa543;
+  color: white;
+}

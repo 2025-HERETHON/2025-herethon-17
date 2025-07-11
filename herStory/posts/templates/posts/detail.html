@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Era Echo - 게시판 상세</title>
+    <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'posts/css/Future_Article.css' %}">
+  <script src="{% static 'posts/js/Future_Article.js' %}"></script>
+  <script src="{% static 'home/js/home.js' %}"></script>
+</head>
+
+<body>
+<div class="app-container">
+      <header class="header">
+        <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+        </a>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <nav class="menu" id="menu">
+          <ul>
+            {% if user.is_authenticated %}
+              <li>{{ user.username }}님 환영합니다!</li>
+              <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+            {% else %}
+              <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <div class="divider"></div>
+            <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+            <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+            <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+
+<div class="for-zindex">
+    <div class="Article">
+      <div class="Main">
+        <span class="Title">{{ post.title }}</span>
+        <span class="Job">· {{ post.type }}</span>
+      </div>
+
+      <div class="Sub">
+        <div class="Contents">{{ post.content }}</div>
+
+        <div class="Contents">
+          {% for category in post.category.all %}
+            <span class="Hashtag">#{{ category.name }}</span>
+          {% empty %}
+            <span class="Hashtag">태그 없음</span>
+          {% endfor %}
+        </div>
+
+        <div class="Contents">
+          {% for tag in post.tags.all %}
+            <span class="Hashtag">#{{ tag.name }}</span>
+          {% endfor %}
+        </div>
+
+        {% if request.user == post.user %}
+        <div class="Contents">
+          <!-- <a href="{% url 'posts:update' post.id %}">수정</a>
+          <a href="{% url 'posts:delete' post.id %}">삭제</a> -->
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- 댓글 -->
+      <div class="Chat-box">
+        {% for comment in comments %}
+          {% if not comment.parent_comment %}
+            <div class="{% if request.user == comment.author %}chat-writer{% else %}chat{% endif %}">
+              {% if update_comment_id == comment.id %}
+              <form method="POST" action="{% url 'posts:update-comment' comment.id %}">
+                {% csrf_token %}
+                <textarea name="content" rows="3">{{ comment.content }}</textarea><br>
+                <button type="submit">저장</button>
+                <a href="{% url 'posts:detail' post.id %}">취소</a>
+              </form>
+              {% else %}
+                {{ comment.content }}
+                {% if request.user == comment.author %}
+                  <!-- 수정/삭제 버튼 가능 -->
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- ✅ 수정된 댓글 작성 폼 -->
+      <div class="Comment">
+        <!-- <form method="POST" action="{% url 'posts:create-comment' post.id %}" id="comment-form">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="서사를 함께 이어나가 보아요!">
+        </form>
+          <img src="{% static 'posts/image/Future_Send.svg' %}" id="comment-submit" style="cursor: pointer;"> -->
+          <form method="POST" action="{% url 'posts:create-comment' post.id %}" id="comment-form" style="display: flex; align-items: center; gap: 8px;">
+          {% csrf_token %}
+          <input type="text" name="content" placeholder="서사를 함께 이어나가 보아요!" style="flex: 1; padding: 8px;">
+          <button type="submit" style="background: none; border: none; padding: 0;">
+          <img src="{% static 'posts/image/Future_Send.svg' %}" style="cursor: pointer; height: 24px;">
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="new">
+    <img src="{% static 'posts/image/Future__note-plus.png' %}"/>
+  </div>
+</div>
+
+</body>
+</html>

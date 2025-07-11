@@ -1,0 +1,65 @@
+.peopleCard {
+  width: 320px;
+  height: 420px;
+  border-radius: 1rem;
+  background-color: #4c6d1e;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 37px;
+  margin-top: 20px;
+}
+
+.person-info ul {
+  list-style: none;
+}
+
+.person-info {
+  padding: 0 30px;
+  max-height: 150px; /* 💡 고정 높이: 너가 원하는 만큼 조절 가능 */
+  overflow-y: auto; /* 👈 수직 스크롤 가능하게 설정 */
+}
+
+.people-img {
+  width: 268px;
+  height: 200px;
+  border-radius: 1rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.person-name {
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+.person-date {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.person-meta {
+  font-size: 14px;
+  font-weight: 500px;
+}
+.card-union,
+.card-save {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+}
+
+.label {
+  display: inline-block;
+  background-color: #a2c946;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  padding: 2px 10px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}

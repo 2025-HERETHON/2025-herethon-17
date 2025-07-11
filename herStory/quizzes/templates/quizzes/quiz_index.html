@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Era Echo - Quiz</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
+        <!--mj - django 연결-->
+            <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+        <link rel="stylesheet" href="{% static 'quizzes/css/1_intro.css' %}">
+        <script src="{% static 'quizzes/js/1_intro.js' %}"></script>
+        <script src="{% static 'home/js/home.js' %}"></script>
+        <script>
+            const schoolSelectionUrl = "{% url 'quizzes:school_selection' %}";
+        </script>
+</head>
+
+<body>
+
+<div class="app-container">
+  <header class="header">
+        <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+        </a>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <nav class="menu" id="menu">
+          <ul>
+            {% if user.is_authenticated %}
+              <li>{{ user.username }}님 환영합니다!</li>
+              <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+            {% else %}
+              <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <div class="divider"></div>
+            <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+            <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+            <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+ <div class="for-zindex">
+<!--━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-->
+
+      <div class="tab-group">
+        <div class="text-wrapper-1">퀴즈</div>
+        <!--mj - django 변환-->
+        <div class="text-wrapper-2">
+        <a href="{% url 'quizzes:ranking' %}" style="text-decoration: none; color:#919191;">학교별 랭킹</a>
+        </div>
+        <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}"/>
+      </div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+   <div class="now">
+        <div class="main-ment">
+          <img class="line-1" src="{% static 'quizzes/image/Line 91.svg' %}"/>
+          <div class="text-wrapper">
+            현재를 묻다
+          </div>
+        </div>
+        <img class="image-removebg" src="{% static 'quizzes/image/3ae136c5506c1a77054c19a675e54824e30a292e.png' %}" />
+      </div>
+      <button type="submit" class="next">
+                <img class="union" src="{% static 'quizzes/image/Union.svg' %}" data-active-src="{% static 'quizzes/image/Union_active_.svg' %}" />
+          <span class="next-text"><a href="{% url 'quizzes:school_selection' %}" style="text-decoration: none; color:#919191;" >퀴즈 풀기</a></span>
+      </button>
+  </div>
+</body>
+
+</html>

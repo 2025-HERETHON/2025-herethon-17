@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Era Echo - 학교별 랭킹</title>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'quizzes/css/6_ranking.css' %}" />
+    </head>
+<body>
+  <div class="app-container">
+    <header class="header">
+        <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+        </a>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <nav class="menu" id="menu">
+          <ul>
+            {% if user.is_authenticated %}
+              <li>{{ user.username }}님 환영합니다!</li>
+              <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+            {% else %}
+              <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <div class="divider"></div>
+            <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+            <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+            <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+
+    <div class="for-zindex">
+      <!-- 탭 영역 -->
+      <div class="tab-group">
+        <div class="text-wrapper-1">
+          <a href="{% url 'quizzes:quiz_index' %}" style="text-decoration: none; color:#919191;">퀴즈</a>
+        </div>
+        <div class="text-wrapper-2 active">학교별 랭킹</div>
+        <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" alt="선" />
+      </div>
+
+      <div class="container">
+        <!-- 랭킹 리스트 -->
+        {% for school in schools %}
+  {% with rank_num=forloop.counter|stringformat:"d" %}
+    <div class="rank-box" id="rank{{ rank_num }}">
+      {% if forloop.counter <= 3 %}
+        {% with img_path="quizzes/image/rank_"|add:rank_num|add:"_new.png" %}
+          <img src="{% static img_path %}" alt="{{ rank_num }}등 이미지">
+        {% endwith %}
+      {% else %}
+        <img src="{% static 'quizzes/image/rank_4_new.png' %}" alt="4등 이후 이미지">
+      {% endif %}
+
+      <span class="rank-text">{{ school.name }}</span>
+      <span class="rank-score">{{ school.total_score }}점</span>
+    </div>
+  {% endwith %}
+{% endfor %}
+
+
+      </div>
+    </div>
+
+  </div>
+      <script src="{% static 'quizzes/js/6_ranking.js' %}" defer></script>
+      <script src="{% static 'home/js/home.js' %}"></script>
+</body>
+</html>

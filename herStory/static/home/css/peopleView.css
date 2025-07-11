@@ -1,0 +1,124 @@
+a {
+  all:unset;
+}
+
+body {
+  background: linear-gradient(#d5eab3);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main .divider {
+  height: 2px;
+  background-color: #4c6d1e;
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.main p {
+  color: #4c6d1e;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 78px;
+}
+
+.person-list-box {
+  width: 320px;
+  height: 340px;
+  border-radius: 1rem;
+  background-color: #4c6d1e;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 37px;
+  margin-top: 20px;
+}
+
+.person-row {
+  display: flex;
+  flex-direction: row;
+  padding-top: 16px;
+  border-bottom: 1px solid #d5eab3;
+  color: #ffffff;
+  max-width: 259px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.value {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+#label {
+  display: inline-block;
+  background-color: #a2c946;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  padding: 2px 10px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.main .cardDivider {
+  height: 1px;
+  background-color: #ffffff;
+  width: 290px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center; /* ✅ 가운데 정렬 핵심 */
+  align-items: center;
+  gap: 6px; /* 버튼 간 간격 */
+}
+
+.page-btn {
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: #f6ffef;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* .page-btn-back,
+.page-btn-next {
+  width: 30px;
+  height: 30px;
+  background-color: #f6ffef;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+} */
+
+.page-btn-back {
+  background: none;
+  border: none;
+  color: #8fa381;
+  font-size: 30px;
+  margin-right: 10px;
+}
+.page-btn-next {
+  background: none;
+  border: none;
+  color: #91c84f;
+  font-size: 30px;
+  margin-left: 10px;
+}
+

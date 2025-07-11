@@ -1,0 +1,11 @@
+### 가상환경 ###
+mainvenv/
+venv/
+
+### Django ###
+*.sqlite3
+db.sqlite3
+media/
+#static/
+__pycache__/
+*.py[cod]

@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Era Echo - Home</title>
+    <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/past.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/button.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/peopleCard.css' %}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="{% url 'home' %}">
+        <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
+        </a>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <nav class="menu" id="menu">
+          <ul>
+            {% if user.is_authenticated %}
+              <li>{{ user.username }}님 환영합니다!</li>
+              <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+            {% else %}
+              <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <div class="divider"></div>
+            <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+            <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+            <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+      <main class="main">
+        <div class="peopleCard">
+          <img
+            src="{{ card.image_url }}"
+            alt="people-img"
+            class="people-img"
+          />
+          <div class="person-info">
+            <h3 class="person-name">
+              {{ card.name }} <span class="person-date">{{ card.lifespan }}</span>
+            </h3>
+            <ul class="person-meta">
+              <li><span class="label">시대</span> {{ card.era }}</li>
+              <li><span class="label">지역</span> {{ card.region }}</li>
+              <li>
+                <span class="label">설명</span>
+                {{ card.description }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <form method="post" action="{% url 'users:my_cards' %}">
+        {% csrf_token %}
+        <button class="card-save-btn">
+          인물 카드 목록으로 돌아가기
+        </button>
+        </form>
+      </main>
+    </div>
+    <script src="{% static 'home/js/home.js' %}"></script>
+  </body>
+</html>
+
+<!-- <h2>{{ card.name }}</h2>
+<p>{{ card.lifespan }}</p>
+<p>{{ card.era }} / {{ card.region }}</p>
+<img src="{{ card.image_url }}" alt="{{ card.name }}" width="200">
+<p>{{ card.description }}</p>
+
+<form method="post" action="{% url 'users:my_cards' %}">
+  {% csrf_token %}
+  <button type="submit">저장한 카드 목록으로 돌아가기</button>
+</form> -->

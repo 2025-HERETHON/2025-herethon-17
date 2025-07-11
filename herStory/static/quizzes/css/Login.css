@@ -1,0 +1,144 @@
+@media (max-width: 375px) {
+  .app-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.for-zindex{
+    z-index: 10;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;  
+  background-color: #D5EAB3;
+  font-family: "Pretendard", sans-serif;
+}
+
+.app-container {
+  width: 23.4375rem;
+  height: 50.75rem;
+  aspect-ratio: 23.4375 / 50.75; 
+  background: #D5EAB3;
+  border-radius: 1.5rem;
+  display: flex; 
+  flex-direction: column; 
+  overflow: hidden;
+  position: relative;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.now {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 4rem; 
+}
+
+.main-ment {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.now .line-1 {
+  width: 64px;
+  height: 2px;
+  margin-left: 13%;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.now .text-wrapper {
+  text-shadow: 0px 0px 4px #ffffff80;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-size: 21px;
+  font-weight: 700;
+  color: #4c6d1e;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+  margin-bottom: 3.5rem;
+}
+
+.now .image-removebg {
+  width: 228px;
+  height: 221px;
+  object-fit: cover;
+  margin-bottom: 3.7rem;
+}
+
+.Google {
+  display: flex;
+  align-items: center;      
+  justify-content: center;    
+  position: relative;
+  border: none;
+  background: #fff;   
+  border-radius: 15px;
+  padding: 1rem;
+  font-size: 16px;
+  font-weight: 600;  
+  cursor: pointer;
+  box-shadow: 3px 3px 3px 3px #b8b6b626;   
+  margin-left: 1rem;
+  margin-top: 3.5rem;
+  line-height: 150%; 
+  width: 22rem;    
+}
+
+.Google-text {
+  text-align: center;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.Google .G_logo {
+  position: absolute;
+  left: 1.5rem;              
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto; 
+}
+
+.Kakao {
+  display: flex;
+  align-items: center;      
+  justify-content: center;    
+  position: relative;
+  border: none;
+  background: #FBE200;   
+  border-radius: 15px;
+  padding: 1rem;
+  font-size: 16px;
+  font-weight: 600;  
+  cursor: pointer;
+  box-shadow: 3px 3px 3px 3px #b8b6b626;  
+  margin-left: 1rem;
+  margin-top: 1rem;
+  line-height: 150%;  
+  width: 22rem;       
+}
+
+.Kakao-text {
+  text-align: center;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.Kakao .K_logo{
+  position: absolute;
+  left: 1.5rem;              
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto; 
+}
