@@ -1,0 +1,79 @@
+[
+{
+  "model": "posts.comment",
+  "pk": 24,
+  "fields": {
+    "post": 8,
+    "content": "저도 그렇게 느껴요. 하지만 프론트엔드 개발자로서의 자부심을 가지고 일해요!",
+    "created_at": "2025-07-11T07:38:18.160Z",
+    "author": 1,
+    "parent_comment": null
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 25,
+  "fields": {
+    "post": 15,
+    "content": "와 진짜 대단하세요!! 저는 면접장만 가면 떠는데 기 받아 갑니다!",
+    "created_at": "2025-07-11T08:13:54.813Z",
+    "author": 1,
+    "parent_comment": null
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 26,
+  "fields": {
+    "post": 15,
+    "content": "저도 이번 주 면접인데 제발 취업 뿌실 수 있길...",
+    "created_at": "2025-07-11T08:14:29.601Z",
+    "author": 1,
+    "parent_comment": null
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 50,
+  "fields": {
+    "post": 16,
+    "content": "저도 처음에 그런 공고 보고 멘붕 왔었어요ㅋㅋ",
+    "created_at": "2025-07-11T13:33:39.519Z",
+    "author": 1,
+    "parent_comment": null
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 51,
+  "fields": {
+    "post": 16,
+    "content": "작은 프로젝트라도 본인이 주도해서 만든 게 있다면 충분히 어필할 수 있어요",
+    "created_at": "2025-07-11T13:34:00.575Z",
+    "author": 16,
+    "parent_comment": null
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 52,
+  "fields": {
+    "post": 16,
+    "content": "공감돼요 ㅠㅠ",
+    "created_at": "2025-07-11T13:34:10.422Z",
+    "author": 6,
+    "parent_comment": null
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 53,
+  "fields": {
+    "post": 16,
+    "content": "댓글",
+    "created_at": "2025-07-11T16:50:04.495Z",
+    "author": 1,
+    "parent_comment": null
+  }
+}
+]
