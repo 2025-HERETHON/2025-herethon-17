@@ -165,20 +165,9 @@ input::placeholder {
     margin-bottom: 1rem;
 }
 
-.checkbox  {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-top: 1rem;
-  font-weight: 200;
-  font-size: 0.85rem;
-  color: white;
-}
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .Article-content {
-  margin-top: 1rem;
   width: 100%;
   min-height: 10rem;
   border-radius: 15px;
@@ -189,10 +178,23 @@ input::placeholder {
   background-color: transparent;
   border: transparent;
   margin-left: 1rem;
+  margin-top: 0.5rem;
   min-height: 100%;
+  width: 90%;
+  font-size: 1rem;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.checkbox  {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  font-weight: 200;
+  font-size: 0.85rem;
+  color: white;
+}
 
 .Hashtag {
   gap: 0.5rem; 
@@ -237,12 +239,12 @@ input::placeholder {
     cursor: pointer;
     background-color: #F3FFE0;
     color: #9F9F9F;
-    padding: 0.4rem 0.65rem 0.4rem 0.65rem ;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem ;
     border-radius: 0.4rem;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 0.84rem;
     margin-right: 0.15rem;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.3rem;
     display: inline-block; 
     white-space: nowrap; 
     flex-shrink: 0; 
@@ -258,6 +260,8 @@ input::placeholder {
 
 
 .upload {
+  position: absolute;
+  bottom: 10%;
   background: #F6FFEF;
   border: none;
   border-radius: 15px;
@@ -269,7 +273,6 @@ input::placeholder {
   box-shadow: 3px 3px 3px 3px #b8b6b626;    
   width: 90%;
   margin-left: 0.7rem;
-  position: relative; 
   display: block;    
 }
 

@@ -27,13 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
-});
+
 
 // 요기까지 내비바 기능
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-document.addEventListener('DOMContentLoaded', function() {
     const GoogleLogin = document.querySelector('.Google');
     const KakaoLogin = document.querySelector('.Kakao');
 
