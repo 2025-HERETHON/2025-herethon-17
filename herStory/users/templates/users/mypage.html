@@ -1,39 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>마이페이지</title>
-</head>
-<body>
-  <h2>{{ user.username }}님의 마이페이지</h2>
-
-  {% if user.is_authenticated %}
-    <a href="{% url 'users:edit_profile' %}">프로필 수정</a> |
-    <a href="{% url 'users:logout' %}">로그아웃</a>
-
-    <h3>🌏 탐험한 여성사 인물 카드</h3>
-    <ul>
-      <a href="{% url 'users:my_cards' %}">📚 내가 저장한 인물 카드 보기</a>
-    </ul>
-
-    <a href="{% url 'users:delete_account' %}" class="btn btn-danger">회원 탈퇴</a>
-
-    <h3>📂 아카이빙</h3>
-      <a href="{% url 'users:my_archives' %}">📝 내가 쓴 글과 댓글 보기</a>
-
-  {% else %}
-    <p>로그인이 필요합니다.</p>
-    <a href="{% url 'users:login' %}">로그인</a>
-  {% endif %}
-
-  <form method="post" action="{% url 'home' %}">
-  {% csrf_token %}
-  <button type="submit">홈 돌아가기</button>
-</form>
-</body>
-</html> -->
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
@@ -96,6 +60,7 @@
             src="{% static 'home/image/card_union.png' %}"
             alt="cardUnion"
             class="card-union"
+            id="cardIcon"
           />
           인물 카드 조회
         </button>
@@ -110,6 +75,7 @@
             src="{% static 'home/image/card_union.png' %}"
             alt="cardUnion"
             class="card-union"
+            id="cardIcon2"
           />
           회원 탈퇴
         </button>
@@ -131,5 +97,7 @@
       </div>
     </main>
     <script src="{% static 'home/js/withdraw.js' %}"></script>
+    <script src="{% static 'home/js/home.js' %}"></script>
+    <script src="{% static 'home/js/mypage.js' %}"></script>
   </body>
 </html>

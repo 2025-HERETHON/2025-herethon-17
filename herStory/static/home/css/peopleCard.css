@@ -17,10 +17,14 @@
 
 .person-info {
   padding: 0 30px;
+  max-height: 150px; /* 💡 고정 높이: 너가 원하는 만큼 조절 가능 */
+  overflow-y: auto; /* 👈 수직 스크롤 가능하게 설정 */
 }
 
 .people-img {
   width: 268px;
+  height: 200px;
+  border-radius: 10%;
   margin-top: 30px;
   margin-bottom: 10px;
 }

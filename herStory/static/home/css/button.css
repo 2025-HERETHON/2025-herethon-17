@@ -26,7 +26,21 @@
   transform: translateY(-50%);
 }
 
-.random-card-btn.hovered,
-.card-save-btn.hovered {
-  background-color: #91c84f;
+.random-card-btn,
+.card-save-btn {
+  position: relative;
+  width: 320px;
+  height: 50px;
+  border: none;
+  border-radius: 1rem;
+  background-color: #f6ffef;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.random-card-btn.clicked,
+.card-save-btn.clicked {
+  background-color: #91c84f !important; /* 클릭됐을 때 색 */
 }

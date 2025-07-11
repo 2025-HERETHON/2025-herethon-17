@@ -19,4 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.add("hidden");
     alert("탈퇴 처리가 진행됩니다."); // 실제로는 fetch 또는 form 전송 등으로 처리
   });
+
+
+  // [2] 인물 카드 조회 버튼 배경색 + 이미지 변경
+  const peopleBtn = document.getElementById("withdrawBtn");
+  const peopleIcon = document.getElementById("cardIcon2");
+
+  peopleBtn.addEventListener("click", () => {
+    peopleBtn.classList.toggle("clicked");
+  });
 });
