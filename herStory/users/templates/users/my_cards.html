@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/person.css' %}" />
     <link rel="stylesheet" href="{% static 'home/css/mypage.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/peopleView.css' %}" />
   </head>
   <body>
     <header class="header">
@@ -34,26 +36,57 @@
     <main class="main">
       <div class="divider"></div>
       <p>인물 카드 조회</p>
-      <div class="card-container">
-  {% for saved in saved_cards %}
-  <a href="{% url 'users:my_cards_detail' saved.card.id %}">
-    <div class="card-row">
-      <div class="card-scroll">
-        <span class="tag">이름</span>
-        <span class="value">{{ saved.card.name }}</span>
-        <span class="tag">시대</span>
-        <span class="value">{{ saved.card.era }}</span>
-        <span class="tag">지역</span>
-        <span class="value">{{ saved.card.region }}</span>
-      </div>
-    </div>
-  </a>
-  {% empty %}
-    <p>저장한 카드가 아직 없어요 😢</p>
-  {% endfor %}
-</div>
+      <div class="person-list-wrapper">
+        <div class="person-list-box">
+          {% for saved in saved_cards %}
+          <div class="person-row">
+            <a href="{% url 'users:my_cards_detail' saved.card.id %}">
+              <span class="tag" id="label">이름</span>
+              <span class="value">{{ saved.card.name }}</span>
+              <span class="tag" id="label">시대</span>
+              <span class="value">{{ saved.card.era }}</span>
+              <span class="tag" id="label">지역</span>
+              <span class="value">{{ saved.card.region }}</span>
+            </a>
+            <div class="'cardDivider"></div>
+          </div>
+          {% empty %}
+            <p>저장한 카드가 아직 없어요 😢</p>
+          {% endfor %}
+        </div>
+        <!-- 페이지네이션 -->
+        <!-- <div class="pagination">
+          
+          <button class="page-btn-back">&lt;</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">4</button>
+          <button class="page-btn">5</button>
+          <button class="page-btn-next">&gt;</button>
+        </div>
+      </div> -->
 
-<div class="pagination">
+      <div class="pagination">
+        {% if saved_cards.has_previous %}
+          <a href="?page={{ saved_cards.previous_page_number }}" class="page-btn page-btn-back">&lt;</a>
+        {% endif %}
+
+        {% for num in saved_cards.paginator.page_range %}
+          {% if saved_cards.number == num %}
+            <span class="page-btn active">{{ num }}</span>
+          {% else %}
+            <a href="?page={{ num }}" class="page-btn">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if saved_cards.has_next %}
+          <a href="?page={{ saved_cards.next_page_number }}" class="page-btn page-btn-next">&gt;</a>
+        {% endif %}
+      </div>
+
+
+<!-- <div class="pagination">
   {% if saved_cards.has_previous %}
     <a href="?page={{ saved_cards.previous_page_number }}">«</a>
   {% endif %}
@@ -69,48 +102,10 @@
   {% if saved_cards.has_next %}
     <a href="?page={{ saved_cards.next_page_number }}">»</a>
   {% endif %}
-</div>
-      <!-- <div class="person-list" id="personList"></div>
-      <div class="pagination" id="pagination">
-        {% if saved_cards.has_previous %}
-          <a href="?page={{ saved_cards.previous_page_number }}">«</a>
-        {% endif %}
-
-        {% for num in saved_cards.paginator.page_range %}
-          {% if saved_cards.number == num %}
-            <strong>{{ num }}</strong>
-          {% else %}
-            <a href="?page={{ num }}">{{ num }}</a>
-          {% endif %}
-        {% endfor %}
-
-        {% if saved_cards.has_next %}
-          <a href="?page={{ saved_cards.next_page_number }}">»</a>
-        {% endif %}
-      </div> -->
+</div> -->
       
     </main>
     <script src="{% static 'home/js/home.js' %}"></script>
     <!-- <script src="{% static 'home/js/person.js' %}"></script> -->
   </body>
 </html>
-<!-- <h2>📚 내가 저장한 인물 카드</h2>
-
-{% if saved_cards %}
-  <ul style="list-style: none; padding: 0;">
-    {% for saved in saved_cards %}
-      <li>
-        <a href="{% url 'users:my_cards_detail' saved.card.id %}">
-          {{ saved.card.name }} | {{ saved.card.era }} | {{ saved.card.region }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>저장한 카드가 아직 없어요 😢</p>
-{% endif %}
-
-<form method="post" action="{% url 'users:mypage' %}">
-  {% csrf_token %}
-  <button type="submit">마이페이지로 돌아가기</button>
-</form> -->
