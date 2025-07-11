@@ -130,6 +130,7 @@ body {
   margin-right: 1rem;
   margin-left: 1rem;
   margin-top: 1.5rem;
+  margin-bottom: 3rem;
   display: block;
 }
 
@@ -182,24 +183,26 @@ input::placeholder {
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-.checkbox {
-  display : flex;
-  flex-direction : row;
+.checkbox  {
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
-  align-self : center; 
-  margin-top : 1rem;
-  font-weight : 200;
-  font-size : 0.85rem;
-  color : white;
+  margin-top: 1rem;
+  font-weight: 200;
+  font-size: 0.85rem;
+  color: white;
 }
 
-.Hashtag{
-  display : flex;
-  align-items: center;
+.Hashtag {
+  gap: 0.5rem; 
+  white-space: nowrap;
 }
 
-.Hashtag .img {
+.Hashtag img {
   cursor: pointer;
+  width: 16px; 
+  height: 16px;
+  flex-shrink: 0; 
 }
 
 .Comment img {
@@ -223,14 +226,6 @@ input::placeholder {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-.upload img {
-    position: absolute;
-    bottom: 0.5rem;
-    left: 70%;
-    width: 5.5rem;
-    height: 5.5rem;
-}
 
 .category {
     margin-top: 1rem;
@@ -262,7 +257,7 @@ input::placeholder {
 
 
 .upload {
-  background: #fff;   
+  background: #F6FFEF;
   border: none;
   border-radius: 15px;
   padding: 1.2rem;
