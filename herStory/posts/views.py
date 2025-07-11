@@ -31,7 +31,8 @@ def create(request):
         title=request.POST.get('title')
         content=request.POST.get('content')
 
-        category_ids = request.POST.getlist('category')
+        category_ids = request.POST.getlist('category[]')
+        #category_ids = request.POST.getlist('category')
         category_list = [get_object_or_404(Category, id=category_id) for category_id in category_ids]
 
         type_choice = request.POST.get('type')
