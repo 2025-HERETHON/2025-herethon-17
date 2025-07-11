@@ -8,7 +8,8 @@
 }
 
 .for-zindex{
-    z-index: 10;
+    position: relative; 
+    z-index: 100;
 }
 
 body {
@@ -25,10 +26,8 @@ body {
   height: 50.75rem;
   aspect-ratio: 23.4375 / 50.75; 
   background: #D5EAB3;
-  border-radius: 1.5rem;
   display: flex; 
   flex-direction: column; 
-  overflow: hidden;
   position: relative;
 }
 

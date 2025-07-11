@@ -8,6 +8,24 @@
      <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'posts/css/Future_home.css' %}">
+    <script src="{% static 'home/js/home.js' %}"></script>
+      <script src="{% static 'posts/js/Future_home.js' %}" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const titles = document.querySelectorAll('.Title');
+  titles.forEach(title => {
+    title.addEventListener('click', () => {
+      const url = title.dataset.url;
+      window.location.href = url;
+    });
+  });
+
+  const newButton = document.querySelector('.new');
+  newButton.addEventListener('click', () => {
+    window.location.href = "{% url 'posts:create' %}";
+  });
+});
+</script>
 </head>
 
 <body>
@@ -20,16 +38,17 @@
       <nav class="menu" id="menu">
         <ul>
           {% if user.is_authenticated %}
+            <li>{{ user.username }}님 환영합니다!</li>
             <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
           {% else %}
             <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
           {% endif %}
+          {% if user.is_authenticated %}
           <div class="divider"></div>
           <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
           <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
           <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
-          {% if user.is_authenticated %}
-            <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
+          <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
           {% endif %}
         </ul>
       </nav>
@@ -103,23 +122,5 @@
   </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const titles = document.querySelectorAll('.Title');
-  titles.forEach(title => {
-    title.addEventListener('click', () => {
-      const url = title.dataset.url;
-      window.location.href = url;
-    });
-  });
-
-  const newButton = document.querySelector('.new');
-  newButton.addEventListener('click', () => {
-    window.location.href = "{% url 'posts:create' %}";
-  });
-});
-</script>
-    <script src="{% static 'home/js/home.js' %}"></script>
-      <script src="{% static 'posts/js/Future_home.js' %}" defer></script>
 </body>
 </html>

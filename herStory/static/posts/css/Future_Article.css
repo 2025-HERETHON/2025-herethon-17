@@ -15,12 +15,10 @@ body {
 }
 
 .for-zindex{
-    z-index: 10;
+    z-index: 100;
 }
 
 body {
-  min-height: 100vh;
-  min-width: 100vw;
   display: flex;
   justify-content: center;  
   background-color: #D5EAB3;
@@ -173,6 +171,7 @@ body {
     left: 70%;
     width: 5.5rem;
     height: 5.5rem;
+    z-index: 110;
 }
 
 #comment-form {

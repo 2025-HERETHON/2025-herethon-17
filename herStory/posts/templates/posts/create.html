@@ -27,11 +27,11 @@
             {% else %}
               <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
             {% endif %}
+            {% if user.is_authenticated %}
             <div class="divider"></div>
             <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
             <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
             <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
-            {% if user.is_authenticated %}
             <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
             {% endif %}
           </ul>

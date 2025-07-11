@@ -208,37 +208,35 @@ def board(request):
 
 def search(request):
     query = request.GET.get('q', '')
-    # q 객체로 중첩 - 제목, 내용 포함 검색
-    posts = Post.objects.filter(Q(title__icontains=query) | Q(content__icontains=query)).order_by('-id') if query else []
     categories = Category.objects.all()
 
-    # 하이라이트 처리?
     if query:
         posts = Post.objects.filter(
             Q(title__icontains=query) | Q(content__icontains=query)
-        ).order_by('-id')
+        ).prefetch_related('category').order_by('-id')
 
         highlighted_posts = []
-        for post in posts: 
-            # 검색어가 들어있으면 mark태그로 감싸기 - 템플릿에서 변수|safe < 식으로
+        for post in posts:
             highlighted_title = escape(post.title).replace(
-                query, f"<mark>{escape(query)}</mark>"
-            )
+                query, f"<span style='background-color: #D5EAB3'>{escape(query)}</span>"
+                )
             highlighted_content = escape(post.content).replace(
-                query, f"<mark>{escape(query)}</mark>"
-            )
+                query, f"<span style='background-color: #D5EAB3'>{escape(query)}</span>"
+                )
+
 
             highlighted_posts.append({
                 'id': post.id,
                 'title': highlighted_title,
                 'content': highlighted_content,
-                'created_at': post.created_at
+                'created_at': post.created_at,
+                'categories': post.category.all()  # ← 카테고리 추가!
             })
     else:
         highlighted_posts = []
 
-
     return render(request, 'posts/search_result.html', {
         'query': query,
         'posts': highlighted_posts,
-        'categories': categories})
+        'categories': categories
+    })

@@ -4,6 +4,10 @@
   font-family: "Pretendard", sans-serif;
 }
 
+a {
+  text-decoration-line: none;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -22,6 +26,7 @@
 }
 
 .menu {
+  z-index: 2000;
   display: none;
   flex-direction: column;
   position: absolute;
