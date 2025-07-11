@@ -1,11 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Era Echo - Quiz</title>
-  <link rel="stylesheet" href="{% static 'quizzes/css/4_score.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Era Echo - Quiz 결과</title>
+  <link rel="stylesheet" href="{% static 'quizzes/css/4_score.css' %}" />
   <script src="{% static 'quizzes/js/4_score.js' %}" defer></script>
 </head>
 <body>
@@ -15,14 +15,14 @@
         <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
       </a>
       <button class="menu-toggle" id="menuToggle">
-        <img src="{% static 'quizzes/image/Menu.svg' %}">
+        <img src="{% static 'quizzes/image/Menu.svg' %}" alt="메뉴 토글" />
       </button>
       <nav class="menu" id="menu">
         <ul>
           {% if user.is_authenticated %}
-            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+            <li class="menu-link" data-url="{% url 'users:logout' %}">로그아웃</li>
           {% else %}
-            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+            <li class="menu-link" data-url="{% url 'users:login' %}">로그인</li>
           {% endif %}
           <div class="divider"></div>
           <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
@@ -30,7 +30,7 @@
           <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
           {% if user.is_authenticated %}
             <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
-            {% endif %}
+          {% endif %}
         </ul>
       </nav>
     </header>
@@ -39,27 +39,34 @@
       <div class="tab-group">
         <div class="text-wrapper-1">퀴즈</div>
         <div class="text-wrapper-2">학교별 랭킹</div>
-        <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" />
+        <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" alt="라인" />
       </div>
 
       <div class="now">
-        <div class="question">
-          <span id="Results">결과 :</span>
-          <span id="score-text"> 총 
-            <span id="correct-count">{{ session.correct_answers }}</span> / {{ session.total_answers }}문제를 맞췄습니다!
+        <div class="Results">
+          <span id="Results-text">결과 :</span>
+          <span id="score-text">
+            총 <span id="correct-count">{{ session.correct_answers }}</span> / {{ session.total_answers }}문제를 맞췄습니다!
           </span>
         </div>
 
         <div class="container">
           {% for result in user_results %}
-            <div class="result-item" id="prob{{ forloop.counter }}">
-              {% if result.is_correct %}
-                <span class="correct">O</span>
-              {% else %}
-                <a class="wrong" href="{% url 'quizzes:explanation' result.quiz.id %}">X</a>
-              {% endif %}
-            </div>
-          {% endfor %}
+  {% if result.is_correct %}
+    <button id="prob{{ forloop.counter }}" class="result-button">
+      <span class="result-text">O</span>
+      <img class="union" src="{% static 'quizzes/image/Union_prob_.svg' %}" alt="결과 아이콘" />
+    </button>
+  {% else %}
+    <form action="{% url 'quizzes:explanation' result.quiz.id %}" method="get">
+      <button type="submit" id="prob{{ forloop.counter }}" class="wrong-button">
+        <span class="wrong-text">X</span>
+        <img class="union" src="{% static 'quizzes/image/Union_prob_.svg' %}" alt="결과 아이콘" />
+      </button>
+    </form>
+  {% endif %}
+{% endfor %}
+
 
           <div class="total-score" id="tot_score">
             <h3>총점: {{ total_score }}점</h3>
@@ -68,7 +75,7 @@
           <form action="{% url 'quizzes:ranking' %}">
             <button type="submit" class="next">
               <span class="next-text">랭킹 보기</span>
-              <img class="union" src="{% static 'quizzes/image/Union.svg' %}" />
+              <img class="union" src="{% static 'quizzes/image/Union.svg' %}" alt="랭킹 아이콘" />
             </button>
           </form>
         </div>

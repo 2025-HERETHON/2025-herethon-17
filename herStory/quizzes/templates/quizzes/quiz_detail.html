@@ -55,8 +55,11 @@
             {% csrf_token %}
             <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
             {% for choice in quiz.choices.all %}
-              <button type="button" class="choice-btn" data-choice-id="{{ choice.id }}">{{ choice.text }}</button>
-            {% endfor %}
+  <button type="button" class="select-box" data-choice-id="{{ choice.id }}">
+    <img src="/static/quizzes/image/_Num_{{ forloop.counter }}.png">
+    <span class="text">{{ choice.text }}</span>
+  </button>
+{% endfor %}
             <input type="hidden" name="choice_id" id="selected-choice-id">
           </form>
 
