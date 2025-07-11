@@ -88,8 +88,6 @@ body {
 }
 
 .app-container {
-  width: 23.4375rem;
-  height: 50.75rem;
   aspect-ratio: 23.4375 / 50.75; 
   background: #D5EAB3;
   border-radius: 1.5rem;
