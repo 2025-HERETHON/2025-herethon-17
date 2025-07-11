@@ -67,29 +67,27 @@
 
       <!-- 댓글 -->
       <div class="Chat-box">
-        {% for comment in comments %}
-          {% if not comment.parent_comment %}
-          <div class="chat">
-            <strong>{{ comment.author.username }}</strong>: 
-            {% if update_comment_id == comment.id %}
-            <form method="POST" action="{% url 'posts:update-comment' comment.id %}">
-              {% csrf_token %}
-              <textarea name="content" rows="3">{{ comment.content }}</textarea><br>
-              <button type="submit">저장</button>
-              <a href="{% url 'posts:detail' post.id %}">취소</a>
-            </form>
-            {% else %}
-              {{ comment.content }}
-              {% if request.user == comment.author %}
-                <!-- <a href="{% url 'posts:detail' post.id %}?update={{ comment.id }}">수정</a> -->
-              {% endif %}
-            {% endif %}
-          </div>
-          {% endif %}
-        {% empty %}
-        <p>댓글이 없습니다</p>
-        {% endfor %}
-      </div>
+  {% for comment in comments %}
+    {% if not comment.parent_comment %}
+    <div class="{% if request.user == comment.author %}chat-writer{% else %}chat{% endif %}">
+      {% if update_comment_id == comment.id %}
+      <form method="POST" action="{% url 'posts:update-comment' comment.id %}">
+        {% csrf_token %}
+        <textarea name="content" rows="3">{{ comment.content }}</textarea><br>
+        <button type="submit">저장</button>
+        <a href="{% url 'posts:detail' post.id %}">취소</a>
+      </form>
+      {% else %}
+        {{ comment.content }}
+        {% if request.user == comment.author %}
+          <!-- 수정 링크나 삭제 버튼을 여기에 추가 가능 -->
+        {% endif %}
+      {% endif %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
 
       <!-- 댓글 작성 -->
       <div class="Comment">
