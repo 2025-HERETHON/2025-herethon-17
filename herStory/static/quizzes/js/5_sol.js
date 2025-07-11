@@ -17,9 +17,6 @@ const unionImage = document.querySelector('.union');
 
 backButton?.addEventListener('click', () => {
   backButton.style.backgroundColor = '#91C84F';
-  if (unionImage) {
-    unionImage.src = "/static/Now/image/Union_active_.svg";
-  }
 
   setTimeout(() => {
     const targetUrl = backButton.getAttribute('data-url');
