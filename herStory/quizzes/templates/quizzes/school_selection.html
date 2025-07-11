@@ -9,7 +9,7 @@
     <!-- Pretendard 폰트 & CSS / JS -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{% static 'home/css/header.css' %}" />
     <link rel="stylesheet" href="{% static 'quizzes/css/2_school.css' %}">
     <script>
       const nextUrl = "{% url 'quizzes:quiz_detail' %}";
@@ -19,31 +19,29 @@
 
 <body>
 <div class="app-container">
-    
-  <header class="header">
-    <a href="{% url 'home' %}">
+        <header class="header">
+        <a href="{% url 'home' %}">
         <img src="{% static 'home/image/mainLogo.svg' %}" class="main-logo" />
-      </a>
-    <button class="menu-toggle" id="menuToggle">
-      <img src="{% static 'quizzes/image/Menu.svg' %}">
-    </button>
-    <nav class="menu" id="menu">
-      <ul>
-          {% if user.is_authenticated %}
-            <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
-          {% else %}
-            <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
-          {% endif %}
-          <div class="divider"></div>
-          <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
-          <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
-          <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
-          {% if user.is_authenticated %}
+        </a>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <nav class="menu" id="menu">
+          <ul>
+            {% if user.is_authenticated %}
+              <li>{{ user.username }}님 환영합니다!</li>
+              <li class='menu-link' data-url="{% url 'users:logout' %}">로그아웃</li>
+            {% else %}
+              <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
+            {% endif %}
+            <div class="divider"></div>
+            <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
+            <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
+            <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
+            {% if user.is_authenticated %}
             <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
             {% endif %}
-        </ul>
-    </nav>
-  </header>
+          </ul>
+        </nav>
+      </header>
 
   <div class="for-zindex">
 
@@ -75,6 +73,6 @@
     </button>
   </form>
 </div>
-
+    <script src="{% static 'home/js/home.js' %}"></script>
 </body>
 </html>

@@ -1,25 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // 메뉴 토글 관련
-  const menuToggle = document.getElementById('menuToggle');
-  const menu = document.getElementById('menu');
-  const menuItems = menu.querySelectorAll('li');
-
-  menuToggle.addEventListener('click', function(e) {
-    e.stopPropagation();
-    menu.classList.toggle('active');
-  });
-
-  menuItems.forEach(function(item) {
-    item.addEventListener('click', function(e) {
-      e.stopPropagation();
-      menuItems.forEach(el => el.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
-
-  menu.addEventListener('click', e => e.stopPropagation());
-  document.addEventListener('click', () => menu.classList.remove('active'));
-
   // 퀴즈 결과 버튼 클릭 시 (예: 해설 페이지로 이동 등 필요하면 추가 가능)
   const resultButtons = document.querySelectorAll('.result-button');
   resultButtons.forEach(btn => {
@@ -39,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // 여기서는 딜레이 후 form 제출이 기본 동작으로 이루어짐
     }, 200);
   });
-});
 
 
 // 해설 링크(X) 클릭 시 효과
