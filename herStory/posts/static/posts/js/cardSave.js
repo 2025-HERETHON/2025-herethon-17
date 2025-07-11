@@ -1,15 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cardSaveBtn = document.getElementById("cardSaveBtn");
+  const icon2 = document.getElementById("card-save-union");
   const modal = document.getElementById("modalOverlay");
   const confirmBtn = document.getElementById("confirmBtn");
 
-  // 버튼 클릭 시 모달 보이기
-  cardSaveBtn.addEventListener("click", () => {
-    modal.classList.remove("hidden");
-  });
+  if (cardSaveBtn && icon2) {
+    // 버튼 클릭 시: 모달 열기 + 이미지 변경 + 배경색 변경
+    cardSaveBtn.addEventListener("click", () => {
+      modal.classList.remove("hidden");
 
-  // 확인 버튼 → 모달 닫기
-  confirmBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
+      // 버튼 배경색 토글
+      cardSaveBtn.classList.toggle("clicked");
+
+      // 이미지 변경
+      icon2.src = cardSaveBtn.classList.contains("clicked")
+        ? "../../static/posts/image/save_union_hover.svg"
+        : "../../static/posts/image/save_union.svg";
+    });
+  }
+
+  if (confirmBtn) {
+    confirmBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+  }
 });

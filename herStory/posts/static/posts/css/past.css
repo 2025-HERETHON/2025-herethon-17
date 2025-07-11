@@ -26,25 +26,6 @@ body {
   margin-bottom: 84px;
 }
 
-.random-card-btn,
-.card-save-btn {
-  position: relative;
-  width: 320px;
-  height: 50px;
-  border: none;
-  border-radius: 1rem;
-  background-color: #f6ffef;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.random-card-btn.hovered,
-.card-save-btn.hovered {
-  background-color: #91c84f;
-}
-
 .modal-overlay {
   position: fixed;
   top: 0;
