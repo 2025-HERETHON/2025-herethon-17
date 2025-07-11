@@ -35,7 +35,7 @@
 
       <div class="Article-write">
         <div class="Main">
-          <input class="Title" type="text" name="title" placeholder="제목을 입력해주세요.">
+          <input class="Title" type="text" name="title">
         </div>
 
         <div class="checkbox">
@@ -57,15 +57,15 @@
         </div>
 
         <div class="Article-content">
-          <textarea class="write" name="content" placeholder="내용을 입력해주세요."></textarea>
+          <textarea class="write" name="content" spellcheck="false"></textarea>
         </div>
 
         <div class="category">
           {% for category in categories %}
             <label class="tag">
-  <input type="checkbox" name="category[]" value="{{ category.id }}" hidden>
-  #{{ category.name }}
-</label>
+            <input type="checkbox" name="category[]" value="{{ category.id }}" hidden>
+            #{{ category.name }}
+            </label>
           {% endfor %}
         </div>
       </div>

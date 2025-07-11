@@ -213,7 +213,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;  
-}
+} 
 
 .Article-list {
   background: #4C6D1E;      
@@ -240,6 +240,7 @@ body {
     margin-left: 0.5rem;
     font-weight: 500;
     font-size: 1.1rem;
+    white-space: nowrap;
 }
 
 .Job {
@@ -273,15 +274,14 @@ body {
 .Comment {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end; 
+  justify-content: flex-start; 
   color: #9F9F9F;
 }
 
 .Comment img {
   cursor: pointer;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 1.2rem;
+  margin-right: 1rem;
   margin-top: 0.7rem;
 }
 
@@ -293,7 +293,11 @@ body {
     border-radius: 10px;
     font-size: 0.8rem;
     margin-top: 0.7rem;
-    width: 100%;
+    width: 14rem;
+  }
+
+#comment-submit {
+  width: 7% ;
 }
 
 
@@ -302,7 +306,6 @@ body {
 .new img {
     position: absolute;
     bottom: 0.5rem;
-    left: 70%;
     width: 5.5rem;
     height: 5.5rem;
 }

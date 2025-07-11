@@ -140,6 +140,7 @@ body {
     font-size: 1.2rem;
     border: none;
     color: #91C84F;
+    outline: none;
 }
 
 input::placeholder {
@@ -183,14 +184,25 @@ input::placeholder {
   min-height: 10rem;
   border-radius: 15px;
   background-color: #F3FFE0;
+  padding: 1rem; /* 추가 */
+  box-sizing: border-box; /* 패딩 포함 */
 }
 
 .write {
+  width: 100%;             /* 전체 너비 사용 */
+  height: 100%;            /* 전체 높이 사용 */
+  min-height: 8rem;        /* 최소 높이 설정 */
   background-color: transparent;
-  border: transparent;
-  margin-left: 1rem;
-  min-height: 100%;
+  border: none;
+  font-size: 0.95rem;
+  color: #4C6D1E;          /* 글씨 색 조정 */
+  padding: 0.2rem;
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;  /* 🔸스크롤 숨김 */
+  resize: none;      /* 🔸사용자 크기조절 비활성화 */
 }
+✅ 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
