@@ -42,7 +42,9 @@
     <div class="for-zindex">
       <!-- 탭 영역 -->
       <div class="tab-group">
-        <div class="text-wrapper-1">퀴즈</div>
+        <div class="text-wrapper-1">
+          <a href="{% url 'quizzes:quiz_index' %}" style="text-decoration: none; color:#919191;">퀴즈</a>
+        </div>
         <div class="text-wrapper-2 active">학교별 랭킹</div>
         <img class="line-2" src="{% static 'quizzes/image/Line 90.svg' %}" alt="선" />
       </div>
