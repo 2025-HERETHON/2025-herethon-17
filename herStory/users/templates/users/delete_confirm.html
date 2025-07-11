@@ -1,6 +1,0 @@
-<h3>정말로 탈퇴하시겠습니까?</h3>
-<form method="post" action="{% url 'users:delete_account' %}">
-  {% csrf_token %}
-  <button type="submit" class="btn btn-danger">탈퇴하기</button>
-</form>
-<a href="{% url 'users:mypage' %}" class="btn btn-secondary">취소</a>

@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="{% static 'posts/css/Future_Article.css' %}">
   <script src="{% static 'posts/js/Future_Article.js' %}"></script>
+  <script src="{% static 'home/js/home.js' %}"></script>
 </head>
 
 <body>
@@ -28,18 +29,18 @@
             {% else %}
               <li class='menu-link' data-url="{% url 'users:login' %}">로그인</li>
             {% endif %}
+            {% if user.is_authenticated %}
             <div class="divider"></div>
             <li class="menu-link" data-url="{% url 'history:card_intro' %}">과거를 알다: 랜덤 인물 카드</li>
             <li class="menu-link" data-url="{% url 'quizzes:quiz_index' %}">지금을 묻다: 역사 퀴즈</li>
             <li class="menu-link" data-url="/posts/category/1/">미래를 잇다: 커뮤니티</li>
-            {% if user.is_authenticated %}
             <li class="menu-link" data-url="{% url 'users:mypage' %}">마이페이지</li>
             {% endif %}
           </ul>
         </nav>
       </header>
 
-  <div class="for-zindex">
+<div class="for-zindex">
     <div class="Article">
       <div class="Main">
         <span class="Title">{{ post.title }}</span>
@@ -117,6 +118,6 @@
     <img src="{% static 'posts/image/Future__note-plus.png' %}"/>
   </div>
 </div>
-  <script src="{% static 'home/js/home.js' %}"></script>
+
 </body>
 </html>
