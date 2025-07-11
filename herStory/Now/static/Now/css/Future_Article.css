@@ -4,7 +4,7 @@
   font-family: "Pretendard", sans-serif;
 }
 
-.header {
+.header { 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,9 +95,6 @@ body {
 
 .for-zindex{
     z-index: 10;
-    overflow-x : hidden; 
-    overflow-y : auto;  
-    scrollbar-width: auto;
 }
 
 body {
@@ -243,7 +240,6 @@ body {
     width: 80%;
     color: #9F9F9F;
 }
-
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
