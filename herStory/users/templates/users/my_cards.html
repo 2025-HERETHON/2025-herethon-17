@@ -69,7 +69,7 @@
 
       <div class="pagination">
         {% if saved_cards.has_previous %}
-          <a href="?page={{ saved_cards.previous_page_number }}" class="page-btn page-btn-back">&lt;</a>
+          <a href="?page={{ saved_cards.previous_page_number }}" class="page-btn-back">&lt;</a>
         {% endif %}
 
         {% for num in saved_cards.paginator.page_range %}
@@ -81,7 +81,7 @@
         {% endfor %}
 
         {% if saved_cards.has_next %}
-          <a href="?page={{ saved_cards.next_page_number }}" class="page-btn page-btn-next">&gt;</a>
+          <a href="?page={{ saved_cards.next_page_number }}" class="page-btn-next">&gt;</a>
         {% endif %}
       </div>
 
@@ -106,6 +106,5 @@
       
     </main>
     <script src="{% static 'home/js/home.js' %}"></script>
-    <!-- <script src="{% static 'home/js/person.js' %}"></script> -->
   </body>
 </html>

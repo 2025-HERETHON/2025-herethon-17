@@ -28,7 +28,7 @@ body {
 
 .person-list-box {
   width: 320px;
-  height: 320px;
+  height: 340px;
   border-radius: 1rem;
   background-color: #4c6d1e;
   color: #ffffff;
@@ -121,3 +121,4 @@ body {
   font-size: 30px;
   margin-left: 10px;
 }
+
