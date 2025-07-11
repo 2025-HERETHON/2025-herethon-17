@@ -219,7 +219,7 @@ body {
 .Comment {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end; 
+  justify-content: flex-start; 
   margin-bottom: auto;
 }
 
@@ -239,7 +239,7 @@ body {
     border-radius: 10px;
     font-size: 0.8rem;
     margin-top: 0.7rem;
-    width: 80%;
+    width: 90%;
     color: #9F9F9F;
 }
 
@@ -254,3 +254,9 @@ body {
     height: 5.5rem;
 }
 
+#comment-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
