@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.getElementById("menu");
   const menuItems = menu.querySelectorAll("li");
 
-  menuToggle.addEventListener("click", (e) => {
+  menuToggle.addEventListener("click", (e) => { 
     e.stopPropagation();
     menu.classList.toggle("active");
   });

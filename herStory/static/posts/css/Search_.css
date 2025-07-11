@@ -1,3 +1,4 @@
+
 @media (max-width: 375px) {
   .app-container {
     width: 100vw;
@@ -8,23 +9,21 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  
-    background-color: #D5EAB3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;  
+  background-color: #D5EAB3;
+  font-family: "Pretendard", sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 .for-zindex{
     z-index: 10;
-}
-
-body {
-  min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
-  justify-content: center;  
-  background-color: #D5EAB3;
-  font-family: "Pretendard", sans-serif;
+    overflow-x : hidden; 
+    overflow-y : auto;  
+    scrollbar-width: thin; 
 }
 
 .app-container {
@@ -39,7 +38,6 @@ body {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
 
 .main-ment {
   text-align: center;
@@ -74,9 +72,9 @@ body {
   background-color: #F3FFE0;
   border-radius: 12px;
   padding: 0.7rem;  
-  width: 18rem;
+  width: 80%;
   box-shadow: 1px 1px 2px 5px #7a787826;    
-  margin: 0 auto;
+  margin: 0 auto 5rem auto ;
 }
 
 .Search img {
@@ -93,7 +91,7 @@ body {
     margin-top: 2rem;
     margin-left: 1rem;
     width: 100%;
-    overflow-x: scroll; 
+    overflow-x: auto; 
     overflow-y: hidden; 
     white-space: nowrap;  
     -webkit-overflow-scrolling: touch; /* iOS*/
@@ -131,8 +129,8 @@ body {
 .articles {
   display: flex;
   flex-direction: column;
-  align-items: center;    
-} 
+  align-items: center;  
+}
 
 .Article-list {
   background: #4C6D1E;      
@@ -140,7 +138,7 @@ body {
   border-radius: 15px;
   padding: 1.2rem;  
   box-shadow: 3px 3px 3px 3px #b8b6b626;   
-  width: 20rem;
+  width: 80%;
   height: fit-content;
   margin-right: 1rem;
   margin-left: 1rem;
@@ -159,7 +157,6 @@ body {
     margin-left: 0.5rem;
     font-weight: 500;
     font-size: 1.1rem;
-    white-space: nowrap;
 }
 
 .Job {
@@ -190,80 +187,12 @@ body {
     margin-bottom: 1rem;
 }
 
-.Comment {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start; 
-  color: #9F9F9F;
-}
-
-.Comment img {
-  cursor: pointer;
-  margin-left: 1.2rem;
-  margin-right: 1rem;
-  margin-top: 0.7rem;
-}
-
-.Comment input {
-    background-color: transparent;
-    border: transparent;
-    padding: 0.7rem;  
-    background-color: #F3FFE0;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    margin-top: 0.7rem;
-    width: 14rem;
-    min-height: fit-content;
-  }
-
-#comment-submit {
-  width: 7% ;
-}
-
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-.new img {
-    position: fixed;
-    bottom: 1rem;
-    left: 1rem;
-    width: 5.5rem;
-    height: 5.5rem;
+.input-text {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
 }
 
-
-
-/* 스크롤바 제거 테스트 */
-/* 가장 상위 요소인 html과 body에 스크롤바 숨김 속성 적용 */
-html {
-    overflow-y: scroll; /* 세로 스크롤을 항상 허용 (숨겨도 되지만, 명시적) */
-    scrollbar-width: none; /* Firefox 스크롤바 숨기기 */
-    -ms-overflow-style: none; /* IE/Edge 스크롤바 숨기기 */
-}
-
-html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari 등 웹킷 브라우저 스크롤바 숨기기 */
-}
-
-body {
-    /* 기존 body 스타일 유지 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #D5EAB3;
-    min-height: 100vh; /* 뷰포트 전체 높이를 차지하도록 */
-    min-width: 100vw;
-    margin: 0; /* 기본 마진 제거 */
-    padding: 0; /* 기본 패딩 제거 */
-    font-family: "Pretendard", sans-serif;
-}
-
-.for-zindex {
-    z-index: 10;
-    scrollbar-width: none; /* 파폭 */
-    -ms-overflow-style: none; /* 엣지용*/
-}
-
-.for-zindex::-webkit-scrollbar {
-    display: none; /* 웹킷 */
-}
