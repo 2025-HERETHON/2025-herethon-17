@@ -59,11 +59,6 @@
         <form method="post" action="{% url 'users:my_cards' %}">
         {% csrf_token %}
         <button class="card-save-btn">
-          <img
-            src="{% static 'home/image/card_bookmark.png' %}"
-            alt="cardSave"
-            class="card-union"
-          />
           인물 카드 목록으로 돌아가기
         </button>
         </form>
