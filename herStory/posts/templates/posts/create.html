@@ -1,32 +1,83 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Era Echo - 글쓰기</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'posts/css/Future_write.css' %}">
+  <script src="{% static 'posts/js/Future_write.js' %}" defer></script>
 </head>
+
 <body>
-    <p>글쓰기</p>
+<div class="app-container">
+  <header class="header">
+    <img src="{% static 'posts/image/mainLogo.svg' %}" class="main-logo" />
+    <button class="menu-toggle" id="menuToggle">
+      <img src="{% static 'posts/image/Menu.svg' %}">
+    </button>
+    <nav class="menu" id="menu">
+      <ul>
+        <li>로그인</li>
+        <div class="divider"></div>
+        <li>과거를 알다</li>
+        <li>지금을 묻다</li>
+        <li>미래를 잇다</li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="for-zindex">
     <form method="POST" action="{% url 'posts:create' %}">
-        {% csrf_token %}
-        제목=<input type="text" name="title"><br>
-        내용-<textarea name="content"></textarea><br>
+      {% csrf_token %}
 
-        카테고리 - 
-        <select name="category" multiple>
-            {% for category in categories %}
-            <option value="{{category.id}}">{{category.name}}</option>
-            {% endfor %}
-        </select><br>
+      <div class="Article-write">
+        <div class="Main">
+          <input class="Title" type="text" name="title" placeholder="제목을 입력해주세요.">
+        </div>
 
-        작성자 유형 - 
-        <select name="type">
-            <option value="현직자">현직자</option>
-            <option value="취준생">취준생</option>
-            <option value="기타">기타</option>
-        </select><br>
-        
-        <input type="submit" value="작성!">
+        <div class="checkbox">
+          <div class="Hashtag">
+            <input type="radio" id="type-student" name="type" value="취준생" hidden>
+            <img class="checkimg" src="{% static 'posts/image/Future__Check_.svg' %}">
+            <span class="Hashtag-student">취준생</span>
+          </div>
+          <div class="Hashtag">
+            <input type="radio" id="type-worker" name="type" value="현직자" hidden>
+            <img class="checkimg" src="{% static 'posts/image/Future__Check_.svg' %}">
+            <span class="Hashtag-worker">현직자</span>
+          </div>
+          <div class="Hashtag">
+            <input type="radio" id="type-etc" name="type" value="기타" hidden>
+            <img class="checkimg" src="{% static 'posts/image/Future__Check_.svg' %}">
+            <span class="Hashtag-etc">기타</span>
+          </div>
+        </div>
+
+        <div class="Article-content">
+          <textarea class="write" name="content" placeholder="내용을 입력해주세요."></textarea>
+        </div>
+
+        <div class="category">
+          {% for category in categories %}
+            <label class="tag">
+  <input type="checkbox" name="category[]" value="{{ category.id }}" hidden>
+  #{{ category.name }}
+</label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <button type="submit" class="upload">
+        <span class="upload-text">등록하기</span>
+        <img class="upload-plus" src="{% static 'posts/image/Future__Upload.svg' %}">
+      </button>
+
     </form>
+  </div>
+</div>
+
 </body>
 </html>

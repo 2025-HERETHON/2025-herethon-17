@@ -1,0 +1,349 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 162px;
+  background-color: transparent;
+  position: relative;
+}
+
+.logo {
+  font-size: 0.9375rem;
+  font-weight: bold;
+  color: #4c6d1e;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    position: fixed; /* absolute에서 fixed로 변경 */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 23.4375rem; /* 앱 컨테이너와 동일한 너비 */
+    padding: 1rem 0;
+    border-radius: 0 0 1.5rem 1.5rem;
+    z-index: 1000; /* 메뉴가 맨 위에 나타나도록 */
+}
+
+.menu ul {
+    list-style: none;
+    padding-top: 100px;
+}
+
+.menu li {
+    color: white;
+    padding: 0.75rem 3rem;
+    margin: 0.25rem 0;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.menu li.active {
+    background-color: #d5eab3;
+    color: #1c1c1c;
+}
+
+.menu.active {
+    display: flex;
+    background-color: rgba(64, 72, 52, 0.9);
+    width: 100%;
+}
+
+.menu .divider {
+    height: 1px;
+    background-color: #f2f2f2;
+    margin: 30px 3rem;
+}
+
+.menu-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #4c6d1e;
+    z-index: 900;
+    
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 375px) {
+  .app-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    background-color: #D5EAB3;
+}
+
+.for-zindex{
+    z-index: 10;
+    overflow-x : hidden; 
+    overflow-y : auto;  
+    scrollbar-width: auto;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;  
+  background-color: #D5EAB3;
+  font-family: "Pretendard", sans-serif;
+}
+
+.app-container {
+  width: 23.4375rem;
+  height: 50.75rem;
+  aspect-ratio: 23.4375 / 50.75; 
+  background: #D5EAB3;
+  border-radius: 1.5rem;
+  display: flex; 
+  flex-direction: column; 
+  position: relative;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+.main-ment {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+}
+
+.line-1 {
+  width: 62px;
+  height: 2px;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.text-wrapper {
+  text-shadow: 0px 0px 4px #ffffff80;
+  font-family: "Pretendard-Bold", Helvetica;
+  color: #4c6d1e;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+  margin-bottom: 3rem;
+}
+
+.Search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; 
+  background-color: #F3FFE0;
+  border-radius: 12px;
+  padding: 0.7rem;  
+  width: 80%;
+  box-shadow: 1px 1px 2px 5px #7a787826;    
+  margin: 0 auto;
+}
+
+.Search img {
+  height: auto;
+}
+
+.Search input {
+    background-color: transparent;
+    border: transparent;
+    height: 1.6rem;
+}
+
+.category {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    width: 100%;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    white-space: nowrap;  
+    -webkit-overflow-scrolling: touch; /* iOS*/
+    scrollbar-width: none; /* 파폭 */
+    -ms-overflow-style: none; /* 엣지용*/
+}
+
+.category::-webkit-scrollbar {
+    display: none;
+}
+
+.tag {
+    cursor: pointer;
+    background-color: #F3FFE0;
+    color: #9F9F9F;
+    padding: 0.45rem 0.7rem 0.4rem 0.7rem ;
+    border-radius: 0.6rem;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-right: 0.3rem;
+    margin-bottom: 2rem;
+    display: inline-block; 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    box-shadow: 0px 0px 3px #00000026;
+}
+
+  .tag.active {
+    background-color: #91C84F;
+    color: #4C6D1E; 
+  }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.Article-list {
+  background: #4C6D1E;      
+  border: none;
+  border-radius: 15px;
+  padding: 1.2rem;  
+  box-shadow: 3px 3px 3px 3px #b8b6b626;   
+  width: 80%;
+  height: fit-content;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+  position: relative; 
+  display: block;
+}
+
+.Article-list .articleline {
+   width: 100%;
+}
+
+.Title {
+    cursor: pointer;
+    color: #91C84F;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.Job {
+    color: white;
+    margin: 0.5rem;
+    font-weight: 90;
+    font-size: 0.7rem;
+}
+
+.Contents {
+    color: white;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    font-weight: 200;
+    font-size: 0.9rem;
+    line-height: 150%;
+}
+
+.Hashtag {
+    cursor: pointer;
+    position: relative;
+    background-color: #91C84F;
+    padding: 0.4rem 0.25rem 0.4rem 0.25rem ;
+    border-radius: 0.375rem;
+    font-weight: 200;
+    font-size: 0.75rem;
+    line-height: 150%;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.Comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; 
+  color: #9F9F9F;
+}
+
+.Comment img {
+  cursor: pointer;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.7rem;
+}
+
+.Comment input {
+    background-color: transparent;
+    border: transparent;
+    padding: 0.7rem;  
+    background-color: #F3FFE0;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-top: 0.7rem;
+    width: 80%;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.new img {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 70%;
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+
+
+/* 스크롤바 제거 테스트 */
+/* 가장 상위 요소인 html과 body에 스크롤바 숨김 속성 적용 */
+html {
+    overflow-y: scroll; /* 세로 스크롤을 항상 허용 (숨겨도 되지만, 명시적) */
+    scrollbar-width: none; /* Firefox 스크롤바 숨기기 */
+    -ms-overflow-style: none; /* IE/Edge 스크롤바 숨기기 */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari 등 웹킷 브라우저 스크롤바 숨기기 */
+}
+
+body {
+    /* 기존 body 스타일 유지 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D5EAB3;
+    min-height: 100vh; /* 뷰포트 전체 높이를 차지하도록 */
+    min-width: 100vw;
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+    font-family: "Pretendard", sans-serif;
+    /* body 자체에 overflow-y: hidden; 을 주지 않아야 합니다. 그럼 페이지 전체 스크롤이 안됩니다. */
+}
+
+.for-zindex {
+    z-index: 10;
+    overflow-x: hidden;
+    overflow-y: auto; /* 이 부분이 스크롤을 발생시키는 주범 */
+    scrollbar-width: none; /* 파폭 */
+    -ms-overflow-style: none; /* 엣지용*/
+}
+
+.for-zindex::-webkit-scrollbar {
+    display: none; /* 웹킷 */
+}
