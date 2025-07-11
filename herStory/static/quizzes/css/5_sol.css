@@ -135,13 +135,23 @@ body {
   display: flex;
 }
 
-
+#answer {
+  border-radius: 7px;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  background-color: #91C84F;
+  color: #ffffff;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  width: 1.56rem;
+  height: fit-content;
+}
 
 #answer_detail {  
   margin-top: 0.45rem;
   margin-left: 0.3rem;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .exp {
@@ -154,7 +164,7 @@ body {
   background-color: #91C84F;
   color: #ffffff;
   margin-top: 0.3rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin-left: 0.5rem;
   width: 1.56rem;
   height: fit-content;
@@ -164,7 +174,7 @@ body {
   flex: 1;
   color: #ffffff;
   margin-top: 0.45rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 200;
   margin-left: 0.3rem;
   line-height: 130%;
