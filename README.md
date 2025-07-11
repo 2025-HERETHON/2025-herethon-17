@@ -1,15 +1,3 @@
-<!-- # 2025-herethon-17
-2025 여기톤 : HER+ETHON 17팀
-minju 브랜치
-# 백엔드 관련 알아야 할 사항 정리!
-
-### 가상환경 명
-* mainvenv 로 통일해요!
-
-### pip install -r requirements.txt
-* 이 명령어 실행해서 패키지 설치해주세요! -->
-
-
 # 2025-herethon-17
 _2025 여기톤 : HER+ETHON 17팀_<br><br>
 
@@ -57,11 +45,11 @@ _2025 여기톤 : HER+ETHON 17팀_<br><br>
   <td  align="center">기획·디자인</td>
   <td  align="center">프론트엔드</td>
   </tr>
-       <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-        <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-         <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-           <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+       <td  align="center"><p>담당 기능 커뮤니티</p><p>담당 기능 여성사퀴즈</p></td>
+        <td  align="center"><p>담당 기능 커뮤니티</p><p>담당 기능 여성사퀴즈</p></td>
+         <td  align="center"><p>담당 기능 소셜 로그인</p><p>담당 기능 여성사카드</p><p>담당 기능 마이페이지</p></td>
+          <td  align="center"><p>담당 기능 서비스 기획</p><p>담당 기능 서비스 메인 디자인</p></td>
+           <td  align="center"><p>담당 기능 여성사카드</p><p>담당 기능 마이페이지</p></td>
   <tr width="100%">
   </tr>
 </table>
@@ -99,29 +87,44 @@ _2025 여기톤 : HER+ETHON 17팀_<br><br>
    │  ├─ apps.py
    │  ├─ models.py
    │  ├─ tests.py
+   │  ├─ urls.py
    │  └─ views.py
-   ├─ posts/   
-    ├─templates/
-   │  │ ├─ card_intro.html
+   ├─ posts/
+   │  ├─templates/
+   │  │ ├─ create.html
+   │  │ └─ search_result.html
    │  ├─ __init__.py
    │  ├─ admin.py
    │  ├─ apps.py
    │  ├─ models.py
    │  ├─ tests.py
+   │  ├─ urls.py
    │  └─ views.py
    ├─ quizzes/
+   │  ├─templates/
+   │  │ ├─ quiz_detail.html
+   │  │ └─ ranking.html
    │  ├─ __init__.py
    │  ├─ admin.py
    │  ├─ apps.py
    │  ├─ models.py
    │  ├─ tests.py
+   │  ├─ urls.py
    │  └─ views.py
    ├─ users/
+   │  ├─templates/
+   │  │ ├─ login.html
+   │  │ ├─ mypage.html
+   │  │ ├─ my_cards.html
+   │  │ └─ my_cards_detail_.html
    │  ├─ __init__.py
+   │  ├─ adapter.py
    │  ├─ admin.py
    │  ├─ apps.py
+   │  ├─ forms.py
    │  ├─ models.py
    │  ├─ tests.py
+   │  ├─ urls.py
    │  └─ views.py
    ├─ templates
    │  └─ home.html
@@ -137,7 +140,11 @@ _2025 여기톤 : HER+ETHON 17팀_<br><br>
 
 ### 개발환경에서의 실행 방법
   ```
-  $ django-admin startproject 프로젝트명
+  $ cd herStory/
+  $ python manage.py migrate
+  $ python manage.py loaddata category_fixture.json
+  $ python manage.py loaddata historycard_fixture.json
+  $ python manage.py loaddata quiz_fixture.json
   $ python manage.py runserver
   ```
   <hr/>
