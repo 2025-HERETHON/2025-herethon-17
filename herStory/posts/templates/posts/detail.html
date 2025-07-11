@@ -1,110 +1,112 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- 이 페이지 사용 안 함 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Era Echo - 게시판 상세</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'posts/css/Future_Article.css' %}">
+  <script src="{% static 'posts/js/Future_Article.js' %}"></script>
 </head>
+
 <body>
-    <a href="{% url 'posts:category' 1 %}">← 게시판으로 돌아가기</a>
-    <p>제목 {{ post.title }}</p>
-    <hr>
+<div class="app-container">
+  <header class="header">
+    <img src="{% static 'posts/image/mainLogo.svg' %}" class="main-logo" />
+    <button class="menu-toggle" id="menuToggle">
+      <img src="{% static 'posts/image/Menu.svg' %}">
+    </button>
+    <nav class="menu" id="menu">
+      <ul>
+        <li>로그인</li>
+        <div class="divider"></div>
+        <li>과거를 알다</li>
+        <li>지금을 묻다</li>
+        <li>미래를 잇다</li>
+      </ul>
+    </nav>
+  </header>
+  <script src="{% static 'home/js/home.js' %}"></script>
 
-    <p>내용 {{ post.content }}</p>
-    <p>작성일 {{ post.created_at }}</p><br>
-    <p>작성자 유형 - {{ post.type }}</p>
+  <div class="for-zindex">
+    <div class="Article">
+      <div class="Main">
+        <span class="Title">{{ post.title }}</span>
+        <span class="Job">· {{ post.type }}</span>
+      </div>
 
-    <p>좋아요: {{post.like.count}}
-        {% if request.user in post.like.all %}
-            <a href="{% url 'posts:like' post.id %}">좋아요 취소</a>
-        {% else %}
-            <a href="{% url 'posts:like' post.id %}">좋아요</a>
-        {% endif %}
-    </p>
-    <p>조회수 : {{ post.views }}</p>
+      <div class="Sub">
+        <div class="Contents">{{ post.content }}</div>
+        <!-- <div class="Contents">작성일: {{ post.created_at }} | 조회수: {{ post.views }}</div> -->
 
-    <p>{% for category in post.category.all %}
-            #{{category.name}}
-        {% empty %}
-            선택한 태그 없음
-        {% endfor %}
-    </p>
+        <div class="Contents">
+          {% for category in post.category.all %}
+            <span class="Hashtag">#{{ category.name }}</span>
+          {% empty %}
+            <span class="Hashtag">태그 없음</span>
+          {% endfor %}
+        </div>
 
-    {% for tag in post.tags.all %}
-    <span>#{{ tag.name }}</span><br>
-    {% endfor %}
-    
-    <!-- 로그인한 사용자일 때만 수정/삭제 -->
-    {% if request.user == post.user %}
-    <a href="{% url 'posts:update' post.id %}">수정</a><br>
-    <a href="{% url 'posts:delete' post.id %}">삭제</a><br>
-    {% endif %}
+        <div class="Contents">
+          {% for tag in post.tags.all %}
+            <span class="Hashtag">#{{ tag.name }}</span>
+          {% endfor %}
+        </div>
 
-    <hr><h3>댓글 ({{ post.comments.count }})</h3><br>
-
-{% for comment in comments %}
-  {% if not comment.parent_comment %}
-    <div>
-      <strong>{{ comment.author.username }}</strong>:
-
-      {% if update_comment_id == comment.id %}
-        <!-- 댓글 수정 폼 -->
-        <form method="POST" action="{% url 'posts:update-comment' comment.id %}">
-          {% csrf_token %}
-          <textarea name="content" rows="3">{{ comment.content }}</textarea><br>
-          <button type="submit">저장</button>
-          <a href="{% url 'posts:detail' post.id %}">취소</a>
-        </form>
-      {% else %}
-        {{ comment.content }}
-
-        {% if request.user == comment.author %}
-          <a href="{% url 'posts:detail' post.id %}?update={{ comment.id }}">수정</a>
-        {% endif %}
-      {% endif %}
-    </div>
-
-    <!-- 대댓글 -->
-    {% for reply in comment.replies.all %}
-      <div style="margin-left: 30px;">
-        <strong>{{ reply.author.username }}</strong>:
-
-        {% if update_comment_id == reply.id %}
-          <form method="POST" action="{% url 'posts:update-comment' reply.id %}">
-            {% csrf_token %}
-            <textarea name="content" rows="2">{{ reply.content }}</textarea><br>
-            <button type="submit">저장</button>
-            <a href="{% url 'posts:detail' post.id %}">취소</a>
-          </form>
-        {% else %}
-          {{ reply.content }}
-          {% if request.user == reply.author %}
-            <a href="{% url 'posts:detail' post.id %}?update={{ reply.id }}">수정</a>
-          {% endif %}
+        {% if request.user == post.user %}
+        <div class="Contents">
+          <!-- <a href="{% url 'posts:update' post.id %}">수정</a>
+          <a href="{% url 'posts:delete' post.id %}">삭제</a> -->
+        </div>
         {% endif %}
       </div>
-    {% endfor %}
 
-    <!-- 대댓글 작성 폼 -->
-    <form method="POST" action="{% url 'posts:create-comment' post.id %}" style="margin-left: 30px;">
-      {% csrf_token %}
-      <input type="hidden" name="parent_comment_id" value="{{ comment.id }}">
-      <textarea name="content" placeholder="답글"></textarea><br>
-      <button type="submit">답글 작성</button>
-    </form>
+      <!-- 댓글 -->
+      <div class="Chat-box">
+        {% for comment in comments %}
+          {% if not comment.parent_comment %}
+          <div class="chat">
+            <strong>{{ comment.author.username }}</strong>: 
+            {% if update_comment_id == comment.id %}
+            <form method="POST" action="{% url 'posts:update-comment' comment.id %}">
+              {% csrf_token %}
+              <textarea name="content" rows="3">{{ comment.content }}</textarea><br>
+              <button type="submit">저장</button>
+              <a href="{% url 'posts:detail' post.id %}">취소</a>
+            </form>
+            {% else %}
+              {{ comment.content }}
+              {% if request.user == comment.author %}
+                <!-- <a href="{% url 'posts:detail' post.id %}?update={{ comment.id }}">수정</a> -->
+              {% endif %}
+            {% endif %}
+          </div>
+          {% endif %}
+        {% empty %}
+        <p>댓글이 없습니다</p>
+        {% endfor %}
+      </div>
 
-  {% endif %}
-{% empty %}
-  <p>댓글이 없습니다</p>
-{% endfor %}
+      <!-- 댓글 작성 -->
+      <div class="Comment">
+        <form method="POST" action="{% url 'posts:create-comment' post.id %}">
+          {% csrf_token %}
+          <input type="text" name="content" placeholder="서사를 함께 이어나가 보아요!" />
+          <button type="submit"><img src="{% static 'posts/image/Future_Send.svg' %}"/></button>
+        </form>
+      </div>
 
+    </div>
+  </div>
 
-    <!-- 댓글 작성 폼 -->
-    <form method="POST" action="{% url 'posts:create-comment' post.id %}">
-        {% csrf_token %}
-        <textarea name="content" cols="30" rows="5"></textarea>
-        <button type="submit">댓글 작성</button><br>
-    </form>
+  <div class="new">
+    <img src="{% static 'posts/image/Future__note-plus.png' %}"/>
+  </div>
+
+</div>
 </body>
 </html>
