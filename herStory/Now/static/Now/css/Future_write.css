@@ -165,24 +165,6 @@ input::placeholder {
     margin-bottom: 1rem;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-.Article-content {
-  margin-top: 1rem;
-  width: 100%;
-  min-height: 10rem;
-  border-radius: 15px;
-  background-color: #D5EAB3;
-}
-
-.write {
-  background-color: transparent;
-  border: transparent;
-  margin-left: 1rem;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
 .checkbox  {
   display: flex;
   flex-direction: row;
@@ -192,6 +174,25 @@ input::placeholder {
   font-size: 0.85rem;
   color: white;
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.Article-content {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 10rem;
+  border-radius: 15px;
+  background-color: #F3FFE0;
+}
+
+.write {
+  background-color: transparent;
+  border: transparent;
+  margin-left: 1rem;
+  min-height: 100%;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .Hashtag {
   gap: 0.5rem; 
@@ -236,10 +237,10 @@ input::placeholder {
     cursor: pointer;
     background-color: #F3FFE0;
     color: #9F9F9F;
-    padding: 0.45rem 0.7rem 0.4rem 0.7rem ;
+    padding: 0.4rem 0.65rem 0.4rem 0.65rem ;
     border-radius: 0.4rem;
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-right: 0.15rem;
     margin-bottom: 0.1rem;
     display: inline-block; 
@@ -248,7 +249,7 @@ input::placeholder {
     box-shadow: 0px 0px 3px #00000026;
 }
 
-  .tag.active {
+.tag.active {
     background-color: #91C84F;
     color: #4C6D1E; 
   }

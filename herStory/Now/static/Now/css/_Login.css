@@ -76,22 +76,11 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-@media (max-width: 375px) {
-  .app-container {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-    box-shadow: none;
-  }
-}
-
 .for-zindex{
     z-index: 10;
 }
 
 body {
-  min-height: 100vh;
-  min-width: 100vw;
   display: flex;
   justify-content: center;  
   background-color: #D5EAB3;
