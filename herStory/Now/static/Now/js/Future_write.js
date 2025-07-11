@@ -27,7 +27,33 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener("click", () => {
     menu.classList.remove("active");
   });
-});
 
 // 요기까지 내비바 기능
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// ↓ 태그 선택할 때 색상 바뀌는 거
+const tags = document.querySelectorAll('.tag');
+    tags.forEach(tag => {
+        tag.addEventListener('click', function () {
+        tag.classList.toggle('active');
+    });
+   });
+
+// ↓ 맨 아래버튼 색상 바뀌는 거
+const uploadButton = document.querySelector('.upload');
+const uploadimg = document.querySelector('.upload-plus');
+const checkbutton = document.querySelector('.Hashtag');
+const checkimg = document.querySelector('.checkimg');
+
+    uploadButton.addEventListener('click', function() {
+      uploadButton.style.backgroundColor = '#91C84F'; 
+      uploadimg.src = '../../static/Now/image/Future__Upload_active.svg'; 
+            setTimeout(function() {
+            window.location.href = 'Future_home.html';
+        }, 200);
+    });
+
+    checkbutton.addEventListener('click', function() {
+      checkimg.src = '../../static/Now/image/Future__Check_active.svg';
+        });
+});
