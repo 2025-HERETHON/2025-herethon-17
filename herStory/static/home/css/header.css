@@ -12,6 +12,7 @@
   height: 162px;
   background-color: transparent;
   position: relative;
+  z-index: 1000;
 }
 
 .logo {

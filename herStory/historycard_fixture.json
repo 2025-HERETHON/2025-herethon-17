@@ -1,0 +1,171 @@
+[
+{
+  "model": "history.historycard",
+  "pk": 1,
+  "fields": {
+    "name": "유관순",
+    "era": "20세기",
+    "region": "아시아",
+    "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTngZhlkvKuR_70z_53m8fVdLmAXNHSbpHgKkipv30_P7F-Kn9miaePmUmq0mQIq3Ci8Xq9DR5thSKswJZZGl0mgyF58rJ6MazbXTWfduFF",
+    "description": "유관순은 일제강점기 아우내 3·1만세운동을 주도한 독립운동가입니다. 3·1 만세 운동에 참여하여 붙잡혔으나 곧 석방되었습니다. 전국적으로 휴교령이 내리자 고향으로 돌아와 서울 소식을 전한 후 4월 1일 병천시장에서 아우내 독립 만세 운동을 주도했습니다. 검거되어 투옥 중에도 옥중만세운동을 벌였고, 오랫동안 계속된 고문과 영양실조로 18세의 나이로 순국했습니다.",
+    "birth_date": "1902-12-06",
+    "death_date": "1920-09-28"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 2,
+  "fields": {
+    "name": "리제 마이트너",
+    "era": "19세기",
+    "region": "유럽",
+    "image_url": "https://img7.yna.co.kr/etc/inner/KR/2023/10/03/AKR20231003039000009_01_i_P4.jpg",
+    "description": "리제 마이트너는 오스트리아 출신의 핵물리학자로, 핵분열 이론을 제안한 인물 중 한 명입니다. 조카 오토 프리슈와 함께 우라늄 원자가 쪼개지는 현상을 설명하며 \"핵분열\"이라는 용어를 만들었습니다. 하지만 핵분열 실험 공로로 오토 한만 노벨상을 수상하면서 그녀는 제외되어 과학계의 큰 논란이 되었습니다. 유대인 여성 과학자로서 나치 독일을 피해 스웨덴으로 망명하며 연구를 이어갔습니다. 그녀를 기려 109번 원소는 \"마이트너륨(Meitnerium)\"으로 명명되었습니다.",
+    "birth_date": "1878-11-07",
+    "death_date": "1968-10-27"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 3,
+  "fields": {
+    "name": "해리엇 비처 스토",
+    "era": "19세기",
+    "region": "북아메리카",
+    "image_url": "https://newsimg.hankookilbo.com/2016/06/14/201606140487625802_1.jpg",
+    "description": "해리엇 비처 스토(Harriet Beecher Stowe)는 미국의 작가이자 노예제 폐지를 촉진한 인물입니다. 대표작 『톰 아저씨의 오두막』(1852)은 노예제도의 참상을 폭로해 미국 내 반노예 감정을 크게 일으켰습니다. 이 책은 남북전쟁 여론 형성에 영향을 주었으며, 링컨 대통령은 그녀를 “작은 여인”이라 부르며 높이 평가했습니다. 그녀는 여성의 권리와 교육 문제에도 관심을 가지며 다양한 사회 개혁 활동에 참여했습니다. 평생 30권 이상의 책을 집필하며 사회 정의와 인권 신장을 위해 힘썼습니다.",
+    "birth_date": "1811-06-14",
+    "death_date": "1896-07-01"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 4,
+  "fields": {
+    "name": "에미 뇌터",
+    "era": "19세기",
+    "region": "유럽",
+    "image_url": "https://img.khan.co.kr/news/2015/03/23/l_2015032301003679200288442.jpg",
+    "description": "에미 뇌터는 1882년 독일 바이에른주에서 태어난 수학자입니다. 초기에는 여성이라는 이유로 대학 강단에 서지 못했지만, 동료들의 도움으로 연구를 지속했습니다. 20세기 초, 대칭성과 물리 법칙의 관계를 증명한 '뇌터 정리'로 이론물리학의 기초를 마련했습니다. 히틀러 집권 이후 유대인이라는 이유로 미국으로 망명, 브린모어 대학에서 강의하며 후학을 양성했습니다. 1935년, 53세의 나이로 세상을 떠났지만 현대 물리학과 추상대수학에 미친 영향은 엄청납니다.",
+    "birth_date": "1882-03-23",
+    "death_date": "1935-04-14"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 5,
+  "fields": {
+    "name": "마리 퀴리",
+    "era": "19세기",
+    "region": "유럽",
+    "image_url": "https://contents.kyobobook.co.kr/sih/fit-in/200x0/dtl/author/2001487001.jpg",
+    "description": "1867년 폴란드 바르샤바에서 태어나 프랑스로 유학 간 마리 퀴리는 방사능 연구의 선구자입니다. 남편 피에르 퀴리와 함께 새로운 원소 라듐과 폴로늄을 발견하고 방사선의 개념을 정립했습니다. 1903년 노벨 물리학상, 1911년 노벨 화학상을 받아 두 분야 모두 수상한 유일한 인물입니다. 전쟁 중에는 엑스레이 장비를 개발하여 부상병 치료에 기여했습니다. 방사능 노출로 1934년 사망했지만, 그녀의 연구는 현대 의학과 물리학의 기초가 되었습니다.",
+    "birth_date": "1867-11-07",
+    "death_date": "1934-07-04"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 6,
+  "fields": {
+    "name": "로자 파크스",
+    "era": "20세기",
+    "region": "북아메리카",
+    "image_url": "https://img.khan.co.kr/news/2021/01/19/l_2021011901001755600168753.jpg",
+    "description": "1913년 미국 앨라배마주에서 태어난 로자 파크스는 흑인 인권운동의 상징입니다. 1955년, 버스에서 백인에게 자리를 양보하라는 요구를 거부하며 체포되었습니다. 이 사건은 몽고메리 버스 보이콧 운동으로 확산되며 미국 민권운동의 도화선이 되었습니다. 그 후 마틴 루터 킹 주니어와 함께 활동하며 인종차별 철폐에 앞장섰습니다. 2005년 92세로 사망하며 미국 역사상 가장 존경받는 여성 인권운동가로 기억됩니다.",
+    "birth_date": "1913-02-04",
+    "death_date": "2005-10-24"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 7,
+  "fields": {
+    "name": "시몬 드 보부아르",
+    "era": "20세기",
+    "region": "유럽",
+    "image_url": "https://i.namu.wiki/i/qzsORqpUyxdCFA3lKf4U1-v8WxKZlabSRqcy9URX0ZnLF0C9AfDXSe-OB-RAFfMPK6jQJrf3_NJwTHswSLi8wQ.webp",
+    "description": "1908년 프랑스 파리 출생, 철학자이자 작가, 페미니즘 사상의 기반을 만든 인물입니다. 실존주의 철학자 장 폴 사르트르의 연인이자 동료로 철학적, 정치적 사상을 발전시켰습니다. 1949년 저서 『제2의 성』을 통해 여성 억압의 구조를 분석하고 성차별의 본질을 지적했습니다. 여성주의, 사회주의, 실존주의 철학을 연결하며 현대 페미니즘 철학을 정립했습니다. 1986년 사망 후에도 전 세계 여성운동에 영향력을 미치고 있습니다.",
+    "birth_date": "1908-01-09",
+    "death_date": "1986-04-14"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 8,
+  "fields": {
+    "name": "말랄라 유사프자이",
+    "era": "21세기",
+    "region": "아시아",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu1rUbSW-AD_Sw9_hlu1nyxHsFTC1GkF2hIQ&s",
+    "description": "1997년 파키스탄에서 태어난 말랄라는 여성 교육권의 상징이자 최연소 노벨평화상 수상자입니다. 탈레반이 여성 교육을 금지한 가운데, 11세부터 블로그로 교육의 중요성을 외쳤습니다. 2012년 탈레반의 총격으로 머리를 맞았지만 회복 후 더욱 적극적으로 활동했습니다. 전 세계를 다니며 여성과 어린이의 교육권을 호소했고, 2014년 노벨평화상을 수상했습니다. 현재까지도 활동가이자 작가, 유엔 연설가로 활약 중입니다.",
+    "birth_date": "1997-07-12",
+    "death_date": null
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 9,
+  "fields": {
+    "name": "왕가리 마타이",
+    "era": "20세기",
+    "region": "아프리카",
+    "image_url": "https://img.khan.co.kr/news/2021/02/16/l_2021021601001474700137364.jpg",
+    "description": "1940년 케냐 출생, 아프리카 여성 최초로 노벨평화상을 수상한 환경운동가입니다. 그린벨트 운동을 통해 수백만 그루의 나무를 심으며 사막화와 가난에 맞섰습니다. 여성의 권리와 환경 보호를 함께 외치며 독재 정권에 저항했습니다. 2004년 아프리카 여성 최초의 노벨상 수상자가 되었습니다. 2011년 타계 후에도 아프리카 및 세계 환경운동에 큰 유산을 남겼습니다.",
+    "birth_date": "1940-04-01",
+    "death_date": "2011-09-25"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 10,
+  "fields": {
+    "name": "김활란",
+    "era": "20세기",
+    "region": "아시아",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Helen_Kim.png",
+    "description": "1899년 서울 출생으로, 미국 유학 후 여성 교육에 헌신했습니다. 이화학당 교사에서 시작해 한국 최초의 여성 대학 총장이 되었습니다. 일제강점기에도 여성의 지식과 자립의 중요성을 강조했습니다. 광복 후 여성의 사회 참여 확대를 위한 정책 활동도 병행했습니다. 교육자로서 수많은 여성 리더 양성에 기여했습니다.",
+    "birth_date": "1899-02-27",
+    "death_date": "1970-02-10"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 11,
+  "fields": {
+    "name": "박에스더",
+    "era": "19세기",
+    "region": "아시아",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/EstherKimPakMD.jpg",
+    "description": "1876년 평양 출생으로, 조선 최초의 여성 서양의사가 되었습니다. 미국에서 의학을 공부하고 귀국하여 여성과 어린이를 위한 진료에 헌신했습니다. 당시 조선 사회에서 여성의료 접근이 어려웠던 상황을 바꾸는 데 기여했습니다. 기독교 정신을 바탕으로 여성 교육과 위생 개혁을 실천했습니다. 1910년, 짧은 생을 마감했지만 여성 전문직의 상징이 되었습니다.",
+    "birth_date": "1876-03-16",
+    "death_date": "1910-04-13"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 12,
+  "fields": {
+    "name": "정정화",
+    "era": "20세기",
+    "region": "아시아",
+    "image_url": "https://i.namu.wiki/i/D_daK_rcwAnplSnKc0jGn5ItuxQ0UOqtEEvE3jgmP3C71fzpdMziu8Crc4a3N1vcQLMce-Yvp-ZqbdKfZewrLg.webp",
+    "description": "1900년 서울에서 태어나, 대한민국 임시정부의 여성 비서로 활동했습니다. 상하이와 충칭 등지에서 독립운동가들의 생활을 돌보며 물자 조달을 맡았습니다. 정보 전달, 무기 운반 등 위험한 임무도 직접 수행했습니다. 해방 후엔 회고록을 통해 여성 독립운동가들의 숨은 이야기를 전했습니다. 평생 조용한 실천으로 독립운동의 뒤를 지탱한 인물이었습니다.",
+    "birth_date": "1900-08-03",
+    "death_date": "1991-11-02"
+  }
+},
+{
+  "model": "history.historycard",
+  "pk": 13,
+  "fields": {
+    "name": "허난설헌",
+    "era": "16세기",
+    "region": "아시아",
+    "image_url": "https://imgscience.ytn.co.kr/sciencetv/jpg/vod1165/2015/201510190956528372_h.jpg",
+    "description": "1563년 강릉에서 태어난 조선 중기의 여성 시인입니다. 허균의 누이로, 어린 시절부터 뛰어난 문재를 보였습니다. 남성 중심의 사회 속에서도 섬세한 감성과 슬픔을 문학으로 승화했습니다. 『난설헌집』은 중국과 일본에까지 전해졌으며 조선 여성 문학의 기념비입니다. 짧은 생애였지만 여성 문학의 가능성을 증명한 인물이었습니다.",
+    "birth_date": null,
+    "death_date": "1589-03-19"
+  }
+}
+]

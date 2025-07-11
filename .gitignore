@@ -6,6 +6,6 @@ venv/
 *.sqlite3
 db.sqlite3
 media/
-static/
+#static/
 __pycache__/
 *.py[cod]

@@ -12,6 +12,7 @@
   height: 162px;
   background-color: transparent;
   position: relative;
+  z-index: 1000;
 }
 
 .logo {
@@ -21,58 +22,56 @@
 }
 
 .menu {
-    display: none;
-    flex-direction: column;
-    position: fixed; /* absolute에서 fixed로 변경 */
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 23.4375rem; /* 앱 컨테이너와 동일한 너비 */
-    padding: 1rem 0;
-    border-radius: 0 0 1.5rem 1.5rem;
-    z-index: 1000; /* 메뉴가 맨 위에 나타나도록 */
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0;
+  border-radius: 0 0 1.5rem 1.5rem;
 }
 
 .menu ul {
-    list-style: none;
-    padding-top: 100px;
+  list-style: none;
+  padding-top: 100px;
 }
 
 .menu li {
-    color: white;
-    padding: 0.75rem 3rem;
-    margin: 0.25rem 0;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-align: left;
+  color: white;
+  padding: 0.75rem 3rem;
+  margin: 0.25rem 0;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: left;
 }
 
+/* 클릭된 항목 전용 스타일 */
 .menu li.active {
-    background-color: #d5eab3;
-    color: #1c1c1c;
+  background-color: #d5eab3;
+  color: #1c1c1c;
 }
 
 .menu.active {
-    display: flex;
-    background-color: rgba(64, 72, 52, 0.9);
-    width: 100%;
+  display: flex;
+  background-color: rgba(64, 72, 52, 0.9);
+  width: 100%;
 }
 
 .menu .divider {
-    height: 1px;
-    background-color: #f2f2f2;
-    margin: 30px 3rem;
+  height: 1px;
+  background-color: #f2f2f2;
+  margin: 30px 3rem;
 }
 
 .menu-toggle {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: #4c6d1e;
-    z-index: 900;
-    
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #4c6d1e;
 }
+
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -84,7 +83,7 @@
     border-radius: 0;
     box-shadow: none;
   }
-}
+} */
 
 body {
     display: flex;
